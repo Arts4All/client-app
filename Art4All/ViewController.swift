@@ -7,14 +7,43 @@
 //
 
 import UIKit
+import SocketIO
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var messageText: UITextField!
+    
+    //Manager SocketIO
+    let manager = SocketManager(socketURL: URL(string: Server.URL)!,
+                                config: [.log(false), .compress])
+    lazy var socket = manager.defaultSocket
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
+        socket.on(clientEvent: .connect) { data, ack in
+            print("socket connected")
+        }
+        
+        socket.on(clientEvent: .disconnect) { data, ack in
+            print("socket disconnect")
+        }
+        
+        socket.connect()
     }
 
 
+    @IBAction func sendMessage(_ sender: Any) {
+        let message = [
+            "name": "Guedes",
+            "text": self.messageText.text ?? "BATATA",
+        ]
+        self.socket.emitWithAck("msgToServer", message).timingOut(after: 1) {
+            data in
+            print("enviou")
+        }
+    }
 }
 
