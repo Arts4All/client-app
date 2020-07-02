@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Server {
     static let URL = "http://localhost:3000"
 }
