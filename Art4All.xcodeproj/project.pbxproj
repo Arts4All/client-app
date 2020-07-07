@@ -17,6 +17,13 @@
 		8203580324AE50090073EED4 /* Art4AllUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203580224AE50090073EED4 /* Art4AllUITests.swift */; };
 		8203581224AE504E0073EED4 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 8203581124AE504E0073EED4 /* SocketIO */; };
 		8203581424AE518E0073EED4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203581324AE518E0073EED4 /* Environment.swift */; };
+		D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6724B2A4B200EB2A58 /* LogicalGrid.swift */; };
+		D9036E6A24B2A4BE00EB2A58 /* LogicalGridElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6924B2A4BE00EB2A58 /* LogicalGridElement.swift */; };
+		D9036E7024B389EE00EB2A58 /* VisualGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6F24B389EE00EB2A58 /* VisualGrid.swift */; };
+		D9036E7224B389F900EB2A58 /* VisualGridElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E7124B389F900EB2A58 /* VisualGridElement.swift */; };
+		D9036E7424B38A5400EB2A58 /* CanvasNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E7324B38A5400EB2A58 /* CanvasNode.swift */; };
+		D9036E7A24B39AEA00EB2A58 /* StateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E7924B39AEA00EB2A58 /* StateEnum.swift */; };
+		D9036E7D24B3E07300EB2A58 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E7C24B3E07300EB2A58 /* CanvasViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +59,13 @@
 		8203580224AE50090073EED4 /* Art4AllUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art4AllUITests.swift; sourceTree = "<group>"; };
 		8203580424AE50090073EED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8203581324AE518E0073EED4 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		D9036E6724B2A4B200EB2A58 /* LogicalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalGrid.swift; sourceTree = "<group>"; };
+		D9036E6924B2A4BE00EB2A58 /* LogicalGridElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalGridElement.swift; sourceTree = "<group>"; };
+		D9036E6F24B389EE00EB2A58 /* VisualGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualGrid.swift; sourceTree = "<group>"; };
+		D9036E7124B389F900EB2A58 /* VisualGridElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualGridElement.swift; sourceTree = "<group>"; };
+		D9036E7324B38A5400EB2A58 /* CanvasNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasNode.swift; sourceTree = "<group>"; };
+		D9036E7924B39AEA00EB2A58 /* StateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateEnum.swift; sourceTree = "<group>"; };
+		D9036E7C24B3E07300EB2A58 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +117,9 @@
 		820357DE24AE50050073EED4 /* Art4All */ = {
 			isa = PBXGroup;
 			children = (
+				D9036E7B24B3E05F00EB2A58 /* CanvasController */,
+				D9036E6B24B3896300EB2A58 /* VisualCanvas */,
+				D9036E6524B2A2E900EB2A58 /* LogicalCanvas */,
 				8203581624AE51C70073EED4 /* Connection */,
 				8203581524AE51BA0073EED4 /* CoreData */,
 				820357DF24AE50050073EED4 /* AppDelegate.swift */,
@@ -147,6 +164,82 @@
 				8203581324AE518E0073EED4 /* Environment.swift */,
 			);
 			path = Connection;
+			sourceTree = "<group>";
+		};
+		D9036E6524B2A2E900EB2A58 /* LogicalCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E6C24B3897000EB2A58 /* GridElement */,
+				D9036E6624B2A2FB00EB2A58 /* Grid */,
+			);
+			path = LogicalCanvas;
+			sourceTree = "<group>";
+		};
+		D9036E6624B2A2FB00EB2A58 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E6724B2A4B200EB2A58 /* LogicalGrid.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		D9036E6B24B3896300EB2A58 /* VisualCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E7724B39AD200EB2A58 /* Helpers */,
+				D9036E6E24B3899B00EB2A58 /* VisualGridElement */,
+				D9036E6D24B3898200EB2A58 /* VisualGrid */,
+			);
+			path = VisualCanvas;
+			sourceTree = "<group>";
+		};
+		D9036E6C24B3897000EB2A58 /* GridElement */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E6924B2A4BE00EB2A58 /* LogicalGridElement.swift */,
+			);
+			path = GridElement;
+			sourceTree = "<group>";
+		};
+		D9036E6D24B3898200EB2A58 /* VisualGrid */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E6F24B389EE00EB2A58 /* VisualGrid.swift */,
+			);
+			path = VisualGrid;
+			sourceTree = "<group>";
+		};
+		D9036E6E24B3899B00EB2A58 /* VisualGridElement */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E7124B389F900EB2A58 /* VisualGridElement.swift */,
+				D9036E7324B38A5400EB2A58 /* CanvasNode.swift */,
+			);
+			path = VisualGridElement;
+			sourceTree = "<group>";
+		};
+		D9036E7724B39AD200EB2A58 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E7824B39ADC00EB2A58 /* Enum */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D9036E7824B39ADC00EB2A58 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E7924B39AEA00EB2A58 /* StateEnum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		D9036E7B24B3E05F00EB2A58 /* CanvasController */ = {
+			isa = PBXGroup;
+			children = (
+				D9036E7C24B3E07300EB2A58 /* CanvasViewController.swift */,
+			);
+			path = CanvasController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -307,10 +400,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9036E7D24B3E07300EB2A58 /* CanvasViewController.swift in Sources */,
 				820357E824AE50050073EED4 /* Art4All.xcdatamodeld in Sources */,
+				D9036E7024B389EE00EB2A58 /* VisualGrid.swift in Sources */,
+				D9036E7A24B39AEA00EB2A58 /* StateEnum.swift in Sources */,
 				8203581424AE518E0073EED4 /* Environment.swift in Sources */,
+				D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */,
 				820357E224AE50050073EED4 /* ViewController.swift in Sources */,
+				D9036E6A24B2A4BE00EB2A58 /* LogicalGridElement.swift in Sources */,
+				D9036E7224B389F900EB2A58 /* VisualGridElement.swift in Sources */,
 				820357E024AE50050073EED4 /* AppDelegate.swift in Sources */,
+				D9036E7424B38A5400EB2A58 /* CanvasNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

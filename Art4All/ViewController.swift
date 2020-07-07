@@ -11,7 +11,8 @@ import SocketIO
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var messageText: UITextField!
+    var grid: VisualGrid?
+    var tiles: [VisualGridElement]?
 
     //Manager SocketIO
     let manager = SocketManager(socketURL: URL(string: Server.URL)!,
@@ -31,15 +32,38 @@ class ViewController: UIViewController {
         }
 
         socket.connect()
-    }
 
-    @IBAction func sendMessage(_ sender: Any) {
-        let message = [
-            "name": "Guedes",
-            "text": self.messageText.text ?? "BATATA"
-        ]
-        self.socket.emitWithAck("msgToServer", message).timingOut(after: 1) { _ in
-            print("enviou")
+        let squareSize = 100
+
+        grid = VisualGrid(rowSize: 10, numberOfLines: 10, squareSize: squareSize)
+
+        guard let grid = grid else {
+            return
+        }
+
+        tiles = grid.tiles
+
+        guard let tiles = tiles else {
+            return
+        }
+
+        for tile in tiles {
+            self.view.addSubview(tile.tile)
+        }
+    }
+    override func viewDidLayoutSubviews() {
+        guard let tiles = tiles else {
+            return
+        }
+        for tile in tiles {
+            let uiTile = tile.tile
+            uiTile.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                uiTile.widthAnchor.constraint(equalToConstant: uiTile.frame.width),
+                uiTile.heightAnchor.constraint(equalToConstant: uiTile.frame.height),
+                uiTile.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: CGFloat(tile.xPositionOnCanvas)),
+                uiTile.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: CGFloat(tile.yPositionOnCanvas))
+            ])
         }
     }
 }
