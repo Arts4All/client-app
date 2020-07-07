@@ -18,28 +18,9 @@ class ViewController: UIViewController {
     var grid: VisualGrid?
     var tiles: [VisualGridElement]?
 
-    //Manager SocketIO
-    let manager = SocketManager(socketURL: URL(string: Server.URL)!,
-                                config: [.log(false), .compress])
-    lazy var socket = manager.defaultSocket
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        socket.on(clientEvent: .connect) { _, _ in
-            print("socket connected")
-        }
-
-        socket.on(clientEvent: .disconnect) { _, _ in
-            print("socket disconnect")
-        }
-
-        socket.connect()
-
-        self.view.addSubview(canvasView)
-        setupGrid()
-        setupTilesAction()
+        self.setupInitalGrid()
     }
 
     override func viewDidLayoutSubviews() {
@@ -47,8 +28,18 @@ class ViewController: UIViewController {
         setupGridConstraints()
     }
 
-    func setupGrid() {
+    func setupSocket() {
 
+    }
+
+    // MARK: - GRID
+    func setupInitalGrid() {
+        self.view.addSubview(canvasView)
+        setupGrid()
+        setupTilesAction()
+    }
+
+    func setupGrid() {
         grid = VisualGrid(rowSize: numberOfColumns, numberOfLines: numberOfLines, squareSize: squareSize)
 
         guard let grid = grid else {
