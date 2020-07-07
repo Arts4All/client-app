@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
         }
 
         for tile in tiles {
-            self.view.addSubview(tile.tile)
+            self.view.addSubview(tile.node)
         }
 
     }

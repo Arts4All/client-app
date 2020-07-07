@@ -12,7 +12,8 @@ import SceneKit
 
 public class VisualGridElement: LogicalGridElement {
 
-    var tile: CanvasNode
+    var node: CanvasNode
+    var nodeColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     var hasBeenModified: Bool
     var xPositionOnCanvas: Int
     var yPositionOnCanvas: Int
@@ -29,18 +30,20 @@ public class VisualGridElement: LogicalGridElement {
 
         self.hasBeenModified = false
 
-        self.tile = CanvasNode(frame: rect)
+        self.node = CanvasNode(type: .custom)
 
-        self.tile.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        self.node.backgroundColor = nodeColor
 
-        self.tile.layer.borderWidth = CGFloat(squareSize/40)
-        self.tile.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.node.frame = rect
 
-        self.tile.setTitle("Teste", for: .normal)
+//        self.node.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
+        self.node.layer.borderWidth = 1
+        self.node.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 
         super.init(xPosition: xPosition, yPosition: yPosition)
 
-        self.tile.visualGridElement = self
+        self.node.visualGridElement = self
     }
 
     required init?(coder: NSCoder) {
@@ -50,10 +53,10 @@ public class VisualGridElement: LogicalGridElement {
     func changeTileState(state: TileStateEnum, newColor: UIColor) {
         switch state {
         case .intact:
-            self.tile.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            self.nodeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             self.hasBeenModified = false
         case .modified:
-            self.tile.backgroundColor = newColor
+            self.nodeColor = newColor
             self.hasBeenModified = true
         }
     }

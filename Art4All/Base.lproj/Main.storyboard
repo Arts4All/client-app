@@ -18,33 +18,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3v-9H-4bQ">
-                                <rect key="frame" x="1588" y="460" width="192" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="192" id="PDl-bw-rv6"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4uJ-Ge-xx4">
-                                <rect key="frame" x="1693" y="560" width="97" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="IHv-eH-EkC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="4uJ-Ge-xx4" firstAttribute="top" secondItem="K3v-9H-4bQ" secondAttribute="bottom" constant="40" id="AYJ-Lj-euz"/>
-                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="K3v-9H-4bQ" secondAttribute="trailing" constant="50" id="L0e-32-Vqg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="K3v-9H-4bQ" secondAttribute="bottom" constant="500" id="NgB-hR-mYb"/>
-                            <constraint firstItem="K3v-9H-4bQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="400" id="QKG-Db-0yd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4uJ-Ge-xx4" secondAttribute="bottom" constant="244" id="bpi-DP-xAy"/>
-                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="4uJ-Ge-xx4" secondAttribute="trailing" constant="40" id="spe-F5-lKN"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
                 </viewController>
