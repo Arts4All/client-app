@@ -9,37 +9,137 @@
 import UIKit
 import SocketIO
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ConnectionSocketDelegate {
 
-    @IBOutlet weak var messageText: UITextField!
-
-    //Manager SocketIO
-    let manager = SocketManager(socketURL: URL(string: Server.URL)!,
-                                config: [.log(false), .compress])
-    lazy var socket = manager.defaultSocket
+    var canvasView = UIView()
+    var numberOfLines: Int = 10
+    var numberOfColumns: Int = 20
+    var squareSize: Int = 80
+    var grid: VisualGrid?
+    var tiles: [VisualGridElement]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        socket.on(clientEvent: .connect) { _, _ in
-            print("socket connected")
-        }
-
-        socket.on(clientEvent: .disconnect) { _, _ in
-            print("socket disconnect")
-        }
-
-        socket.connect()
+        self.setupInitalGrid()
     }
 
-    @IBAction func sendMessage(_ sender: Any) {
-        let message = [
-            "name": "Guedes",
-            "text": self.messageText.text ?? "BATATA"
-        ]
-        self.socket.emitWithAck("msgToServer", message).timingOut(after: 1) { _ in
-            print("enviou")
+    override func viewDidLayoutSubviews() {
+
+    }
+
+    func setupSocket() {
+
+    }
+
+    // MARK: - GRID
+    func setupInitalGrid() {
+        ConnectionSocket.shared.setupDelegate(delegate: self)
+
+    }
+
+    func setupGrid(_ numberOfColumns: Int, _ numberOfLines: Int, _ mapColors: MapColors) {
+        self.view.addSubview(canvasView)
+
+        grid = VisualGrid(numberOfColumns: numberOfColumns,
+                          numberOfLines: numberOfLines,
+                          squareSize: squareSize,
+                          mapColors: mapColors)
+
+        self.numberOfColumns = numberOfColumns
+        self.numberOfLines = numberOfLines
+
+        guard let grid = grid else {
+            return
         }
+
+        tiles = grid.tiles
+
+        guard let tiles = tiles else {
+            return
+        }
+
+        for tile in tiles {
+            self.canvasView.addSubview(tile.node)
+        }
+        setupTilesAction()
+
+        // Constraints
+        setupCanvasViewConstraints()
+        setupGridConstraints()
+    }
+
+    func setupCanvasViewConstraints() {
+        canvasView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            canvasView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0),
+            canvasView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            canvasView.widthAnchor.constraint(equalToConstant: calculateCanvasWidth()),
+            canvasView.heightAnchor.constraint(equalToConstant: calcutateCanvasHeight())
+        ])
+    }
+
+    func setupGridConstraints() {
+        guard let tiles = tiles else {
+            return
+        }
+        for tile in tiles {
+            let node = tile.node
+            node.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                node.widthAnchor.constraint(equalToConstant: node.frame.width),
+                node.heightAnchor.constraint(equalToConstant: node.frame.height),
+                node.leadingAnchor.constraint(equalTo: canvasView.leadingAnchor,
+                                              constant: CGFloat(tile.xPositionOnCanvas)),
+                node.topAnchor.constraint(equalTo: canvasView.topAnchor, constant: CGFloat(tile.yPositionOnCanvas))
+            ])
+        }
+    }
+
+    func setupTilesAction() {
+        guard let tiles = tiles else {
+            return
+        }
+
+        for (index, tile) in tiles.enumerated() {
+            let node = tile.node
+            node.tag = index
+            node.addTarget(self, action: #selector(changeTileColor(sender: )), for: .primaryActionTriggered)
+        }
+    }
+
+    @objc func changeTileColor(sender: Any) {
+
+        guard
+            let node = sender as? CanvasNode,
+            let tile = node.visualGridElement,
+            tile.hasBeenModified == false
+        else {
+            return
+        }
+        ConnectionSocket.shared.drawToServer(color: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1),
+                                             (xPosition: tile.xPosition,
+                                              yPosition: tile.yPosition))
+    }
+
+    func changeTileState(color: UIColor, position: (xPosition: Int, yPosition: Int)) {
+        guard
+            let nodeIndex = self.grid?.grid.findElementIndex(by: position.xPosition,
+                                                             by: position.yPosition),
+            let tiles = tiles
+        else {
+            return
+        }
+        print(nodeIndex)
+        let tile = tiles[nodeIndex]
+        tile.changeTileState(state: .modified, newColor: color)
+    }
+
+    func calculateCanvasWidth() -> CGFloat {
+        return CGFloat(numberOfColumns * squareSize)
+
+    }
+
+    func calcutateCanvasHeight() -> CGFloat {
+        return CGFloat(numberOfLines * squareSize)
     }
 }
