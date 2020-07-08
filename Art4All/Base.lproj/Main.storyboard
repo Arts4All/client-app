@@ -26,5 +26,23 @@
             </objects>
             <point key="canvasLocation" x="69" y="69"/>
         </scene>
+        <!--Canvas View Controller-->
+        <scene sceneID="4AS-1n-dOT">
+            <objects>
+                <viewController id="nkH-HC-dad" customClass="CanvasViewController" customModule="Art4All" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hpi-Vu-wUr"/>
+                        <viewControllerLayoutGuide type="bottom" id="xh0-wG-cJl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xqm-HM-0Sd">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eAK-ab-q6V"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bto-gO-f1g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2260" y="69"/>
+        </scene>
     </scenes>
 </document>

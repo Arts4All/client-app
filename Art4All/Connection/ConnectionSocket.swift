@@ -8,8 +8,19 @@
 
 import Foundation
 import SocketIO
+import UIKit
+
+protocol ConnectionSocketDelegate: class {
+    func setupGrid(_ numberOfColumns: Int,
+                   _ numberOfLines: Int,
+                   _ mapColors: MapColors)
+    func changeTileState(color: UIColor,
+                         position: (xPosition: Int, yPosition: Int))
+}
 
 final class ConnectionSocket {
+
+    weak var delegate: ConnectionSocketDelegate?
 
     public static let shared: ConnectionSocket = ConnectionSocket()
     private let uuid: String = UUID().uuidString
@@ -30,9 +41,11 @@ final class ConnectionSocket {
             print("socket disconnect")
         }
         self.setupOn()
+        self.drawToClient()
         socket.connect()
     }
-    func setupOn() {
+
+    private func setupOn() {
         self.socket.on("joined") { (data, _) in
             guard JoinComunication.validate(data: data[0]) else {
                 print("nao sou eu")
@@ -43,15 +56,51 @@ final class ConnectionSocket {
                 print("cade o mapa")
                 return
             }
-            print(map)
+            let mapColors = ConvertTypes.transformArrayInColor(array: map)
+            let properties = mapColors.getProperties()
+            self.delegate?.setupGrid(properties.rowSize,
+                                     properties.numberOfLines,
+                                     mapColors)
         }
     }
 
-    func join() {
-        print(uuid)
-        self.socket.emitWithAck("join", Environment.uuid).timingOut(after: 1) {
-            data in
+    private func join() {
+        self.socket.emitWithAck("join", Environment.uuid).timingOut(after: 1) { data in
             print(data)
         }
+    }
+
+    func drawToServer(color: UIColor, _ position: (xPosition: Int, yPosition: Int)) {
+        guard let rgb = color.rgb() else { return }
+        let stringColor = "\(rgb.red), \(rgb.green), \(rgb.blue)"
+        self.socket.emitWithAck("drawToServer",
+                                position.xPosition,
+                                position.yPosition,
+                                stringColor
+                                ).timingOut(after: 1) { data in
+            print(data)
+        }
+    }
+
+    private func drawToClient() {
+        self.socket.on("drawToClient") { (data, _) in
+            guard
+                let xPosition = data[0] as? Int,
+                let yPosition = data[1] as? Int,
+                let colorString = data[2] as? String,
+                let color = colorString.getColor()
+            else {
+                print("Playload incorreto")
+                return
+            }
+            print(xPosition, yPosition)
+            self.delegate?.changeTileState(color: color,
+                                           position: (xPosition: xPosition,
+                                                      yPosition: yPosition))
+        }
+    }
+
+    func setupDelegate(delegate: ConnectionSocketDelegate) {
+        self.delegate = delegate
     }
 }

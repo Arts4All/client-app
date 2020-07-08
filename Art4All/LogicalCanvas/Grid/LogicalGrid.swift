@@ -11,15 +11,15 @@ import Foundation
 public class LogicalGrid {
 
     public var elementsArray: [LogicalGridElement]
-    public var rowSize: Int
+    public var numberOfColumns: Int
     public var numberOfLines: Int
     private(set) var numberOfElements: Int
 
-    init(rowSize: Int, numberOfLines: Int) {
-        self.rowSize = rowSize
+    init(numberOfColumns: Int, numberOfLines: Int) {
+        self.numberOfColumns = numberOfColumns
         self.numberOfLines = numberOfLines
         self.elementsArray = []
-        self.numberOfElements = rowSize * numberOfLines
+        self.numberOfElements = numberOfColumns * numberOfLines
         for index in 0..<numberOfElements {
             guard let xPosition = findElementPosition(by: index)?.0 else {
                 return
@@ -35,8 +35,8 @@ public class LogicalGrid {
     func findElementPosition(by index: Int) -> (Int, Int)? {
         let index = index
         if index <= numberOfElements {
-            let xPosition = index / rowSize
-            let yPosition = index % rowSize
+            let xPosition = index / numberOfColumns
+            let yPosition = index % numberOfColumns
             return (xPosition, yPosition)
         }
 
@@ -46,8 +46,10 @@ public class LogicalGrid {
     func findElementIndex(by xPosition: Int, by yPosition: Int) -> Int? {
 
         if xPosition >= 0 && yPosition >= 0 {
-            let index = (xPosition * rowSize) + yPosition
-            if index <= numberOfElements, xPosition < rowSize, yPosition < numberOfElements / rowSize {
+            let index = (yPosition * numberOfColumns) + xPosition
+            if index <= numberOfElements,
+                xPosition < numberOfColumns,
+                yPosition < numberOfElements / numberOfColumns {
                 return index
             }
         }
@@ -56,7 +58,7 @@ public class LogicalGrid {
 
     func calculateNumberOfLines () -> Int {
         let lines: Int
-        lines = self.numberOfElements / self.rowSize
+        lines = self.numberOfElements / self.numberOfColumns
         return lines
     }
 }

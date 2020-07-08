@@ -9,7 +9,7 @@
 import UIKit
 import SocketIO
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ConnectionSocketDelegate {
 
     var canvasView = UIView()
     var numberOfLines: Int = 10
@@ -24,8 +24,7 @@ class ViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        setupCanvasViewConstraints()
-        setupGridConstraints()
+
     }
 
     func setupSocket() {
@@ -34,13 +33,20 @@ class ViewController: UIViewController {
 
     // MARK: - GRID
     func setupInitalGrid() {
-        self.view.addSubview(canvasView)
-        setupGrid()
-        setupTilesAction()
+        ConnectionSocket.shared.setupDelegate(delegate: self)
+
     }
 
-    func setupGrid() {
-        grid = VisualGrid(rowSize: numberOfColumns, numberOfLines: numberOfLines, squareSize: squareSize)
+    func setupGrid(_ numberOfColumns: Int, _ numberOfLines: Int, _ mapColors: MapColors) {
+        self.view.addSubview(canvasView)
+
+        grid = VisualGrid(numberOfColumns: numberOfColumns,
+                          numberOfLines: numberOfLines,
+                          squareSize: squareSize,
+                          mapColors: mapColors)
+
+        self.numberOfColumns = numberOfColumns
+        self.numberOfLines = numberOfLines
 
         guard let grid = grid else {
             return
@@ -55,6 +61,11 @@ class ViewController: UIViewController {
         for tile in tiles {
             self.canvasView.addSubview(tile.node)
         }
+        setupTilesAction()
+
+        // Constraints
+        setupCanvasViewConstraints()
+        setupGridConstraints()
     }
 
     func setupCanvasViewConstraints() {
@@ -77,8 +88,9 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([
                 node.widthAnchor.constraint(equalToConstant: node.frame.width),
                 node.heightAnchor.constraint(equalToConstant: node.frame.height),
-                node.leadingAnchor.constraint(equalTo: canvasView.leadingAnchor, constant: CGFloat(tile.xPositionOnCanvas)),
-                node.bottomAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: CGFloat(tile.yPositionOnCanvas))
+                node.leadingAnchor.constraint(equalTo: canvasView.leadingAnchor,
+                                              constant: CGFloat(tile.xPositionOnCanvas)),
+                node.topAnchor.constraint(equalTo: canvasView.topAnchor, constant: CGFloat(tile.yPositionOnCanvas))
             ])
         }
     }
@@ -96,13 +108,30 @@ class ViewController: UIViewController {
     }
 
     @objc func changeTileColor(sender: Any) {
-        guard let node = sender as? CanvasNode else {
+
+        guard
+            let node = sender as? CanvasNode,
+            let tile = node.visualGridElement,
+            tile.hasBeenModified == false
+        else {
             return
         }
-        guard let tile = node.visualGridElement else {
+        ConnectionSocket.shared.drawToServer(color: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1),
+                                             (xPosition: tile.xPosition,
+                                              yPosition: tile.yPosition))
+    }
+
+    func changeTileState(color: UIColor, position: (xPosition: Int, yPosition: Int)) {
+        guard
+            let nodeIndex = self.grid?.grid.findElementIndex(by: position.xPosition,
+                                                             by: position.yPosition),
+            let tiles = tiles
+        else {
             return
         }
-        tile.changeTileState(state: .modified, newColor: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1))
+        print(nodeIndex)
+        let tile = tiles[nodeIndex]
+        tile.changeTileState(state: .modified, newColor: color)
     }
 
     func calculateCanvasWidth() -> CGFloat {

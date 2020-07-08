@@ -9,10 +9,10 @@
 import Foundation
 struct JoinComunication {
     static func validate(data: Any) -> Bool {
-        guard let id = data as? String else {
+        guard let identifier = data as? String else {
             return false
         }
-        return id == Environment.uuid
+        return identifier == Environment.uuid
     }
 
     static func getMap(mapString: Any) -> [[String]]? {

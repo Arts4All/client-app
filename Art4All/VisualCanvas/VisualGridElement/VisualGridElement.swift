@@ -13,7 +13,7 @@ import SceneKit
 public class VisualGridElement: LogicalGridElement {
 
     var node: CanvasNode
-    var nodeColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    var nodeColor: UIColor = .baseColor
     var hasBeenModified: Bool
     var xPositionOnCanvas: Int
     var yPositionOnCanvas: Int
@@ -24,7 +24,7 @@ public class VisualGridElement: LogicalGridElement {
         self.squareSize = squareSize
 
         self.xPositionOnCanvas = ((xPosition * squareSize))
-        self.yPositionOnCanvas = ((yPosition * squareSize)) * -1
+        self.yPositionOnCanvas = ((yPosition * squareSize))
 
         let rect = CGRect(x: 0, y: 0, width: squareSize, height: squareSize)
 
@@ -51,13 +51,15 @@ public class VisualGridElement: LogicalGridElement {
     }
 
     func changeTileState(state: TileStateEnum, newColor: UIColor) {
+        print("here")
         switch state {
         case .intact:
-            self.nodeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            self.nodeColor = .baseColor
             self.hasBeenModified = false
         case .modified:
             self.nodeColor = newColor
             self.hasBeenModified = true
         }
+        self.node.backgroundColor = self.nodeColor
     }
 }

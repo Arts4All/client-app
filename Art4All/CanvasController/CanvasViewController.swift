@@ -9,29 +9,13 @@
 import Foundation
 import UIKit
 
-class GameViewController: UIViewController {
+class CanvasViewController: UIViewController {
 
     var grid: VisualGrid?
     var tiles: [VisualGridElement]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        grid = VisualGrid(rowSize: 10, numberOfLines: 10, squareSize: 50)
-
-        guard let grid = grid else {
-            return
-        }
-
-        tiles = grid.tiles
-
-        guard let tiles = tiles else {
-            return
-        }
-
-        for tile in tiles {
-            self.view.addSubview(tile.node)
-        }
 
     }
 }

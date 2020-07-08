@@ -14,15 +14,12 @@ struct Environment {
         return PRODUCTION ? "https://art4all.herokuapp.com" : "http://localhost:3000"
     }
     static var uuid: String {
-        get {
-            if let id = UserDefaults.standard.string(forKey: "uuid") {
-                return id
-            } else {
-                let newValue = UUID().uuidString
-                UserDefaults.standard.set(newValue, forKey: "uuid")
-                return newValue
-            }
+        if let identifier = UserDefaults.standard.string(forKey: "uuid") {
+            return identifier
+        } else {
+            let newValue = UUID().uuidString
+            UserDefaults.standard.set(newValue, forKey: "uuid")
+            return newValue
         }
     }
-
 }
