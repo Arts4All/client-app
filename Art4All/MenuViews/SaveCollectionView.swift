@@ -20,21 +20,28 @@ extension SaveCollectionView: UICollectionViewDelegate {
 
         return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return CGSize(width: 300, height: 165)
     }
 }
 
 extension SaveCollectionView: UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfImagesSave.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellCollection = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuSaveCollectionViewCell", for: indexPath) as! MenuSaveCollectionViewCell
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cellCollection = collectionView
+            .dequeueReusableCell(withReuseIdentifier: "MenuSaveCollectionViewCell",
+                                 for: indexPath) as? MenuSaveCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         cellCollection.canvasSaveImage = arrayOfImagesSave[indexPath.row]
         cellCollection.layer.cornerRadius = 20
         return cellCollection

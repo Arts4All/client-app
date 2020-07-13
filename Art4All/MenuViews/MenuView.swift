@@ -9,17 +9,19 @@
 import UIKit
 
 class MenuView: UIView {
-    
+
     var classSave = SaveCollectionView()
     var classFinalized = FinalizedCollectionView()
-    var BackgroundImageView = UIImageView()
+    var backgroundImageView = UIImageView()
     var playButton = UIButton()
     var saveLabel = UILabel()
     var finalizedLabel = UILabel()
-    var saveCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    let finalizedCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-    
+    var saveCollectionView = UICollectionView(frame: CGRect.zero,
+                                              collectionViewLayout: UICollectionViewFlowLayout.init())
+    let finalizedCollectionView = UICollectionView(frame: CGRect.zero,
+                                                   collectionViewLayout: UICollectionViewFlowLayout.init())
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+
       override init(frame: CGRect) {
       super.init(frame: frame)
         setbackgroundImage()
@@ -36,7 +38,7 @@ class MenuView: UIView {
         setSaveCollectionView()
         setFinalizedCollectionView()
     }
-    
+
     func setPlayButton() {
         let imageButton = UIImage(named: "buttonPlayDisabled.png")
         playButton.setImage(imageButton, for: .normal)
@@ -45,7 +47,7 @@ class MenuView: UIView {
         playButton.frame = CGRect(x: xposition, y: yposition, width: 96, height: 94)
         self.addSubview(playButton)
     }
-    
+
     func setSaveLabel() {
         saveLabel.text = "Salvos"
         saveLabel.font = UIFont(name: "Apple ][", size: 48)
@@ -56,9 +58,10 @@ class MenuView: UIView {
         saveLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
         self.addSubview(saveLabel)
     }
-    
+
     func setSaveCollectionView() {
-        saveCollectionView.register(MenuSaveCollectionViewCell.self, forCellWithReuseIdentifier: "MenuSaveCollectionViewCell")
+        saveCollectionView.register(MenuSaveCollectionViewCell.self,
+                                    forCellWithReuseIdentifier: "MenuSaveCollectionViewCell")
         saveCollectionView.delegate = classSave.delegate
         saveCollectionView.dataSource = classSave.dataSource
         saveCollectionView.showsHorizontalScrollIndicator = false
@@ -67,7 +70,7 @@ class MenuView: UIView {
         saveCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -56).isActive = true
         saveCollectionView.heightAnchor.constraint(equalToConstant: 166).isActive = true
     }
-    
+
     func setFinalizedLabel() {
         finalizedLabel.text = "Finalizados"
         finalizedLabel.font = UIFont(name: "Apple ][", size: 48)
@@ -79,9 +82,10 @@ class MenuView: UIView {
         finalizedLabel.textColor = .white
         self.addSubview(finalizedLabel)
     }
-    
+
     func setFinalizedCollectionView() {
-        self.finalizedCollectionView.register(MenuFinalizedCollectionViewCell.self, forCellWithReuseIdentifier: "MenuFinalizedCollectionViewCell")
+        self.finalizedCollectionView.register(MenuFinalizedCollectionViewCell.self,
+                                              forCellWithReuseIdentifier: "MenuFinalizedCollectionViewCell")
         finalizedCollectionView.delegate = classFinalized.delegate
         finalizedCollectionView.dataSource = classFinalized.dataSource
         finalizedCollectionView.showsHorizontalScrollIndicator = false
@@ -94,17 +98,19 @@ class MenuView: UIView {
     func setbackgroundImage() {
         let imageName = "colors.png"
         let image = UIImage(named: imageName)
-        BackgroundImageView = UIImageView(image: image!)
-        BackgroundImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        BackgroundImageView.contentMode = .scaleAspectFill
-        self.addSubview(BackgroundImageView)
+        backgroundImageView = UIImageView(image: image!)
+        backgroundImageView.frame = CGRect(x: 0, y: 0,
+                                           width: UIScreen.main.bounds.width,
+                                           height: UIScreen.main.bounds.height)
+        backgroundImageView.contentMode = .scaleAspectFill
+        self.addSubview(backgroundImageView)
         let coverLayer = CALayer()
-        coverLayer.frame = BackgroundImageView.bounds
+        coverLayer.frame = backgroundImageView.bounds
         coverLayer.backgroundColor = UIColor.black.cgColor
         coverLayer.opacity = 0.4
-        BackgroundImageView.layer.addSublayer(coverLayer)
+        backgroundImageView.layer.addSublayer(coverLayer)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

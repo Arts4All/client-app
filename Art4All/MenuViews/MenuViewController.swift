@@ -9,12 +9,12 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-    
+
     var menu: MenuView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         menu = MenuView(frame: CGRect.zero)
         self.view.addSubview(menu)
     }
