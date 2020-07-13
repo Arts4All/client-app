@@ -37,7 +37,8 @@ final public class CanvasImageCoreDataController: GenericDAO {
             throw DAOError.internalError(description: "Failed to create NSEntityDescription Entity")
         }
 
-        guard let canvasImage = NSManagedObject(entity: canvasImageEntity, insertInto: managedContext) as? CDCanvasImage else {
+        guard let canvasImage = NSManagedObject(entity: canvasImageEntity, insertInto: managedContext)as?
+                CDCanvasImage else {
             throw DAOError.internalError(description: "Failed to create NSManagedObject")
         }
 
@@ -61,7 +62,8 @@ final public class CanvasImageCoreDataController: GenericDAO {
             var canvasImages: [CanvasImage] = []
 
             for canvasData in canvasImageData {
-                canvasImages.append(CanvasImage(data: canvasData.imageData ?? Data(), identifier: canvasData.identifier ?? ""))
+                canvasImages.append(
+                    CanvasImage(data: canvasData.imageData ?? Data(), identifier: canvasData.identifier ?? ""))
             }
             return canvasImages
         } catch {
