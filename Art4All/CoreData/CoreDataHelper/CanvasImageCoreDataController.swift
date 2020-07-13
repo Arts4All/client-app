@@ -27,10 +27,8 @@ final public class CanvasImageCoreDataController: GenericDAO {
 
         let savedItems = try read()
 
-        for savedItem in savedItems {
-            if savedItem.identifier == newRecord.identifier {
-                return
-            }
+        for savedItem in savedItems where savedItem.identifier == newRecord.identifier {
+            return
         }
 
         guard let canvasImageEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {
