@@ -10,82 +10,40 @@ import UIKit
 
 class MenuView: UIView {
 
-    private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "aslam"))
-    private let playButton = UIButton()
-    private let saveLabel = UILabel()
-    private let finalizedLabel = UILabel()
+    public var titleLabel = UILabel()
     private let layout = UICollectionViewFlowLayout()
-    private lazy var savedCanvas = CustomCollectionView(frame: self.frame,
+    private lazy var canvas = CustomCollectionView(frame: self.frame,
                                                         collectionViewLayout: layout)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setBackgroundImage()
-//        setPlayButton()
-        setSaveLabel()
-        setFinalizedLabel()
-        setSavedCollectionView()
-        setFinalizedCollectionView()
+        setTitle()
+        setCollectionView(images: [#imageLiteral(resourceName: "aslam")])
     }
 
     func setupViews() {
-//        setupViewPlayButton()
-        setupViewSavedCollectionView()
+        setupViewCollectionView()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    private func setPlayButton() {
-        let imageButton = #imageLiteral(resourceName: "aslam")
-        playButton.setImage(imageButton, for: .normal)
-        self.addSubview(playButton)
-        playButton.translatesAutoresizingMaskIntoConstraints = false
+    private func setTitle() { }
+
+    private func setCollectionView(images: [UIImage]) {
+        canvas.images = images
+        canvas.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(canvas)
     }
 
-    private func setupViewPlayButton() {
+    private func setupViewCollectionView() {
         let constraints = [
-            playButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            playButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            playButton.widthAnchor.constraint(equalToConstant: 100),
-            playButton.heightAnchor.constraint(equalToConstant: 100)
+            canvas.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            canvas.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            canvas.widthAnchor.constraint(equalToConstant: self.frame.size.width),
+            canvas.heightAnchor.constraint(equalToConstant: canvas.frame.size.height)
         ]
         NSLayoutConstraint.activate(constraints)
-    }
-
-    private func setSaveLabel() { }
-
-    private func setFinalizedLabel() { }
-
-    private func setSavedCollectionView() {
-        savedCanvas.images = [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")]
-        savedCanvas.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(savedCanvas)
-    }
-
-    private func setupViewSavedCollectionView() {
-        let constraints = [
-            savedCanvas.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            savedCanvas.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            savedCanvas.widthAnchor.constraint(equalToConstant: self.frame.size.width),
-            savedCanvas.heightAnchor.constraint(equalToConstant: savedCanvas.frame.size.height)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-
-    private func setFinalizedCollectionView() { }
-
-    private func setBackgroundImage() {
-        backgroundImageView.frame = UIScreen.main.bounds
-        backgroundImageView.contentMode = .scaleAspectFill
-
-        let coverLayer = CALayer()
-        coverLayer.frame = backgroundImageView.bounds
-        coverLayer.backgroundColor = UIColor.black.cgColor
-        coverLayer.opacity = 0.4
-        backgroundImageView.layer.addSublayer(coverLayer)
-
-        self.addSubview(backgroundImageView)
     }
 }
