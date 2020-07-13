@@ -17,32 +17,50 @@ class MenuView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setTitle()
-        setCollectionView(images: [#imageLiteral(resourceName: "aslam")])
+    }
+    convenience init(frame: CGRect, title: String, images: [UIImage]) {
+
+        var frame = frame
+        self.init(frame: frame)
+        frame.size.height = 252
+        setTitle(title: title)
+        setCollectionView(images: images)
     }
 
     func setupViews() {
         setupViewCollectionView()
+        setViewTitle()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    private func setTitle() { }
+    // MARK: Title
+    private func setTitle(title: String) {
+        titleLabel.text = title
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(titleLabel)
+    }
+    private func setViewTitle() {
+        let constraints = [
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
 
+    // MARK: Collection
     private func setCollectionView(images: [UIImage]) {
         canvas.images = images
         canvas.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(canvas)
     }
-
     private func setupViewCollectionView() {
         let constraints = [
-            canvas.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            canvas.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            canvas.widthAnchor.constraint(equalToConstant: self.frame.size.width),
-            canvas.heightAnchor.constraint(equalToConstant: canvas.frame.size.height)
+            canvas.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 30),
+            canvas.widthAnchor.constraint(equalTo: self.widthAnchor),
+            canvas.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
