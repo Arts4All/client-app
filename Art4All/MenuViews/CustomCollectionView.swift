@@ -12,11 +12,13 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
     public var images: [UIImage] = []
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-
+        var frame = frame
+        frame.size.height = 166
         super.init(frame: frame, collectionViewLayout: layout)
         self.setUp()
         self.delegate = self
         self.dataSource = self
+        self.backgroundColor = .red
     }
 
     required init?(coder: NSCoder) {
@@ -57,8 +59,7 @@ extension CustomCollectionView: UICollectionViewDataSource {
                                  for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cellCollection.image = images[indexPath.row]
-        cellCollection.layer.cornerRadius = 20
+        cellCollection.setUp(image: images[indexPath.row])
         return cellCollection
     }
 }

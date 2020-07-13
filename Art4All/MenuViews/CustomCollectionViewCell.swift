@@ -9,16 +9,11 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-    var image: UIImage!
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public func setUp(image: UIImage) {
         let imagemView = UIImageView(image: image)
         imagemView.frame = self.bounds
+        layer.cornerRadius = 20
         addSubview(imagemView)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
     }
 }

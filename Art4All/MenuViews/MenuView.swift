@@ -60,6 +60,7 @@ class MenuView: UIView {
 
     private func setSavedCollectionView() {
         savedCanvas.images = [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")]
+        savedCanvas.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(savedCanvas)
     }
 
@@ -67,8 +68,8 @@ class MenuView: UIView {
         let constraints = [
             savedCanvas.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             savedCanvas.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            savedCanvas.widthAnchor.constraint(equalToConstant: 100),
-            savedCanvas.heightAnchor.constraint(equalToConstant: 100)
+            savedCanvas.widthAnchor.constraint(equalToConstant: self.frame.size.width),
+            savedCanvas.heightAnchor.constraint(equalToConstant: savedCanvas.frame.size.height)
         ]
         NSLayoutConstraint.activate(constraints)
     }
