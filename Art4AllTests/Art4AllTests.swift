@@ -31,4 +31,17 @@ class Art4AllTests: XCTestCase {
         }
     }
 
+    func testCoreDataObjectCreationAndFetch() throws {
+
+        let testIdentifier = "SavedItem"
+        let controller = CanvasImageCoreDataController()
+        let savedObject = CanvasImage(data: Data(), identifier: testIdentifier)
+
+        try controller.create(newRecord: savedObject)
+
+        let savedObjects = try controller.read()
+
+        XCTAssertEqual(savedObjects[0].identifier, testIdentifier)
+    }
+
 }
