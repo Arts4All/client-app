@@ -8,12 +8,27 @@
 
 import UIKit
 
-class SaveCollectionView: UICollectionView {
-    let cell = MenuSaveCollectionViewCell?.self
-    var arrayOfImagesSave: [UIImage] = []
+class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
+    public var images: [UIImage] = []
+
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+
+        super.init(frame: frame, collectionViewLayout: layout)
+        self.setUp()
+        self.delegate = self
+        self.dataSource = self
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    private func setUp() {
+        self.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "CustomCollectionViewCell")
+    }
 }
 
-extension SaveCollectionView: UICollectionViewDelegate {
+extension CustomCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -29,20 +44,20 @@ extension SaveCollectionView: UICollectionViewDelegate {
     }
 }
 
-extension SaveCollectionView: UICollectionViewDataSource {
+extension CustomCollectionView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfImagesSave.count
+        return images.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cellCollection = collectionView
-            .dequeueReusableCell(withReuseIdentifier: "MenuSaveCollectionViewCell",
-                                 for: indexPath) as? MenuSaveCollectionViewCell else {
+            .dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell",
+                                 for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cellCollection.canvasSaveImage = arrayOfImagesSave[indexPath.row]
+        cellCollection.image = images[indexPath.row]
         cellCollection.layer.cornerRadius = 20
         return cellCollection
     }

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class MenuFinalizedCollectionViewCell: UICollectionViewCell {
-    var canvasFinalizedImage: UIImage!
+class CustomCollectionViewCell: UICollectionViewCell {
+    var image: UIImage!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let imagemView = UIImageView(image: canvasFinalizedImage)
+        let imagemView = UIImageView(image: image)
         imagemView.frame = self.bounds
         addSubview(imagemView)
     }

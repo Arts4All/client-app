@@ -10,108 +10,81 @@ import UIKit
 
 class MenuView: UIView {
 
-    var classSave = SaveCollectionView()
-    var classFinalized = FinalizedCollectionView()
-    var backgroundImageView = UIImageView()
-    var playButton = UIButton()
-    var saveLabel = UILabel()
-    var finalizedLabel = UILabel()
-    var saveCollectionView = UICollectionView(frame: CGRect.zero,
-                                              collectionViewLayout: UICollectionViewFlowLayout.init())
-    let finalizedCollectionView = UICollectionView(frame: CGRect.zero,
-                                                   collectionViewLayout: UICollectionViewFlowLayout.init())
-    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+    private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "aslam"))
+    private let playButton = UIButton()
+    private let saveLabel = UILabel()
+    private let finalizedLabel = UILabel()
+    private let layout = UICollectionViewFlowLayout()
+    private lazy var savedCanvas = CustomCollectionView(frame: self.frame,
+                                                        collectionViewLayout: layout)
 
-      override init(frame: CGRect) {
-      super.init(frame: frame)
-        setbackgroundImage()
-        setPlayButton()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setBackgroundImage()
+//        setPlayButton()
         setSaveLabel()
         setFinalizedLabel()
-        layout.scrollDirection = .vertical
-        saveCollectionView.backgroundView = .none
-        self.saveCollectionView.setCollectionViewLayout(layout, animated: true)
-        self.addSubview(saveCollectionView)
-        finalizedCollectionView.backgroundView = .none
-        self.finalizedCollectionView.setCollectionViewLayout(layout, animated: true)
-        self.addSubview(finalizedCollectionView)
-        setSaveCollectionView()
+        setSavedCollectionView()
         setFinalizedCollectionView()
     }
 
-    func setPlayButton() {
-        let imageButton = UIImage(named: "buttonPlayDisabled.png")
+    func setupViews() {
+//        setupViewPlayButton()
+        setupViewSavedCollectionView()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    private func setPlayButton() {
+        let imageButton = #imageLiteral(resourceName: "aslam")
         playButton.setImage(imageButton, for: .normal)
-        let xposition = (UIScreen.main.bounds.size.width/2) - (playButton.frame.size.width/2)
-        let yposition = (UIScreen.main.bounds.size.height/2) - (playButton.frame.size.height/2) - 175
-        playButton.frame = CGRect(x: xposition, y: yposition, width: 96, height: 94)
         self.addSubview(playButton)
+        playButton.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func setSaveLabel() {
-        saveLabel.text = "Salvos"
-        saveLabel.font = UIFont(name: "Apple ][", size: 48)
-        saveLabel.textColor = .white
-        saveLabel.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 160).isActive = true
-        saveLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56).isActive = true
-        saveLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -56).isActive = true
-        saveLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        self.addSubview(saveLabel)
+    private func setupViewPlayButton() {
+        let constraints = [
+            playButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            playButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            playButton.widthAnchor.constraint(equalToConstant: 100),
+            playButton.heightAnchor.constraint(equalToConstant: 100)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 
-    func setSaveCollectionView() {
-        saveCollectionView.register(MenuSaveCollectionViewCell.self,
-                                    forCellWithReuseIdentifier: "MenuSaveCollectionViewCell")
-        saveCollectionView.delegate = classSave.delegate
-        saveCollectionView.dataSource = classSave.dataSource
-        saveCollectionView.showsHorizontalScrollIndicator = false
-        saveCollectionView.topAnchor.constraint(equalTo: saveLabel.bottomAnchor, constant: 30).isActive = true
-        saveCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56).isActive = true
-        saveCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -56).isActive = true
-        saveCollectionView.heightAnchor.constraint(equalToConstant: 166).isActive = true
+    private func setSaveLabel() { }
+
+    private func setFinalizedLabel() { }
+
+    private func setSavedCollectionView() {
+        savedCanvas.images = [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")]
+        self.addSubview(savedCanvas)
     }
 
-    func setFinalizedLabel() {
-        finalizedLabel.text = "Finalizados"
-        finalizedLabel.font = UIFont(name: "Apple ][", size: 48)
-        finalizedLabel.topAnchor.constraint(equalTo: saveCollectionView.bottomAnchor, constant: 40).isActive = true
-        finalizedLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56).isActive = true
-        finalizedLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -56).isActive = true
-        finalizedLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        finalizedLabel.frame = CGRect(x: 56, y: 845, width: 800, height: 54)
-        finalizedLabel.textColor = .white
-        self.addSubview(finalizedLabel)
+    private func setupViewSavedCollectionView() {
+        let constraints = [
+            savedCanvas.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            savedCanvas.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            savedCanvas.widthAnchor.constraint(equalToConstant: 100),
+            savedCanvas.heightAnchor.constraint(equalToConstant: 100)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 
-    func setFinalizedCollectionView() {
-        self.finalizedCollectionView.register(MenuFinalizedCollectionViewCell.self,
-                                              forCellWithReuseIdentifier: "MenuFinalizedCollectionViewCell")
-        finalizedCollectionView.delegate = classFinalized.delegate
-        finalizedCollectionView.dataSource = classFinalized.dataSource
-        finalizedCollectionView.showsHorizontalScrollIndicator = false
-        finalizedCollectionView.topAnchor.constraint(equalTo: finalizedLabel.bottomAnchor, constant: 30).isActive = true
-        finalizedCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56).isActive = true
-        finalizedCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -56).isActive = true
-        finalizedCollectionView.heightAnchor.constraint(equalToConstant: 166).isActive = true
-    }
+    private func setFinalizedCollectionView() { }
 
-    func setbackgroundImage() {
-        let imageName = "colors.png"
-        let image = UIImage(named: imageName)
-        backgroundImageView = UIImageView(image: image!)
-        backgroundImageView.frame = CGRect(x: 0, y: 0,
-                                           width: UIScreen.main.bounds.width,
-                                           height: UIScreen.main.bounds.height)
+    private func setBackgroundImage() {
+        backgroundImageView.frame = UIScreen.main.bounds
         backgroundImageView.contentMode = .scaleAspectFill
-        self.addSubview(backgroundImageView)
+
         let coverLayer = CALayer()
         coverLayer.frame = backgroundImageView.bounds
         coverLayer.backgroundColor = UIColor.black.cgColor
         coverLayer.opacity = 0.4
         backgroundImageView.layer.addSublayer(coverLayer)
-    }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.addSubview(backgroundImageView)
     }
 }

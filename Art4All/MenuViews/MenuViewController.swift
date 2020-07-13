@@ -10,12 +10,15 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    var menu: MenuView!
+    lazy var menu: MenuView = MenuView(frame: view.frame)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        menu = MenuView(frame: CGRect.zero)
         self.view.addSubview(menu)
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.menu.setupViews()
     }
 }
