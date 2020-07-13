@@ -28,8 +28,8 @@ class MenuView: UIView {
     }
 
     func setupViews() {
-        setupViewCollectionView()
         setViewTitle()
+        setupViewCollectionView()
     }
 
     required init?(coder: NSCoder) {
@@ -39,14 +39,15 @@ class MenuView: UIView {
     // MARK: Title
     private func setTitle(title: String) {
         titleLabel.text = title
+        titleLabel.font = UIFont(name: "Apple ][", size: 48)
+        titleLabel.textColor = .white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleLabel)
     }
     private func setViewTitle() {
         let constraints = [
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56)
-        ]
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56)        ]
         NSLayoutConstraint.activate(constraints)
     }
 

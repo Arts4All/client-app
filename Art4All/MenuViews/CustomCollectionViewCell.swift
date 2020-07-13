@@ -13,7 +13,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
     public func setUp(image: UIImage) {
         let imagemView = UIImageView(image: image)
         imagemView.frame = self.bounds
-        layer.cornerRadius = 20
+        self.layer.cornerRadius = 20
+        self.backgroundColor = .white
         addSubview(imagemView)
     }
 }

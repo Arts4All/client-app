@@ -18,7 +18,6 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         self.setUp()
         self.delegate = self
         self.dataSource = self
-        self.backgroundColor = .red
     }
 
     required init?(coder: NSCoder) {
@@ -35,7 +34,7 @@ extension CustomCollectionView: UICollectionViewDelegate {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        return UIEdgeInsets(top: 0, left: 56, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -43,6 +42,12 @@ extension CustomCollectionView: UICollectionViewDelegate {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return CGSize(width: 300, height: 165)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
     }
 }
 

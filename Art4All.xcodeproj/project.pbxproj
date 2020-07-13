@@ -31,6 +31,7 @@
 		E07CE1D924B90B9100ADA99B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CE1D324B90B9100ADA99B /* MenuView.swift */; };
 		E07CE1DA24B90B9100ADA99B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CE1D424B90B9100ADA99B /* MenuViewController.swift */; };
 		E07CE1DB24B90B9100ADA99B /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CE1D524B90B9100ADA99B /* CustomCollectionView.swift */; };
+		E07CE1DD24BD138500ADA99B /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E07CE1DC24BD138500ADA99B /* Apple ][.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		E07CE1D324B90B9100ADA99B /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E07CE1D424B90B9100ADA99B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E07CE1D524B90B9100ADA99B /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		E07CE1DC24BD138500ADA99B /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple ][.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				820357F624AE50090073EED4 /* Art4AllTests */,
 				8203580124AE50090073EED4 /* Art4AllUITests */,
 				820357DD24AE50050073EED4 /* Products */,
+				E07CE1DC24BD138500ADA99B /* Apple ][.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -392,6 +395,7 @@
 			files = (
 				820357ED24AE50090073EED4 /* LaunchScreen.storyboard in Resources */,
 				820357EA24AE50090073EED4 /* Assets.xcassets in Resources */,
+				E07CE1DD24BD138500ADA99B /* Apple ][.ttf in Resources */,
 				820357E524AE50050073EED4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

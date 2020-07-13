@@ -27,18 +27,19 @@ class MenuViewController: UIViewController {
 
         self.setUpViews()
         self.savedView.setupViews()
+        self.finishedView.setupViews()
 
     }
     private func setUp() {
         setBackgroundImage()
         setUpSavedCanvas()
-//        setupSavedView()
+        setPlayButton()
 
     }
     private func setUpViews() {
-//        setupViewSavedView()
-        self.setupViewView(view: savedView, constant: -400)
-        self.setupViewView(view: finishedView, constant: 40)
+        self.setupViewView(view: savedView, constant: 14)
+        self.setupViewView(view: finishedView, constant: 277)
+        setupViewPlayButton()
     }
     private func setBackgroundImage() {
         backgroundImageView.frame = UIScreen.main.bounds
@@ -53,7 +54,7 @@ class MenuViewController: UIViewController {
     }
     // MARK: Play Button
     private func setPlayButton() {
-        let imageButton = #imageLiteral(resourceName: "aslam")
+        let imageButton = #imageLiteral(resourceName: "buttonPlayDisable")
         playButton.setImage(imageButton, for: .normal)
         self.view.addSubview(playButton)
         playButton.translatesAutoresizingMaskIntoConstraints = false
@@ -61,30 +62,16 @@ class MenuViewController: UIViewController {
     private func setupViewPlayButton() {
         let constraints = [
             playButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            playButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            playButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -174),
             playButton.widthAnchor.constraint(equalToConstant: 100),
             playButton.heightAnchor.constraint(equalToConstant: 100)
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    // MARK: Saved Canvas
-//    private func setupSavedView() {
-//        savedView = MenuView(frame: self.view.frame, title: "Salvos", images: [#imageLiteral(resourceName: "aslam")])
-//        savedView.translatesAutoresizingMaskIntoConstraints = false
-//    }
-//    private func setupViewSavedView() {
-//        let constraints = [
-//            savedView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            savedView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-//            savedView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
-//            savedView.heightAnchor.constraint(equalToConstant: 252)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
     // MARK: Canvas
     private func setUpSavedCanvas() {
         self.savedView = self.setupView(view: savedView, title: "Salvos", images: [#imageLiteral(resourceName: "aslam")])
-        self.finishedView = self.setupView(view: finishedView, title: "asda", images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
+        self.finishedView = self.setupView(view: finishedView, title: "asda", images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
     }
     private func setupView(view: MenuView?, title: String, images: [UIImage]) -> MenuView? {
         var view = view
