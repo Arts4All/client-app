@@ -18,9 +18,6 @@ class PlayButton: UIButton {
             self.layer.borderWidth = 3
             self.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
 
-        } else {
-            self.layer.borderWidth = 1
-            self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
     }
 }
