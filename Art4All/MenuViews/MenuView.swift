@@ -62,6 +62,7 @@ class MenuView: UIView {
     private func setupViewCollectionView() {
         let constraints = [
             canvas.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 30),
+            canvas.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             canvas.widthAnchor.constraint(equalTo: self.widthAnchor),
             canvas.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]

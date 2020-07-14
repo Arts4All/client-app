@@ -13,13 +13,15 @@ class MenuViewController: UIViewController {
     private var savedView: MenuView!
     private var finishedView: MenuView!
     private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "aslam"))
-    private let playButton = UIButton()
+    private let playButton = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
         self.view.addSubview(savedView)
         self.view.addSubview(finishedView)
+        self.playButton.becomeFirstResponder()
+        self.setNeedsFocusUpdate()
     }
 
     override func viewWillLayoutSubviews() {
@@ -32,9 +34,12 @@ class MenuViewController: UIViewController {
     }
     private func setUp() {
         setBackgroundImage()
-        setUpSavedCanvas()
         setPlayButton()
-
+        playButton.addTarget(self, action: #selector(actionButton), for: .primaryActionTriggered)
+        setUpSavedCanvas()
+    }
+    @objc func actionButton() {
+        print("oii")
     }
     private func setUpViews() {
         self.setupViewView(view: savedView, constant: 42)
@@ -54,17 +59,17 @@ class MenuViewController: UIViewController {
     }
     // MARK: Play Button
     private func setPlayButton() {
+
         let imageButton = #imageLiteral(resourceName: "buttonPlayDisable")
-        playButton.setImage(imageButton, for: .normal)
-        self.view.addSubview(playButton)
         playButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(playButton)
     }
     private func setupViewPlayButton() {
         let constraints = [
             playButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            playButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -212),
-            playButton.widthAnchor.constraint(equalToConstant: 100),
-            playButton.heightAnchor.constraint(equalToConstant: 100)
+            playButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            playButton.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            playButton.heightAnchor.constraint(equalTo: self.view.heightAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -89,4 +94,5 @@ class MenuViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+
 }
