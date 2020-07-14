@@ -13,10 +13,11 @@ class MenuView: UIView {
     public var titleLabel = UILabel()
     private let layout = UICollectionViewFlowLayout()
     private lazy var canvas = CustomCollectionView(frame: self.frame,
-                                                        collectionViewLayout: layout)
+                                                   collectionViewLayout: layout)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layout.scrollDirection = .horizontal
     }
     convenience init(frame: CGRect, title: String, images: [UIImage]) {
 
@@ -47,7 +48,8 @@ class MenuView: UIView {
     private func setViewTitle() {
         let constraints = [
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56)        ]
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56)
+        ]
         NSLayoutConstraint.activate(constraints)
     }
 

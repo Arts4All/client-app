@@ -37,8 +37,8 @@ class MenuViewController: UIViewController {
 
     }
     private func setUpViews() {
-        self.setupViewView(view: savedView, constant: 14)
-        self.setupViewView(view: finishedView, constant: 277)
+        self.setupViewView(view: savedView, constant: 42)
+        self.setupViewView(view: finishedView, constant: 333)
         setupViewPlayButton()
     }
     private func setBackgroundImage() {
@@ -62,7 +62,7 @@ class MenuViewController: UIViewController {
     private func setupViewPlayButton() {
         let constraints = [
             playButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            playButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -174),
+            playButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -212),
             playButton.widthAnchor.constraint(equalToConstant: 100),
             playButton.heightAnchor.constraint(equalToConstant: 100)
         ]
@@ -70,8 +70,9 @@ class MenuViewController: UIViewController {
     }
     // MARK: Canvas
     private func setUpSavedCanvas() {
-        self.savedView = self.setupView(view: savedView, title: "Salvos", images: [#imageLiteral(resourceName: "aslam")])
-        self.finishedView = self.setupView(view: finishedView, title: "asda", images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
+        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos", images: [#imageLiteral(resourceName: "aslam")])
+        self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
+                                           images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
     }
     private func setupView(view: MenuView?, title: String, images: [UIImage]) -> MenuView? {
         var view = view
