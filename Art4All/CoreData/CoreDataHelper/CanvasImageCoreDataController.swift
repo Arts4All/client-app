@@ -35,7 +35,7 @@ final public class CanvasImageCoreDataController: GenericDAO {
             throw DAOError.internalError(description: "Failed to create NSEntityDescription Entity")
         }
 
-        guard let canvasImage = NSManagedObject(entity: canvasImageEntity, insertInto: managedContext)as?
+        guard let canvasImage = NSManagedObject(entity: canvasImageEntity, insertInto: managedContext) as?
                 CDCanvasImage else {
             throw DAOError.internalError(description: "Failed to create NSManagedObject")
         }
@@ -43,7 +43,6 @@ final public class CanvasImageCoreDataController: GenericDAO {
         canvasImage.imageData =  newRecord.data
         canvasImage.identifier = newRecord.identifier
         CoreDataManager.shared.saveContext()
-
     }
 
     func read() throws -> [CanvasImage] {
@@ -68,29 +67,29 @@ final public class CanvasImageCoreDataController: GenericDAO {
             throw DAOError.internalError(description: "Problem during core  data fetch request")
         }
     }
-    
+
     func search(record: CanvasImage) throws -> CDCanvasImage {
-        
+
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
         var returnedCanvasImage: CDCanvasImage?
-        
+
         do {
-            
+
             let result = try managedContext.fetch(fetchRequest)
-            
+
             guard let canvasImageData = result as? [CDCanvasImage] else {
                 throw DAOError.invalidData(
                     description: "Failed to cast fetch request resultto an Array of CDCanvasImage")
             }
-            
+
             for canvasImage in canvasImageData where canvasImage.identifier == record.identifier {
                 returnedCanvasImage = canvasImage
             }
-            
+
             guard let guardedCanvasImage = returnedCanvasImage else {
                 throw DAOError.internalError(description: "Failed to find the object")
             }
-            
+
             return guardedCanvasImage
         } catch {
             throw DAOError.internalError(description: "Problem during core  data fetch request")
@@ -98,10 +97,10 @@ final public class CanvasImageCoreDataController: GenericDAO {
     }
 
     func update(updatedRecord: CanvasImage) throws {
-        
+
         do {
             let images = try self.read()
-            
+
             for image in images where image.identifier == updatedRecord.identifier {
                 let cdRecord = try self.search(record: image)
                 cdRecord.imageData = updatedRecord.data

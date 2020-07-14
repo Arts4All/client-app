@@ -30,18 +30,4 @@ class Art4AllTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
-    func testCoreDataObjectCreationAndFetch() throws {
-
-        let testIdentifier = "SavedItem"
-        let controller = CanvasImageCoreDataController()
-        let savedObject = CanvasImage(data: Data(), identifier: testIdentifier)
-
-        try controller.create(newRecord: savedObject)
-
-        let savedObjects = try controller.read()
-
-        XCTAssertEqual(savedObjects[0].identifier, testIdentifier)
-    }
-
 }

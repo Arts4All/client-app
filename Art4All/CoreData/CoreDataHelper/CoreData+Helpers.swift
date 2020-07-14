@@ -22,7 +22,7 @@ protocol GenericDAO {
 
 }
 
-struct CanvasImage {
+struct CanvasImage: Equatable {
     let data: Data
     let identifier: String
 }

@@ -29,6 +29,7 @@
 		D9036E7D24B3E07300EB2A58 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E7C24B3E07300EB2A58 /* CanvasViewController.swift */; };
 		D911136224BCD0BC00015B79 /* CDCanvasImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911136024BCD0BC00015B79 /* CDCanvasImage+CoreDataClass.swift */; };
 		D911136324BCD0BC00015B79 /* CDCanvasImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911136124BCD0BC00015B79 /* CDCanvasImage+CoreDataProperties.swift */; };
+		D9280A1F24BE222300FC20DD /* CoreDataArt4AllTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9280A1E24BE222300FC20DD /* CoreDataArt4AllTests.swift */; };
 		D93A685F24B7B31A002EAC4D /* CoreData+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A685E24B7B31A002EAC4D /* CoreData+Helpers.swift */; };
 		D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A686024B7B329002EAC4D /* CoreDataManager.swift */; };
 		D93A687324BCCB5C002EAC4D /* CanvasImageCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A687224BCCB5C002EAC4D /* CanvasImageCoreDataController.swift */; };
@@ -43,6 +44,13 @@
 			remoteInfo = Art4All;
 		};
 		820357FF24AE50090073EED4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 820357D424AE50050073EED4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 820357DB24AE50050073EED4;
+			remoteInfo = Art4All;
+		};
+		D9280A2124BE222300FC20DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 820357D424AE50050073EED4 /* Project object */;
 			proxyType = 1;
@@ -79,6 +87,9 @@
 		D9036E7C24B3E07300EB2A58 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		D911136024BCD0BC00015B79 /* CDCanvasImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDCanvasImage+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D911136124BCD0BC00015B79 /* CDCanvasImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDCanvasImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D9280A1C24BE222300FC20DD /* CoreDataArt4AllTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataArt4AllTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9280A1E24BE222300FC20DD /* CoreDataArt4AllTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataArt4AllTests.swift; sourceTree = "<group>"; };
+		D9280A2024BE222300FC20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93A685E24B7B31A002EAC4D /* CoreData+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Helpers.swift"; sourceTree = "<group>"; };
 		D93A686024B7B329002EAC4D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D93A687224BCCB5C002EAC4D /* CanvasImageCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasImageCoreDataController.swift; sourceTree = "<group>"; };
@@ -107,6 +118,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9280A1924BE222300FC20DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -116,6 +134,7 @@
 				820357DE24AE50050073EED4 /* Art4All */,
 				820357F624AE50090073EED4 /* Art4AllTests */,
 				8203580124AE50090073EED4 /* Art4AllUITests */,
+				D9280A1D24BE222300FC20DD /* CoreDataArt4AllTests */,
 				820357DD24AE50050073EED4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,6 +145,7 @@
 				820357DC24AE50050073EED4 /* Art4All.app */,
 				820357F324AE50090073EED4 /* Art4AllTests.xctest */,
 				820357FE24AE50090073EED4 /* Art4AllUITests.xctest */,
+				D9280A1C24BE222300FC20DD /* CoreDataArt4AllTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,6 +290,15 @@
 			path = CanvasController;
 			sourceTree = "<group>";
 		};
+		D9280A1D24BE222300FC20DD /* CoreDataArt4AllTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9280A1E24BE222300FC20DD /* CoreDataArt4AllTests.swift */,
+				D9280A2024BE222300FC20DD /* Info.plist */,
+			);
+			path = CoreDataArt4AllTests;
+			sourceTree = "<group>";
+		};
 		D93A685424B7B2A1002EAC4D /* CoreDataModel's */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +379,24 @@
 			productReference = 820357FE24AE50090073EED4 /* Art4AllUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D9280A1B24BE222300FC20DD /* CoreDataArt4AllTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9280A2324BE222300FC20DD /* Build configuration list for PBXNativeTarget "CoreDataArt4AllTests" */;
+			buildPhases = (
+				D9280A1824BE222300FC20DD /* Sources */,
+				D9280A1924BE222300FC20DD /* Frameworks */,
+				D9280A1A24BE222300FC20DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9280A2224BE222300FC20DD /* PBXTargetDependency */,
+			);
+			name = CoreDataArt4AllTests;
+			productName = CoreDataArt4AllTests;
+			productReference = D9280A1C24BE222300FC20DD /* CoreDataArt4AllTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -368,6 +415,10 @@
 						TestTargetID = 820357DB24AE50050073EED4;
 					};
 					820357FD24AE50090073EED4 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 820357DB24AE50050073EED4;
+					};
+					D9280A1B24BE222300FC20DD = {
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = 820357DB24AE50050073EED4;
 					};
@@ -392,6 +443,7 @@
 				820357DB24AE50050073EED4 /* Art4All */,
 				820357F224AE50090073EED4 /* Art4AllTests */,
 				820357FD24AE50090073EED4 /* Art4AllUITests */,
+				D9280A1B24BE222300FC20DD /* CoreDataArt4AllTests */,
 			);
 		};
 /* End PBXProject section */
@@ -415,6 +467,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		820357FC24AE50090073EED4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9280A1A24BE222300FC20DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -486,6 +545,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9280A1824BE222300FC20DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9280A1F24BE222300FC20DD /* CoreDataArt4AllTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -498,6 +565,11 @@
 			isa = PBXTargetDependency;
 			target = 820357DB24AE50050073EED4 /* Art4All */;
 			targetProxy = 820357FF24AE50090073EED4 /* PBXContainerItemProxy */;
+		};
+		D9280A2224BE222300FC20DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 820357DB24AE50050073EED4 /* Art4All */;
+			targetProxy = D9280A2124BE222300FC20DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -749,6 +821,46 @@
 			};
 			name = Release;
 		};
+		D9280A2424BE222300FC20DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
+				INFOPLIST_FILE = CoreDataArt4AllTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guedes.CoreDataArt4AllTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Art4All.app/Art4All";
+			};
+			name = Debug;
+		};
+		D9280A2524BE222300FC20DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
+				INFOPLIST_FILE = CoreDataArt4AllTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guedes.CoreDataArt4AllTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Art4All.app/Art4All";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -784,6 +896,15 @@
 			buildConfigurations = (
 				8203580E24AE50090073EED4 /* Debug */,
 				8203580F24AE50090073EED4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9280A2324BE222300FC20DD /* Build configuration list for PBXNativeTarget "CoreDataArt4AllTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9280A2424BE222300FC20DD /* Debug */,
+				D9280A2524BE222300FC20DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
