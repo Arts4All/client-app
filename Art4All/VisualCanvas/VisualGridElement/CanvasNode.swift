@@ -9,16 +9,22 @@
 import Foundation
 import UIKit
 
-public class CanvasNode: UIButton {
+public class CanvasNode: UIButton, ColorWheelDelegate {
+    
+    var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
 
     weak var visualGridElement: VisualGridElement?
+    
+    func selectedColor(color: UIColor) {
+        paintColor = color
+    }
 
     public override func didUpdateFocus(in context: UIFocusUpdateContext,
                                         with coordinator: UIFocusAnimationCoordinator) {
         super.didUpdateFocus(in: context, with: coordinator)
 
         if context.nextFocusedView == self {
-            self.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            self.backgroundColor = paintColor
             self.layer.borderWidth = 3
             self.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
 
