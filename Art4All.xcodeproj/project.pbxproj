@@ -37,6 +37,7 @@
 		D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */; };
 		D9F48E9B24BF90190018B6B9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9524BF90190018B6B9 /* MenuView.swift */; };
 		D9F48E9C24BF90190018B6B9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9624BF90190018B6B9 /* MenuViewController.swift */; };
+		E074ED3224BF9D4C001CF6BD /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E074ED3124BF9D4C001CF6BD /* Apple ][.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		D9F48E9524BF90190018B6B9 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D9F48E9624BF90190018B6B9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E074ED3124BF9D4C001CF6BD /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Apple ][.ttf"; path = "../../../Desktop/testLayout/Apple ][.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				8203580124AE50090073EED4 /* Art4AllUITests */,
 				D9280A1D24BE222300FC20DD /* CoreDataArt4AllTests */,
 				820357DD24AE50050073EED4 /* Products */,
+				E074ED3124BF9D4C001CF6BD /* Apple ][.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -475,6 +478,7 @@
 			files = (
 				820357ED24AE50090073EED4 /* LaunchScreen.storyboard in Resources */,
 				820357EA24AE50090073EED4 /* Assets.xcassets in Resources */,
+				E074ED3224BF9D4C001CF6BD /* Apple ][.ttf in Resources */,
 				820357E524AE50050073EED4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

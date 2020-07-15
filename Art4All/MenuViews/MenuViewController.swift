@@ -19,7 +19,6 @@ class MenuViewController: UIViewController {
            return [playButton]
        }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
@@ -63,7 +62,7 @@ class MenuViewController: UIViewController {
         backgroundImageView.layer.addSublayer(coverLayer)
         self.view.addSubview(backgroundImageView)
     }
-    
+
     // MARK: Button Label
     private func setButtonLabel() {
          buttonLabel.text = "Entrar no canvas"
@@ -82,7 +81,6 @@ class MenuViewController: UIViewController {
          ]
          NSLayoutConstraint.activate(constraints)
      }
-    
     // MARK: Play Button
     private func setPlayButton() {
 
@@ -108,7 +106,8 @@ class MenuViewController: UIViewController {
             playButton.widthAnchor.constraint(equalTo: self.view.widthAnchor),
             playButton.heightAnchor.constraint(equalToConstant: 100)
         ]
-        NSLayoutConstraint.activate(constraints)    }
+        NSLayoutConstraint.activate(constraints)
+    }
     // MARK: Canvas
     private func setUpSavedCanvas() {
         self.savedView = self.setupView(view: savedView, title: "Canvas Salvos", images: [#imageLiteral(resourceName: "aslam")])

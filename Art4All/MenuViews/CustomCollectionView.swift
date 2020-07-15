@@ -48,7 +48,8 @@ extension CustomCollectionView: UICollectionViewDelegate {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 40
     }
-    func collectionView(collectionView: UICollectionView, canFocusItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    private func collectionView(collectionView: UICollectionView,
+                                canFocusItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
 }
