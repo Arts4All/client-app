@@ -48,6 +48,16 @@
                ReferencedContainer = "container:Art4All.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D9280A1B24BE222300FC20DD"
+               BuildableName = "CoreDataArt4AllTests.xctest"
+               BlueprintName = "CoreDataArt4AllTests"
+               ReferencedContainer = "container:Art4All.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
