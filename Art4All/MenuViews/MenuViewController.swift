@@ -98,6 +98,8 @@ class MenuViewController: UIViewController {
     }
 
     @objc func actionButton() {
-        print("oii")
+        let canvasViewController = CanvasViewController()
+        self.navigationController?.pushViewController(canvasViewController, animated: true)
+
     }
 }
