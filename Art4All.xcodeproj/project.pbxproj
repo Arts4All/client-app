@@ -32,7 +32,6 @@
 		E07CE1DA24B90B9100ADA99B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CE1D424B90B9100ADA99B /* MenuViewController.swift */; };
 		E07CE1DB24B90B9100ADA99B /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07CE1D524B90B9100ADA99B /* CustomCollectionView.swift */; };
 		E07CE1DD24BD138500ADA99B /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E07CE1DC24BD138500ADA99B /* Apple ][.ttf */; };
-		E0F673E324BE2D250094E021 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F673E224BE2D250094E021 /* PlayButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +82,6 @@
 		E07CE1D424B90B9100ADA99B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E07CE1D524B90B9100ADA99B /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		E07CE1DC24BD138500ADA99B /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple ][.ttf"; sourceTree = "<group>"; };
-		E0F673E224BE2D250094E021 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,7 +278,6 @@
 				E07CE1D324B90B9100ADA99B /* MenuView.swift */,
 				E07CE1D524B90B9100ADA99B /* CustomCollectionView.swift */,
 				E07CE1D024B90B9100ADA99B /* CustomCollectionViewCell.swift */,
-				E0F673E224BE2D250094E021 /* PlayButton.swift */,
 			);
 			path = MenuViews;
 			sourceTree = "<group>";
@@ -452,7 +449,6 @@
 				E07CE1DB24B90B9100ADA99B /* CustomCollectionView.swift in Sources */,
 				8203581424AE518E0073EED4 /* Environment.swift in Sources */,
 				D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */,
-				E0F673E324BE2D250094E021 /* PlayButton.swift in Sources */,
 				820357E224AE50050073EED4 /* ViewController.swift in Sources */,
 				D9036E6A24B2A4BE00EB2A58 /* LogicalGridElement.swift in Sources */,
 				D9036E7224B389F900EB2A58 /* VisualGridElement.swift in Sources */,
