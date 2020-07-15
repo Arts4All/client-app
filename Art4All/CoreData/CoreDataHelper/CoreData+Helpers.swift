@@ -14,11 +14,11 @@ enum DAOError: Error {
 }
 
 protocol GenericDAO {
-    associatedtype T
+    associatedtype Generic
 
-    func create(newRecord: T) throws
-    func read() throws -> [T]
-    func update(updatedRecord: T) throws
+    func create(newRecord: Generic) throws
+    func read() throws -> [Generic]
+    func update(updatedRecord: Generic) throws
 
 }
 

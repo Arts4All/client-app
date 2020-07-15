@@ -11,7 +11,7 @@ import UIKit
 
 final public class CanvasImageCoreDataController: GenericDAO {
 
-    typealias T = CanvasImage
+    typealias Generic = CanvasImage
 
     let managedContext = CoreDataManager.shared.persistentContainer.viewContext
 
@@ -53,7 +53,8 @@ final public class CanvasImageCoreDataController: GenericDAO {
             let result = try managedContext.fetch(fetchRequest)
 
             guard let canvasImageData = result as? [CDCanvasImage] else {
-                throw DAOError.invalidData(description: "Failed to cast fetch request result to an Array of CDCanvasImage")
+                throw DAOError.invalidData(
+                    description: "Failed to cast fetch request result to an Array of CDCanvasImage")
             }
 
             var canvasImages: [CanvasImage] = []

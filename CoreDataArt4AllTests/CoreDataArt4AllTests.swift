@@ -38,7 +38,6 @@ class CoreDataArt4AllTests: XCTestCase {
         let savedObject = CanvasImage(data: Data(), identifier: testIdentifier)
 
         var savedObjects: [CanvasImage] = []
-        
         do {
             try controller.create(newRecord: savedObject)
             savedObjects.append(contentsOf: try controller.read())
