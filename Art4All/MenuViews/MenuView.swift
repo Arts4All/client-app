@@ -1,0 +1,71 @@
+//
+//  BackGroundImagemView.swift
+//  testLayout
+//
+//  Created by Rayane Xavier on 07/07/20.
+//  Copyright © 2020 Rayane Xavier. All rights reserved.
+//
+
+import UIKit
+
+class MenuView: UIView {
+
+    public var titleLabel = UILabel()
+    private let layout = UICollectionViewFlowLayout()
+    private lazy var canvas = CustomCollectionView(frame: self.frame,
+                                                   collectionViewLayout: layout)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layout.scrollDirection = .horizontal
+    }
+    convenience init(frame: CGRect, title: String, images: [UIImage]) {
+
+        var frame = frame
+        self.init(frame: frame)
+        frame.size.height = 252
+        setTitle(title: title)
+        setCollectionView(images: images)
+    }
+
+    func setupViews() {
+        setViewTitle()
+        setupViewCollectionView()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    // MARK: Title
+    private func setTitle(title: String) {
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: "Apple ][", size: 48)
+        titleLabel.textColor = .white
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(titleLabel)
+    }
+    private func setViewTitle() {
+        let constraints = [
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 56)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    // MARK: Collection
+    private func setCollectionView(images: [UIImage]) {
+        canvas.images = images
+        canvas.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(canvas)
+    }
+    private func setupViewCollectionView() {
+        let constraints = [
+            canvas.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 30),
+            canvas.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            canvas.widthAnchor.constraint(equalTo: self.widthAnchor),
+            canvas.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+}

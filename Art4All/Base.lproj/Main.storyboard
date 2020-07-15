@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nkH-HC-dad">
     <device id="appleTV" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="69" y="69"/>
         </scene>
-        <!--Canvas View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="4AS-1n-dOT">
             <objects>
-                <viewController id="nkH-HC-dad" customClass="CanvasViewController" customModule="Art4All" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nkH-HC-dad" customClass="MenuViewController" customModule="Art4All" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hpi-Vu-wUr"/>
                         <viewControllerLayoutGuide type="bottom" id="xh0-wG-cJl"/>

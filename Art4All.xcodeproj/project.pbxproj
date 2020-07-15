@@ -32,7 +32,13 @@
 		D9280A1F24BE222300FC20DD /* CoreDataArt4AllTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9280A1E24BE222300FC20DD /* CoreDataArt4AllTests.swift */; };
 		D93A685F24B7B31A002EAC4D /* CoreData+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A685E24B7B31A002EAC4D /* CoreData+Helpers.swift */; };
 		D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A686024B7B329002EAC4D /* CoreDataManager.swift */; };
-		D93A687324BCCB5C002EAC4D /* CanvasImageCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A687224BCCB5C002EAC4D /* CanvasImageCoreDataController.swift */; };
+		D9F48E8F24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E8E24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift */; };
+		D9F48E9724BF90190018B6B9 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9124BF90190018B6B9 /* CustomCollectionViewCell.swift */; };
+		D9F48E9824BF90190018B6B9 /* MenuSaveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9224BF90190018B6B9 /* MenuSaveCollectionViewCell.swift */; };
+		D9F48E9924BF90190018B6B9 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9324BF90190018B6B9 /* PlayButton.swift */; };
+		D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */; };
+		D9F48E9B24BF90190018B6B9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9524BF90190018B6B9 /* MenuView.swift */; };
+		D9F48E9C24BF90190018B6B9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9624BF90190018B6B9 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +98,13 @@
 		D9280A2024BE222300FC20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93A685E24B7B31A002EAC4D /* CoreData+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Helpers.swift"; sourceTree = "<group>"; };
 		D93A686024B7B329002EAC4D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		D93A687224BCCB5C002EAC4D /* CanvasImageCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasImageCoreDataController.swift; sourceTree = "<group>"; };
+		D9F48E8E24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasImageCoreDataController.swift; sourceTree = "<group>"; };
+		D9F48E9124BF90190018B6B9 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		D9F48E9224BF90190018B6B9 /* MenuSaveCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSaveCollectionViewCell.swift; sourceTree = "<group>"; };
+		D9F48E9324BF90190018B6B9 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		D9F48E9524BF90190018B6B9 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		D9F48E9624BF90190018B6B9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +165,7 @@
 		820357DE24AE50050073EED4 /* Art4All */ = {
 			isa = PBXGroup;
 			children = (
+				D9F48E9024BF90190018B6B9 /* MenuViews */,
 				D9036E7B24B3E05F00EB2A58 /* CanvasController */,
 				D9036E6B24B3896300EB2A58 /* VisualCanvas */,
 				D9036E6524B2A2E900EB2A58 /* LogicalCanvas */,
@@ -312,11 +325,24 @@
 		D93A685524B7B2B2002EAC4D /* CoreDataHelper */ = {
 			isa = PBXGroup;
 			children = (
+				D9F48E8E24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift */,
 				D93A685E24B7B31A002EAC4D /* CoreData+Helpers.swift */,
 				D93A686024B7B329002EAC4D /* CoreDataManager.swift */,
-				D93A687224BCCB5C002EAC4D /* CanvasImageCoreDataController.swift */,
 			);
 			path = CoreDataHelper;
+			sourceTree = "<group>";
+		};
+		D9F48E9024BF90190018B6B9 /* MenuViews */ = {
+			isa = PBXGroup;
+			children = (
+				D9F48E9124BF90190018B6B9 /* CustomCollectionViewCell.swift */,
+				D9F48E9224BF90190018B6B9 /* MenuSaveCollectionViewCell.swift */,
+				D9F48E9324BF90190018B6B9 /* PlayButton.swift */,
+				D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */,
+				D9F48E9524BF90190018B6B9 /* MenuView.swift */,
+				D9F48E9624BF90190018B6B9 /* MenuViewController.swift */,
+			);
+			path = MenuViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,17 +534,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9036E7D24B3E07300EB2A58 /* CanvasViewController.swift in Sources */,
+				D9F48E9B24BF90190018B6B9 /* MenuView.swift in Sources */,
 				D93A685F24B7B31A002EAC4D /* CoreData+Helpers.swift in Sources */,
 				820357E824AE50050073EED4 /* Art4All.xcdatamodeld in Sources */,
 				D9036E7024B389EE00EB2A58 /* VisualGrid.swift in Sources */,
+				D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */,
 				82AF746724B521C700A6BBDB /* ConvertTypes.swift in Sources */,
+				D9F48E9924BF90190018B6B9 /* PlayButton.swift in Sources */,
 				D9036E7A24B39AEA00EB2A58 /* StateEnum.swift in Sources */,
 				8203581424AE518E0073EED4 /* Environment.swift in Sources */,
-				D93A687324BCCB5C002EAC4D /* CanvasImageCoreDataController.swift in Sources */,
 				D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */,
+				D9F48E8F24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift in Sources */,
 				820357E224AE50050073EED4 /* ViewController.swift in Sources */,
 				D911136224BCD0BC00015B79 /* CDCanvasImage+CoreDataClass.swift in Sources */,
+				D9F48E9724BF90190018B6B9 /* CustomCollectionViewCell.swift in Sources */,
 				D9036E6A24B2A4BE00EB2A58 /* LogicalGridElement.swift in Sources */,
+				D9F48E9C24BF90190018B6B9 /* MenuViewController.swift in Sources */,
 				D9036E7224B389F900EB2A58 /* VisualGridElement.swift in Sources */,
 				82AF746924B521F200A6BBDB /* JoinComunication.swift in Sources */,
 				D911136324BCD0BC00015B79 /* CDCanvasImage+CoreDataProperties.swift in Sources */,
@@ -526,6 +557,7 @@
 				8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */,
 				D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */,
 				D9036E7424B38A5400EB2A58 /* CanvasNode.swift in Sources */,
+				D9F48E9824BF90190018B6B9 /* MenuSaveCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
