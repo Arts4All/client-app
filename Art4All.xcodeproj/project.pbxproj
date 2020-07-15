@@ -34,8 +34,6 @@
 		D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93A686024B7B329002EAC4D /* CoreDataManager.swift */; };
 		D9F48E8F24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E8E24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift */; };
 		D9F48E9724BF90190018B6B9 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9124BF90190018B6B9 /* CustomCollectionViewCell.swift */; };
-		D9F48E9824BF90190018B6B9 /* MenuSaveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9224BF90190018B6B9 /* MenuSaveCollectionViewCell.swift */; };
-		D9F48E9924BF90190018B6B9 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9324BF90190018B6B9 /* PlayButton.swift */; };
 		D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */; };
 		D9F48E9B24BF90190018B6B9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9524BF90190018B6B9 /* MenuView.swift */; };
 		D9F48E9C24BF90190018B6B9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9624BF90190018B6B9 /* MenuViewController.swift */; };
@@ -100,8 +98,6 @@
 		D93A686024B7B329002EAC4D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D9F48E8E24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasImageCoreDataController.swift; sourceTree = "<group>"; };
 		D9F48E9124BF90190018B6B9 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		D9F48E9224BF90190018B6B9 /* MenuSaveCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSaveCollectionViewCell.swift; sourceTree = "<group>"; };
-		D9F48E9324BF90190018B6B9 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		D9F48E9524BF90190018B6B9 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D9F48E9624BF90190018B6B9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -336,8 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				D9F48E9124BF90190018B6B9 /* CustomCollectionViewCell.swift */,
-				D9F48E9224BF90190018B6B9 /* MenuSaveCollectionViewCell.swift */,
-				D9F48E9324BF90190018B6B9 /* PlayButton.swift */,
 				D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */,
 				D9F48E9524BF90190018B6B9 /* MenuView.swift */,
 				D9F48E9624BF90190018B6B9 /* MenuViewController.swift */,
@@ -540,7 +534,6 @@
 				D9036E7024B389EE00EB2A58 /* VisualGrid.swift in Sources */,
 				D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */,
 				82AF746724B521C700A6BBDB /* ConvertTypes.swift in Sources */,
-				D9F48E9924BF90190018B6B9 /* PlayButton.swift in Sources */,
 				D9036E7A24B39AEA00EB2A58 /* StateEnum.swift in Sources */,
 				8203581424AE518E0073EED4 /* Environment.swift in Sources */,
 				D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */,
@@ -557,7 +550,6 @@
 				8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */,
 				D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */,
 				D9036E7424B38A5400EB2A58 /* CanvasNode.swift in Sources */,
-				D9F48E9824BF90190018B6B9 /* MenuSaveCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

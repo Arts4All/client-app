@@ -14,19 +14,23 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let imagemView = UIImageView(image: image)
         imagemView.frame = self.bounds
         imagemView.contentMode = .scaleAspectFit
+        imagemView.adjustsImageWhenAncestorFocused = true
+        imagemView.clipsToBounds = false
         self.layer.cornerRadius = 20
         self.backgroundColor = .white
         addSubview(imagemView)
     }
+
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 
-        if context.nextFocusedView == self {
-            self.layer.borderWidth = 3
-            self.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        coordinator.addCoordinatedAnimations({
 
-        } else {
-            self.layer.borderWidth = 1
-            self.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
+            if self.isFocused {
+                self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            } else {
+              self.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+
+        }, completion: nil)
     }
 }
