@@ -12,7 +12,7 @@ class MenuView: UIView {
 
     public var titleLabel = UILabel()
     private let layout = UICollectionViewFlowLayout()
-    private lazy var canvas = CustomCollectionView(frame: self.frame,
+     lazy var canvas = CustomCollectionView(frame: self.frame,
                                                    collectionViewLayout: layout)
 
     override init(frame: CGRect) {
@@ -40,7 +40,7 @@ class MenuView: UIView {
     // MARK: Title
     private func setTitle(title: String) {
         titleLabel.text = title
-        titleLabel.font = UIFont(name: "Apple ][", size: 48)
+        titleLabel.font = UIFont(name: "Apple ][", size: 36)
         titleLabel.textColor = .white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleLabel)

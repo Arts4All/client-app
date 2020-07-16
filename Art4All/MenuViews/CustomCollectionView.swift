@@ -43,11 +43,14 @@ extension CustomCollectionView: UICollectionViewDelegate {
 
         return CGSize(width: 300, height: 165)
     }
-
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 40
+    }
+    private func collectionView(collectionView: UICollectionView,
+                                canFocusItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
     }
 }
 
