@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="69" y="69"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--Side Menu View Controller-->
         <scene sceneID="4AS-1n-dOT">
             <objects>
-                <viewController id="nkH-HC-dad" customClass="MenuViewController" customModule="Art4All" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nkH-HC-dad" customClass="SideMenuViewController" customModule="Art4All" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hpi-Vu-wUr"/>
                         <viewControllerLayoutGuide type="bottom" id="xh0-wG-cJl"/>

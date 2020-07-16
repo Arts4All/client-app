@@ -100,6 +100,5 @@ class MenuViewController: UIViewController {
     @objc func actionButton() {
         let canvasViewController = CanvasViewController()
         self.navigationController?.pushViewController(canvasViewController, animated: true)
-
     }
 }

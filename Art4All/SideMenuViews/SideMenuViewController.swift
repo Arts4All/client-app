@@ -1,0 +1,70 @@
+//
+//  CenterMenuViewController.swift
+//  Art4All
+//
+//  Created by Rayane Xavier on 16/07/20.
+//  Copyright © 2020 Matheus Gois. All rights reserved.
+//
+
+import UIKit
+
+class SideMenuViewController: UIViewController {
+    private var returnView: SideMenuView!
+    private var saveView: SideMenuView!
+    private var transformView: SideMenuView!
+    let heightScreen = UIScreen.main.bounds.size.height
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [saveView]
+    }
+
+    override func viewDidLoad() {
+        self.setUp()
+        self.view.addSubview(returnView)
+        self.view.addSubview(saveView)
+        self.view.addSubview(transformView)
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        self.setUpViews()
+        self.returnView.setupViews()
+        self.saveView.setupViews()
+        self.transformView.setupViews()
+    }
+
+    func setUp() {
+        setUpDescription()
+    }
+
+    private func setUpViews() {
+        self.setupCunstraintsView(view: returnView, constant: heightScreen*2)
+        self.setupCunstraintsView(view: saveView, constant: heightScreen*3)
+        self.setupCunstraintsView(view: transformView, constant: heightScreen*4)
+    }
+
+    private func setUpDescription() {
+        self.returnView = self.setupView(view: returnView, image: #imageLiteral(resourceName: "return"), text: "Voltar")
+        self.saveView = self.setupView(view: saveView, image: #imageLiteral(resourceName: "save"), text: "Salvar imagem")
+        self.transformView = self.setupView(view: transformView, image: #imageLiteral(resourceName: "transform"), text: "Transformar em Wallpaper")
+    }
+
+    private func setupView(view: SideMenuView?, image: UIImage, text: String) -> SideMenuView? {
+        var view = view
+        view = SideMenuView(frame: self.view.frame, image: image, text: text)
+        view?.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+
+    private func setupCunstraintsView(view: SideMenuView, constant: CGFloat) {
+        let constraints = [
+            view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: constant),
+            view.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            view.heightAnchor.constraint(equalToConstant: heightScreen/4)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+}
