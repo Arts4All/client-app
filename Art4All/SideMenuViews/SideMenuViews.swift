@@ -71,16 +71,21 @@ class SideMenuView: UIView {
         NSLayoutConstraint.activate(constraints)
     }
 
+    override var canBecomeFocused: Bool {
+        return true
+    }
+
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 
         coordinator.addCoordinatedAnimations({
 
             if self.isFocused {
-                self.backgroundColor = UIColor(red: 204, green: 204, blue: 204, alpha: 1)
+                self.backgroundColor = .gray
+                self.label.textColor = .white
             } else {
-              self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.backgroundColor = .white
+                self.label.textColor = .gray
             }
-
         }, completion: nil)
     }
 }

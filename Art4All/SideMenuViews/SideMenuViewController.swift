@@ -12,6 +12,7 @@ class SideMenuViewController: UIViewController {
     private var returnView: SideMenuView!
     private var saveView: SideMenuView!
     private var transformView: SideMenuView!
+    private var tapGestureRecognizer: UITapGestureRecognizer!
     private let heightScreen = UIScreen.main.bounds.size.height
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         return [saveView]
@@ -39,6 +40,10 @@ class SideMenuViewController: UIViewController {
         setUpDescription()
     }
 
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        print("funfo")
+    }
+
     private func setUpViews() {
         self.setupCunstraintsView(view: returnView, constant: -(heightScreen * 0.125))
         self.setupCunstraintsView(view: saveView, constant: heightScreen * 0.125)
@@ -55,6 +60,8 @@ class SideMenuViewController: UIViewController {
         var view = view
         view = SideMenuView(frame: self.view.frame, image: image, text: text)
         view?.translatesAutoresizingMaskIntoConstraints = false
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped(sender:)))
+        view?.addGestureRecognizer(tapGestureRecognizer)
         return view
     }
 
