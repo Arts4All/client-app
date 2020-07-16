@@ -12,7 +12,7 @@ class SideMenuViewController: UIViewController {
     private var returnView: SideMenuView!
     private var saveView: SideMenuView!
     private var transformView: SideMenuView!
-    let heightScreen = UIScreen.main.bounds.size.height
+    private let heightScreen = UIScreen.main.bounds.size.height
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         return [saveView]
     }
@@ -40,9 +40,9 @@ class SideMenuViewController: UIViewController {
     }
 
     private func setUpViews() {
-        self.setupCunstraintsView(view: returnView, constant: heightScreen*2)
-        self.setupCunstraintsView(view: saveView, constant: heightScreen*3)
-        self.setupCunstraintsView(view: transformView, constant: heightScreen*4)
+        self.setupCunstraintsView(view: returnView, constant: -(heightScreen * 0.125))
+        self.setupCunstraintsView(view: saveView, constant: heightScreen * 0.125)
+        self.setupCunstraintsView(view: transformView, constant: heightScreen * 0.375)
     }
 
     private func setUpDescription() {
@@ -60,9 +60,9 @@ class SideMenuViewController: UIViewController {
 
     private func setupCunstraintsView(view: SideMenuView, constant: CGFloat) {
         let constraints = [
-            view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: constant),
-            view.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            view.widthAnchor.constraint(equalToConstant: 300),
             view.heightAnchor.constraint(equalToConstant: heightScreen/4)
         ]
         NSLayoutConstraint.activate(constraints)

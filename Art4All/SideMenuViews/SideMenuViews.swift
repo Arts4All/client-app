@@ -45,7 +45,8 @@ class SideMenuView: UIView {
     func setLabel(text: String) {
         label.text = text
         label.font = UIFont(name: "Apple ][", size: 24)
-        label.textColor = .white
+        label.textColor = .gray
+        label.textAlignment = .center
 //            UIColor(red: 102, green: 102, blue: 102, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(label)
@@ -65,7 +66,6 @@ class SideMenuView: UIView {
         let constraints = [
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 45),
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            label.heightAnchor.constraint(equalTo: label.heightAnchor),
             label.widthAnchor.constraint(equalTo: self.widthAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
