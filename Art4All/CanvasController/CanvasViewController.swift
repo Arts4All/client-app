@@ -103,8 +103,10 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         
         for (index, tile) in tiles.enumerated() {
             let node = tile.node
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeTileColor(sender: )))
             node.tag = index
-            node.addTarget(self, action: #selector(changeTileColor(sender: )), for: .primaryActionTriggered)
+            
+            node.addGestureRecognizer(gestureRecognizer)
         }
     }
     

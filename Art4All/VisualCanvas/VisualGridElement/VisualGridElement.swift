@@ -30,7 +30,7 @@ public class VisualGridElement: LogicalGridElement {
 
         self.hasBeenModified = false
 
-        self.node = CanvasNode(type: .custom)
+        self.node = CanvasNode()
 
         self.node.backgroundColor = nodeColor
 

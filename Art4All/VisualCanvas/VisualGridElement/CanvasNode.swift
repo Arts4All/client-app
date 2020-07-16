@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class CanvasNode: UIButton, ColorWheelDelegate {
+public class CanvasNode: UIView, ColorWheelDelegate {
     
     var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
 
@@ -17,6 +17,10 @@ public class CanvasNode: UIButton, ColorWheelDelegate {
     
     func selectedColor(color: UIColor) {
         paintColor = color
+    }
+    
+    public override var canBecomeFocused: Bool {
+        return true
     }
 
     public override func didUpdateFocus(in context: UIFocusUpdateContext,
