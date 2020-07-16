@@ -17,6 +17,7 @@
 		8203580324AE50090073EED4 /* Art4AllUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203580224AE50090073EED4 /* Art4AllUITests.swift */; };
 		8203581224AE504E0073EED4 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 8203581124AE504E0073EED4 /* SocketIO */; };
 		8203581424AE518E0073EED4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203581324AE518E0073EED4 /* Environment.swift */; };
+		8236EF5E24C0BBC200CE688A /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8236EF5D24C0BBC200CE688A /* Apple ][.ttf */; };
 		8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A58324B5134A008E2559 /* ConnectionSocket.swift */; };
 		82AF746724B521C700A6BBDB /* ConvertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746624B521C700A6BBDB /* ConvertTypes.swift */; };
 		82AF746924B521F200A6BBDB /* JoinComunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746824B521F200A6BBDB /* JoinComunication.swift */; };
@@ -37,7 +38,6 @@
 		D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */; };
 		D9F48E9B24BF90190018B6B9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9524BF90190018B6B9 /* MenuView.swift */; };
 		D9F48E9C24BF90190018B6B9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9624BF90190018B6B9 /* MenuViewController.swift */; };
-		E074ED3224BF9D4C001CF6BD /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E074ED3124BF9D4C001CF6BD /* Apple ][.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +80,7 @@
 		8203580224AE50090073EED4 /* Art4AllUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art4AllUITests.swift; sourceTree = "<group>"; };
 		8203580424AE50090073EED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8203581324AE518E0073EED4 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		8236EF5D24C0BBC200CE688A /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple ][.ttf"; sourceTree = "<group>"; };
 		8276A58324B5134A008E2559 /* ConnectionSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSocket.swift; sourceTree = "<group>"; };
 		82AF746624B521C700A6BBDB /* ConvertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTypes.swift; sourceTree = "<group>"; };
 		82AF746824B521F200A6BBDB /* JoinComunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinComunication.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		D9F48E9524BF90190018B6B9 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D9F48E9624BF90190018B6B9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		E074ED3124BF9D4C001CF6BD /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Apple ][.ttf"; path = "../../../Desktop/testLayout/Apple ][.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,6 @@
 				8203580124AE50090073EED4 /* Art4AllUITests */,
 				D9280A1D24BE222300FC20DD /* CoreDataArt4AllTests */,
 				820357DD24AE50050073EED4 /* Products */,
-				E074ED3124BF9D4C001CF6BD /* Apple ][.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +174,7 @@
 				820357E324AE50050073EED4 /* Main.storyboard */,
 				820357EB24AE50090073EED4 /* LaunchScreen.storyboard */,
 				820357E924AE50090073EED4 /* Assets.xcassets */,
+				8236EF5F24C0BBCA00CE688A /* Assets */,
 				820357EE24AE50090073EED4 /* Info.plist */,
 			);
 			path = Art4All;
@@ -215,6 +215,22 @@
 				8276A58324B5134A008E2559 /* ConnectionSocket.swift */,
 			);
 			path = Connection;
+			sourceTree = "<group>";
+		};
+		8236EF5F24C0BBCA00CE688A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8236EF6024C0BBD700CE688A /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		8236EF6024C0BBD700CE688A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8236EF5D24C0BBC200CE688A /* Apple ][.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		82AF746524B521A800A6BBDB /* Helpers */ = {
@@ -478,7 +494,7 @@
 			files = (
 				820357ED24AE50090073EED4 /* LaunchScreen.storyboard in Resources */,
 				820357EA24AE50090073EED4 /* Assets.xcassets in Resources */,
-				E074ED3224BF9D4C001CF6BD /* Apple ][.ttf in Resources */,
+				8236EF5E24C0BBC200CE688A /* Apple ][.ttf in Resources */,
 				820357E524AE50050073EED4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

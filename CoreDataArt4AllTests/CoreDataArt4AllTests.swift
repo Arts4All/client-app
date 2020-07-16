@@ -58,16 +58,16 @@ class CoreDataArt4AllTests: XCTestCase {
         let controller = CanvasImageCoreDataController()
 
         let savedObject = CanvasImage(data: testURl, identifier: testData)
-            
+
         var fetchedRecords: [CanvasImage] = []
-        
+
         do {
             try controller.create(newRecord: savedObject)
             let updatedRecord = CanvasImage(data: newURL, identifier: testData)
             try controller.update(updatedRecord: updatedRecord)
-            
+
             try fetchedRecords.append(contentsOf: controller.read())
-            
+
             XCTAssertEqual(fetchedRecords[1], updatedRecord)
         } catch {
             XCTestError(_nsError: NSError())
