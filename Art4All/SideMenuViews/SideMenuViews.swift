@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SideMenuView: UIView {
+class SideMenu: UIView {
     var imageView = UIImageView()
     var image = UIImage()
     var label = UILabel()

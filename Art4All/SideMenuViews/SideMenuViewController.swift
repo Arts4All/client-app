@@ -8,28 +8,26 @@
 
 import UIKit
 
-class SideMenuViewController: UIViewController {
-    private var returnView: SideMenuView!
-    private var saveView: SideMenuView!
-    private var transformView: SideMenuView!
+class SideMenuView: UIView {
+    private var returnView: SideMenu!
+    private var saveView: SideMenu!
+    private var transformView: SideMenu!
     private var tapGestureRecognizer: UITapGestureRecognizer!
     private let heightScreen = UIScreen.main.bounds.size.height
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-        return [saveView]
+        return [returnView]
     }
-
-    override func viewDidLoad() {
+    override func layoutSubviews() {
         self.setUp()
-        self.view.addSubview(returnView)
-        self.view.addSubview(saveView)
-        self.view.addSubview(transformView)
+        self.addSubview(returnView)
+        self.addSubview(saveView)
+        self.addSubview(transformView)
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
+        viewWillLayoutSubviews()
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
+    func viewWillLayoutSubviews() {
         self.setUpViews()
         self.returnView.setupViews()
         self.saveView.setupViews()
@@ -41,7 +39,13 @@ class SideMenuViewController: UIViewController {
     }
 
     @objc func tapped(sender: UITapGestureRecognizer) {
-        print("funfo")
+        if returnView.isFocused {
+        print("return")
+        } else if saveView.isFocused {
+            print("save")
+        } else if transformView.isFocused {
+            print("transform")
+        }
     }
 
     private func setUpViews() {
@@ -56,19 +60,19 @@ class SideMenuViewController: UIViewController {
         self.transformView = self.setupView(view: transformView, image: #imageLiteral(resourceName: "transform"), text: "Transformar em Wallpaper")
     }
 
-    private func setupView(view: SideMenuView?, image: UIImage, text: String) -> SideMenuView? {
+    private func setupView(view: SideMenu?, image: UIImage, text: String) -> SideMenu? {
         var view = view
-        view = SideMenuView(frame: self.view.frame, image: image, text: text)
+        view = SideMenu(frame: self.frame, image: image, text: text)
         view?.translatesAutoresizingMaskIntoConstraints = false
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped(sender:)))
         view?.addGestureRecognizer(tapGestureRecognizer)
         return view
     }
 
-    private func setupCunstraintsView(view: SideMenuView, constant: CGFloat) {
+    private func setupCunstraintsView(view: SideMenu, constant: CGFloat) {
         let constraints = [
-            view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: constant),
-            view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            view.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: constant),
+            view.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             view.widthAnchor.constraint(equalToConstant: 300),
             view.heightAnchor.constraint(equalToConstant: heightScreen/4)
         ]

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow()
         self.window?.makeKeyAndVisible()
 
-        let navigationController = UINavigationController(rootViewController: SideMenuViewController())
+        let navigationController = UINavigationController(rootViewController: MenuViewController())
 
         self.window?.rootViewController = navigationController
         return true

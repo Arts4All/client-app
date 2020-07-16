@@ -17,9 +17,11 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate {
     var squareSize: Int = 80
     var grid: VisualGrid?
     var tiles: [VisualGridElement]?
+    lazy var sideMenu = SideMenuView(frame: self.view.frame)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(sideMenu)
         self.setupInitalGrid()
     }
 
