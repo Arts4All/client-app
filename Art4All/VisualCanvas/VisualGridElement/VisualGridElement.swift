@@ -62,4 +62,5 @@ public class VisualGridElement: LogicalGridElement {
         }
         self.node.backgroundColor = self.nodeColor
     }
+
 }

@@ -10,11 +10,11 @@ import UIKit
 
 class ColorWheelViewController: UIViewController {
     var menuColor: ColorWheelView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuColor = ColorWheelView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        menuColor = ColorWheelView(frame: UIScreen.main.bounds)
         self.view.addSubview(menuColor)
     }
-    
+
 }

@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-protocol ColorWheelDelegate {
+protocol ColorWheelDelegate: class {
     func selectedColor(color: UIColor)
 }

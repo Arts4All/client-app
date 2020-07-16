@@ -10,15 +10,16 @@ import Foundation
 import UIKit
 
 public class CanvasNode: UIView, ColorWheelDelegate {
-    
+
     var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+    var isSelected: Bool = false
 
     weak var visualGridElement: VisualGridElement?
-    
+
     func selectedColor(color: UIColor) {
         paintColor = color
     }
-    
+
     public override var canBecomeFocused: Bool {
         return true
     }
@@ -31,11 +32,13 @@ public class CanvasNode: UIView, ColorWheelDelegate {
             self.backgroundColor = paintColor
             self.layer.borderWidth = 3
             self.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            self.isSelected = true
 
         } else {
             self.backgroundColor = visualGridElement?.nodeColor
             self.layer.borderWidth = 1
             self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            self.isSelected = false
         }
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import SocketIO
 
 class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWheelDelegate {
-  
+
     var canvasView = UIView()
     var numberOfLines: Int = 10
     var numberOfColumns: Int = 20
@@ -18,57 +18,58 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     var grid: VisualGrid?
     var tiles: [VisualGridElement]?
     var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-    
+    var gestureRecognizer: UITapGestureRecognizer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupInitalGrid()
         self.setupGestureRecognizer()
     }
-    
+
     override func viewDidLayoutSubviews() {
     }
-    
+
     func setupSocket() {
-        
+
     }
-    
+
     // MARK: - GRID
     func setupInitalGrid() {
         ConnectionSocket.shared.setupDelegate(delegate: self)
-        
+
     }
-    
+
     func setupGrid(_ numberOfColumns: Int, _ numberOfLines: Int, _ mapColors: MapColors) {
         self.view.addSubview(canvasView)
-        
+
         grid = VisualGrid(numberOfColumns: numberOfColumns,
                           numberOfLines: numberOfLines,
                           squareSize: squareSize,
                           mapColors: mapColors)
-        
+
         self.numberOfColumns = numberOfColumns
         self.numberOfLines = numberOfLines
-        
+
         guard let grid = grid else {
             return
         }
-        
+
         tiles = grid.tiles
-        
+
         guard let tiles = tiles else {
             return
         }
-        
+
         for tile in tiles {
             self.canvasView.addSubview(tile.node)
         }
         setupTilesAction()
-        
+
         // Constraints
         setupCanvasViewConstraints()
         setupGridConstraints()
     }
-    
+
     func setupCanvasViewConstraints() {
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -78,7 +79,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             canvasView.heightAnchor.constraint(equalToConstant: calcutateCanvasHeight())
         ])
     }
-    
+
     func setupGridConstraints() {
         guard let tiles = tiles else {
             return
@@ -95,21 +96,20 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             ])
         }
     }
-    
+
     func setupTilesAction() {
         guard let tiles = tiles else {
             return
         }
-        
+
         for (index, tile) in tiles.enumerated() {
             let node = tile.node
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeTileColor(sender: )))
             node.tag = index
-            
+            self.gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeTileColor(sender:)))
             node.addGestureRecognizer(gestureRecognizer)
         }
     }
-    
+
     func changeTileState(color: UIColor, position: (xPosition: Int, yPosition: Int)) {
         guard
             let nodeIndex = self.grid?.grid.findElementIndex(by: position.xPosition,
@@ -118,20 +118,19 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             else {
                 return
         }
-        print(nodeIndex)
         let tile = tiles[nodeIndex]
         tile.changeTileState(state: .modified, newColor: color)
     }
-    
+
     func calculateCanvasWidth() -> CGFloat {
         return CGFloat(numberOfColumns * squareSize)
-        
+
     }
-    
+
     func calcutateCanvasHeight() -> CGFloat {
         return CGFloat(numberOfLines * squareSize)
     }
-    
+
     func setupGestureRecognizer() {
         let nodeGesture = UILongPressGestureRecognizer(target: self, action: #selector(presentColorWheel))
         guard let guardedTiles = tiles else {
@@ -142,20 +141,21 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             node.addGestureRecognizer(nodeGesture)
         }
     }
-    
+
     func selectedColor(color: UIColor) {
           paintColor = color
     }
-    
+
     @objc func presentColorWheel() {
         let colorWheelViewControler = ColorWheelViewController()
         self.navigationController?.present(colorWheelViewControler, animated: true, completion: nil)
     }
-    
-    @objc func changeTileColor(sender: Any) {
-        
+
+    @objc func changeTileColor(sender: UITapGestureRecognizer) {
+
         guard
-            let node = sender as? CanvasNode,
+            let grid = grid,
+            let node =  grid.getSelected(),
             let tile = node.visualGridElement,
             tile.hasBeenModified == false
             else {
@@ -165,5 +165,5 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
                                              (xPosition: tile.xPosition,
                                               yPosition: tile.yPosition))
     }
-    
+
 }

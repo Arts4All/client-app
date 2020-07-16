@@ -6,7 +6,6 @@
 //  Copyright © 2020 Matheus Gois. All rights reserved.
 //
 
-
 import UIKit
 
 class ColorWheelCollectionViewCell: UICollectionViewCell {

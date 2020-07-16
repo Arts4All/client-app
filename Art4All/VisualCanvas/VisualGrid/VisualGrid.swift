@@ -43,4 +43,10 @@ class VisualGrid {
             }
         }
     }
+    func getSelected() -> CanvasNode? {
+        guard let gridElement = tiles.first(where: {$0.node.isSelected==true}) else {
+            return  nil
+        }
+        return gridElement.node
+    }
 }
