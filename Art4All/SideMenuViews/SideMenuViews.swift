@@ -16,6 +16,8 @@ class SideMenu: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.gray.cgColor
     }
 
     convenience init(frame: CGRect, image: UIImage, text: String) {
@@ -47,7 +49,8 @@ class SideMenu: UIView {
         label.font = UIFont(name: "Apple ][", size: 24)
         label.textColor = .gray
         label.textAlignment = .center
-//            UIColor(red: 102, green: 102, blue: 102, alpha: 1)
+        label.lineBreakMode = .byClipping
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(label)
     }
@@ -56,8 +59,8 @@ class SideMenu: UIView {
         let constraints = [
             imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 35),
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 95),
-            imageView.widthAnchor.constraint(equalToConstant: 95)
+            imageView.heightAnchor.constraint(equalTo: imageView.heightAnchor),
+            imageView.widthAnchor.constraint(equalTo: imageView.widthAnchor)
             ]
         NSLayoutConstraint.activate(constraints)
     }
