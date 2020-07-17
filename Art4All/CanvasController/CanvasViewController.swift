@@ -147,6 +147,14 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate {
 }
 
 extension CanvasViewController: SideMenuViewDelegate {
+    func save() {
+        print("save")
+    }
+
+    func transform() {
+        print("transform")
+    }
+
     func back() {
         self.navigationController?.popViewController(animated: true)
     }

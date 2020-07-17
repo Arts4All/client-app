@@ -10,6 +10,8 @@ import UIKit
 
 protocol SideMenuViewDelegate: class {
     func back()
+    func save()
+    func transform()
 }
 
 class SideMenuView: UIView {
@@ -60,9 +62,9 @@ class SideMenuView: UIView {
         if returnView.isFocused {
             delegate?.back()
         } else if saveView.isFocused {
-            print("save")
+            delegate?.save()
         } else if transformView.isFocused {
-            print("transform")
+            delegate?.transform()
         }
     }
 
