@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SideMenuViewDelegate: class {
+    func back()
+}
+
 class SideMenuView: UIView {
     private var returnView: SideMenu!
     private var saveView: SideMenu!
@@ -17,6 +21,20 @@ class SideMenuView: UIView {
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         return [returnView]
     }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    convenience init(frame: CGRect, delegate: SideMenuViewDelegate) {
+        self.init(frame: frame)
+        self.delegate = delegate
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    weak var delegate: SideMenuViewDelegate?
     override func layoutSubviews() {
         self.setUp()
         self.addSubview(returnView)
@@ -40,7 +58,7 @@ class SideMenuView: UIView {
 
     @objc func tapped(sender: UITapGestureRecognizer) {
         if returnView.isFocused {
-        print("return")
+            delegate?.back()
         } else if saveView.isFocused {
             print("save")
         } else if transformView.isFocused {

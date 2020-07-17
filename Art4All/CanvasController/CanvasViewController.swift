@@ -17,7 +17,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate {
     var squareSize: Int = 80
     var grid: VisualGrid?
     var tiles: [VisualGridElement]?
-    lazy var sideMenu = SideMenuView(frame: self.view.frame)
+    lazy var sideMenu = SideMenuView(frame: self.view.frame, delegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,5 +143,11 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate {
 
     func calcutateCanvasHeight() -> CGFloat {
         return CGFloat(numberOfLines * squareSize)
+    }
+}
+
+extension CanvasViewController: SideMenuViewDelegate {
+    func back() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
