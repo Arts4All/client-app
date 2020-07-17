@@ -33,11 +33,12 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate {
 
     // MARK: - GRID
     func setupInitalGrid() {
+        self.view.showLoading()
         ConnectionSocket.shared.setupDelegate(delegate: self)
-
     }
 
     func setupGrid(_ numberOfColumns: Int, _ numberOfLines: Int, _ mapColors: MapColors) {
+        self.view.removeLoading()
         self.view.addSubview(canvasView)
 
         grid = VisualGrid(numberOfColumns: numberOfColumns,

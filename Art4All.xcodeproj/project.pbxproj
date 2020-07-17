@@ -38,6 +38,7 @@
 		D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */; };
 		D9F48E9B24BF90190018B6B9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9524BF90190018B6B9 /* MenuView.swift */; };
 		D9F48E9C24BF90190018B6B9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48E9624BF90190018B6B9 /* MenuViewController.swift */; };
+		E07F981224C21544009E5AFC /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07F981124C21544009E5AFC /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		D9F48E9524BF90190018B6B9 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D9F48E9624BF90190018B6B9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E07F981124C21544009E5AFC /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 				D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */,
 				D9F48E9524BF90190018B6B9 /* MenuView.swift */,
 				D9F48E9624BF90190018B6B9 /* MenuViewController.swift */,
+				E07F981124C21544009E5AFC /* Loading.swift */,
 			);
 			path = MenuViews;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				820357E024AE50050073EED4 /* AppDelegate.swift in Sources */,
 				8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */,
 				D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */,
+				E07F981224C21544009E5AFC /* Loading.swift in Sources */,
 				D9036E7424B38A5400EB2A58 /* CanvasNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
