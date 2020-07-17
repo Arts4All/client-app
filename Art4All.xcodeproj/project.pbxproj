@@ -18,6 +18,7 @@
 		8203581224AE504E0073EED4 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 8203581124AE504E0073EED4 /* SocketIO */; };
 		8203581424AE518E0073EED4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203581324AE518E0073EED4 /* Environment.swift */; };
 		8236EF5E24C0BBC200CE688A /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8236EF5D24C0BBC200CE688A /* Apple ][.ttf */; };
+		826A389B24C2225E006206EC /* Loading+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826A389A24C2225E006206EC /* Loading+Extension.swift */; };
 		8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A58324B5134A008E2559 /* ConnectionSocket.swift */; };
 		82AF746724B521C700A6BBDB /* ConvertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746624B521C700A6BBDB /* ConvertTypes.swift */; };
 		82AF746924B521F200A6BBDB /* JoinComunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746824B521F200A6BBDB /* JoinComunication.swift */; };
@@ -83,6 +84,7 @@
 		8203580424AE50090073EED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8203581324AE518E0073EED4 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		8236EF5D24C0BBC200CE688A /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple ][.ttf"; sourceTree = "<group>"; };
+		826A389A24C2225E006206EC /* Loading+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading+Extension.swift"; sourceTree = "<group>"; };
 		8276A58324B5134A008E2559 /* ConnectionSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSocket.swift; sourceTree = "<group>"; };
 		82AF746624B521C700A6BBDB /* ConvertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTypes.swift; sourceTree = "<group>"; };
 		82AF746824B521F200A6BBDB /* JoinComunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinComunication.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		820357DE24AE50050073EED4 /* Art4All */ = {
 			isa = PBXGroup;
 			children = (
+				826A389924C2223F006206EC /* Helpers */,
 				D9F48E9024BF90190018B6B9 /* MenuViews */,
 				D9036E7B24B3E05F00EB2A58 /* CanvasController */,
 				D9036E6B24B3896300EB2A58 /* VisualCanvas */,
@@ -236,6 +239,14 @@
 				8236EF5D24C0BBC200CE688A /* Apple ][.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		826A389924C2223F006206EC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				826A389A24C2225E006206EC /* Loading+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		82AF746524B521A800A6BBDB /* Helpers */ = {
@@ -583,6 +594,7 @@
 				E024929724C0148500C1B9B9 /* SideMenuViewController.swift in Sources */,
 				D911136324BCD0BC00015B79 /* CDCanvasImage+CoreDataProperties.swift in Sources */,
 				820357E024AE50050073EED4 /* AppDelegate.swift in Sources */,
+				826A389B24C2225E006206EC /* Loading+Extension.swift in Sources */,
 				8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */,
 				D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */,
 				D9036E7424B38A5400EB2A58 /* CanvasNode.swift in Sources */,
