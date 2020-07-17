@@ -11,6 +11,7 @@ import UIKit
 extension ColorWheelView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         self.colorWheelDelegate?.selectedColor(color: arrayOfColors[indexPath.row])
     }
 }

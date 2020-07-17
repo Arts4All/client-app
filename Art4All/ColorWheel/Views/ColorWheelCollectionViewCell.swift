@@ -31,8 +31,8 @@ class ColorWheelCollectionViewCell: UICollectionViewCell {
         super.didUpdateFocus(in: context, with: coordinator)
 
         if context.nextFocusedView == self {
-            self.layer.borderWidth = 3
-            self.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            self.layer.borderWidth = 8
+            self.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             self.isSelected = true
 
         } else {
