@@ -50,7 +50,7 @@ class VisualGrid {
         return gridElement.node
     }
     func selectedColor(color: UIColor) {
-        tiles.forEach { elem in 
+        tiles.forEach { elem in
             elem.node.paintColor = color
         }
     }

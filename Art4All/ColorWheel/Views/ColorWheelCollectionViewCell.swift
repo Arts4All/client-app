@@ -21,11 +21,11 @@ class ColorWheelCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+
     override var canBecomeFocused: Bool {
         return true
     }
-    
+
     public override func didUpdateFocus(in context: UIFocusUpdateContext,
                                         with coordinator: UIFocusAnimationCoordinator) {
         super.didUpdateFocus(in: context, with: coordinator)
@@ -41,6 +41,5 @@ class ColorWheelCollectionViewCell: UICollectionViewCell {
             self.isSelected = false
         }
     }
-    
-    
+
 }

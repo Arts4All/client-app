@@ -20,6 +20,9 @@
 		8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A58324B5134A008E2559 /* ConnectionSocket.swift */; };
 		82AF746724B521C700A6BBDB /* ConvertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746624B521C700A6BBDB /* ConvertTypes.swift */; };
 		82AF746924B521F200A6BBDB /* JoinComunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746824B521F200A6BBDB /* JoinComunication.swift */; };
+		82DA458B24C260F500140220 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458A24C260F500140220 /* SideMenuView.swift */; };
+		82DA458D24C2610000140220 /* SideMenuViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458C24C2610000140220 /* SideMenuViews.swift */; };
+		82DA458F24C2615600140220 /* Loading+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458E24C2615600140220 /* Loading+Extension.swift */; };
 		D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6724B2A4B200EB2A58 /* LogicalGrid.swift */; };
 		D9036E6A24B2A4BE00EB2A58 /* LogicalGridElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6924B2A4BE00EB2A58 /* LogicalGridElement.swift */; };
 		D9036E7024B389EE00EB2A58 /* VisualGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6F24B389EE00EB2A58 /* VisualGrid.swift */; };
@@ -87,6 +90,9 @@
 		8276A58324B5134A008E2559 /* ConnectionSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSocket.swift; sourceTree = "<group>"; };
 		82AF746624B521C700A6BBDB /* ConvertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTypes.swift; sourceTree = "<group>"; };
 		82AF746824B521F200A6BBDB /* JoinComunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinComunication.swift; sourceTree = "<group>"; };
+		82DA458A24C260F500140220 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		82DA458C24C2610000140220 /* SideMenuViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViews.swift; sourceTree = "<group>"; };
+		82DA458E24C2615600140220 /* Loading+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading+Extension.swift"; sourceTree = "<group>"; };
 		D9036E6724B2A4B200EB2A58 /* LogicalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalGrid.swift; sourceTree = "<group>"; };
 		D9036E6924B2A4BE00EB2A58 /* LogicalGridElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalGridElement.swift; sourceTree = "<group>"; };
 		D9036E6F24B389EE00EB2A58 /* VisualGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualGrid.swift; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 		820357DE24AE50050073EED4 /* Art4All */ = {
 			isa = PBXGroup;
 			children = (
+				82DA458924C260DB00140220 /* SideMenuViews */,
+				82DA458824C25F4400140220 /* Helper */,
 				D9F48E9E24BF9CFB0018B6B9 /* ColorWheel */,
 				D9F48E9024BF90190018B6B9 /* MenuViews */,
 				D9036E7B24B3E05F00EB2A58 /* CanvasController */,
@@ -232,6 +240,23 @@
 				82AF746824B521F200A6BBDB /* JoinComunication.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		82DA458824C25F4400140220 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				82DA458E24C2615600140220 /* Loading+Extension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		82DA458924C260DB00140220 /* SideMenuViews */ = {
+			isa = PBXGroup;
+			children = (
+				82DA458A24C260F500140220 /* SideMenuView.swift */,
+				82DA458C24C2610000140220 /* SideMenuViews.swift */,
+			);
+			path = SideMenuViews;
 			sourceTree = "<group>";
 		};
 		D9036E6524B2A2E900EB2A58 /* LogicalCanvas */ = {
@@ -572,6 +597,7 @@
 				D93A685F24B7B31A002EAC4D /* CoreData+Helpers.swift in Sources */,
 				820357E824AE50050073EED4 /* Art4All.xcdatamodeld in Sources */,
 				D9036E7024B389EE00EB2A58 /* VisualGrid.swift in Sources */,
+				82DA458B24C260F500140220 /* SideMenuView.swift in Sources */,
 				D9F48EAA24BFA5DE0018B6B9 /* ColorWheelDelegate.swift in Sources */,
 				D9F48E9A24BF90190018B6B9 /* CustomCollectionView.swift in Sources */,
 				D9F48EA024BFA2EB0018B6B9 /* ColorWheelView.swift in Sources */,
@@ -580,6 +606,7 @@
 				8203581424AE518E0073EED4 /* Environment.swift in Sources */,
 				D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */,
 				D9F48E8F24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift in Sources */,
+				82DA458F24C2615600140220 /* Loading+Extension.swift in Sources */,
 				820357E224AE50050073EED4 /* ViewController.swift in Sources */,
 				D911136224BCD0BC00015B79 /* CDCanvasImage+CoreDataClass.swift in Sources */,
 				D9F48E9724BF90190018B6B9 /* CustomCollectionViewCell.swift in Sources */,
@@ -590,6 +617,7 @@
 				82AF746924B521F200A6BBDB /* JoinComunication.swift in Sources */,
 				D911136324BCD0BC00015B79 /* CDCanvasImage+CoreDataProperties.swift in Sources */,
 				820357E024AE50050073EED4 /* AppDelegate.swift in Sources */,
+				82DA458D24C2610000140220 /* SideMenuViews.swift in Sources */,
 				8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */,
 				D9F48EA424BFA3700018B6B9 /* ColorWheelCollectionViewCell.swift in Sources */,
 				D93A686124B7B329002EAC4D /* CoreDataManager.swift in Sources */,
