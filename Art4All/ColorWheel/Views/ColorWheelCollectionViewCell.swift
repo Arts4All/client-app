@@ -21,4 +21,26 @@ class ColorWheelCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    override var canBecomeFocused: Bool {
+        return true
+    }
+    
+    public override func didUpdateFocus(in context: UIFocusUpdateContext,
+                                        with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
+
+        if context.nextFocusedView == self {
+            self.layer.borderWidth = 3
+            self.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            self.isSelected = true
+
+        } else {
+            self.layer.borderWidth = 1
+            self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            self.isSelected = false
+        }
+    }
+    
+    
 }

@@ -31,7 +31,7 @@ class ColorWheelView: UIView {
 
     func setupCollectionView() {
         self.colorCollectionView.register(ColorWheelCollectionViewCell.self,
-                                          forCellWithReuseIdentifier: "ColorCollectionViewCell")
+                                          forCellWithReuseIdentifier: "ColorWheelCollectionViewCell")
         self.colorCollectionView.showsVerticalScrollIndicator = false
         let viewSize = self.frame
         self.colorCollectionView.translatesAutoresizingMaskIntoConstraints = false

@@ -19,11 +19,14 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     var tiles: [VisualGridElement]?
     var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
     var gestureRecognizer: UITapGestureRecognizer!
+    var longPressRecognizer: UILongPressGestureRecognizer!
+    let colorWheelView: ColorWheelView = ColorWheelView(frame: UIScreen.main.bounds)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupInitalGrid()
-        self.setupGestureRecognizer()
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
     }
 
     override func viewDidLayoutSubviews() {
@@ -64,10 +67,15 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             self.canvasView.addSubview(tile.node)
         }
         setupTilesAction()
+        
+        setupGestureRecognizer()
 
         // Constraints
         setupCanvasViewConstraints()
         setupGridConstraints()
+        setupColorWheel()
+        setupColorWheelContraints()
+
     }
 
     func setupCanvasViewConstraints() {
@@ -105,7 +113,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         for (index, tile) in tiles.enumerated() {
             let node = tile.node
             node.tag = index
-            self.gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeTileColor(sender:)))
+            self.gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentColorWheel))
             node.addGestureRecognizer(gestureRecognizer)
         }
     }
@@ -132,12 +140,15 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     }
 
     func setupGestureRecognizer() {
-        let nodeGesture = UILongPressGestureRecognizer(target: self, action: #selector(presentColorWheel))
         guard let guardedTiles = tiles else {
             return
         }
+        
         for guardedTile in guardedTiles {
             let node = guardedTile.node
+            let nodeGesture = UILongPressGestureRecognizer(target: self, action: #selector(presentColorWheel))
+            nodeGesture.minimumPressDuration = 0.5
+            nodeGesture.allowableMovement = 100
             node.addGestureRecognizer(nodeGesture)
         }
     }
@@ -145,11 +156,31 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     func selectedColor(color: UIColor) {
           paintColor = color
     }
+    
+    func setupColorWheel() {
+        view.addSubview(colorWheelView)
+    }
+    
+    func setupColorWheelContraints() {
+        colorWheelView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            colorWheelView.heightAnchor.constraint(equalToConstant: view.frame.size.height),
+            colorWheelView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
+            colorWheelView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.view.frame.width),
+            colorWheelView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+        
+    }
 
     @objc func presentColorWheel() {
-        let colorWheelViewControler = ColorWheelViewController()
-        self.navigationController?.present(colorWheelViewControler, animated: true, completion: nil)
+        UIView.animate(withDuration: 1.0, delay: 1.2, options: .curveEaseIn, animations:{ 
+            NSLayoutConstraint.activate([
+                self.colorWheelView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            ])
+        })
     }
+    
 
     @objc func changeTileColor(sender: UITapGestureRecognizer) {
 
