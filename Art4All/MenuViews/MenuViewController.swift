@@ -10,8 +10,9 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    private var savedView: MenuView!
+    var savedView: MenuView!
     private var finishedView: MenuView!
+    private let coreDataController = CanvasImageCoreDataController()
     private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "aslam"))
     private let playButton = UIButton(type: .custom)
     private let buttonLabel: UILabel = UILabel()
@@ -29,6 +30,8 @@ class MenuViewController: UIViewController {
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
     }
+    
+    
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -110,7 +113,21 @@ class MenuViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)    }
     // MARK: Canvas
     private func setUpSavedCanvas() {
-        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos", images: [#imageLiteral(resourceName: "aslam")])
+        var savedImages: [UIImage] = []
+        do {
+            let canvasImages = try coreDataController.read()
+            for canvasImage in canvasImages {
+                let data = canvasImage.data
+                guard let savedImage = UIImage(data: data) else {
+                    print(DAOError.invalidData(description: "Failed to transform data in UIImage"))
+                    return
+                }
+                savedImages.append(savedImage)
+            }
+        } catch {
+            print(DAOError.internalError(description: "Failed to read core data"))
+        }
+        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos", images: savedImages)
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
                                            images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
     }

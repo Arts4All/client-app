@@ -11,6 +11,7 @@ import SocketIO
 
 class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWheelDelegate {
 
+    private let coreDataController = CanvasImageCoreDataController()
     private let canvasView = UIView()
     private var numberOfLines: Int = 0
     private var numberOfColumns: Int = 0
@@ -219,8 +220,24 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 }
 
 extension CanvasViewController: SideMenuViewDelegate {
+    
     func save() {
-        print("save")
+        let bounds = UIScreen.main.bounds
+        let frame = canvasView.frame
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.canvasView.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let savedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        guard let data = savedImage?.pngData() else {
+            return
+        }
+        let uniqueIdentifier = UUID().uuidString
+        let canvasImage = CanvasImage(data: data, identifier: uniqueIdentifier)
+        do {
+            try coreDataController.create(newRecord: canvasImage)
+        } catch {
+            print(DAOError.internalError(description: "Failed to create NSObject"))
+        }
     }
 
     func transform() {
