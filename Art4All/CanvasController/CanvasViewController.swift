@@ -218,16 +218,16 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 }
 
 extension CanvasViewController: SideMenuViewDelegate {
-    func save() {
+    private func printImage() -> UIImage? {
         let bounds = UIScreen.main.bounds
-//        let frame = canvasView.frame
         UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
         self.canvasView.drawHierarchy(in: bounds, afterScreenUpdates: false)
         let savedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        guard let data = savedImage?.pngData() else {
-            return
-        }
+        return savedImage
+    }
+    func save() {
+        guard let data = self.printImage()?.pngData() else { return }
         let uniqueIdentifier = UUID().uuidString
         let canvasImage = CanvasImage(data: data, identifier: uniqueIdentifier)
         do {

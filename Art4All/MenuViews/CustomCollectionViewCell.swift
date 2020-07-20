@@ -13,7 +13,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     public func setUp(image: UIImage) {
         let imagemView = UIImageView(image: image)
         imagemView.frame = self.bounds
-        imagemView.contentMode = .scaleAspectFit
+        imagemView.contentMode = .scaleAspectFill
         imagemView.adjustsImageWhenAncestorFocused = true
         imagemView.clipsToBounds = false
         self.layer.cornerRadius = 20
@@ -21,16 +21,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
         addSubview(imagemView)
     }
 
-    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-
-        coordinator.addCoordinatedAnimations({
-
-            if self.isFocused {
-                self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            } else {
-              self.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }
-
-        }, completion: nil)
-    }
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) { }
 }
