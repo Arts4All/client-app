@@ -48,8 +48,22 @@ extension CustomCollectionView: UICollectionViewDelegate {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 40
     }
-    func collectionView(collectionView: UICollectionView, canFocusItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+    static func loadCoreData() -> [UIImage] {
+        var savedImages: [UIImage] = []
+        let coreDataController = CanvasImageCoreDataController()
+        do {
+            let canvasImages = try coreDataController.read()
+            for canvasImage in canvasImages {
+                let data = canvasImage.data
+                if let savedImage = UIImage(data: data) {
+                    savedImages.append(savedImage)
+                }
+                print(DAOError.invalidData(description: "Failed to transform data in UIImage"))
+            }
+        } catch {
+            print(DAOError.internalError(description: "Failed to read core data"))
+        }
+        return savedImages
     }
 }
 

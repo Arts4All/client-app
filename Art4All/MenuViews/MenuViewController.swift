@@ -12,7 +12,6 @@ class MenuViewController: UIViewController {
 
     var savedView: MenuView!
     private var finishedView: MenuView!
-    private let coreDataController = CanvasImageCoreDataController()
     private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "aslam"))
     private let playButton = UIButton(type: .custom)
     private let buttonLabel: UILabel = UILabel()
@@ -30,8 +29,6 @@ class MenuViewController: UIViewController {
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
     }
-    
-    
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -113,21 +110,8 @@ class MenuViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)    }
     // MARK: Canvas
     private func setUpSavedCanvas() {
-        var savedImages: [UIImage] = []
-        do {
-            let canvasImages = try coreDataController.read()
-            for canvasImage in canvasImages {
-                let data = canvasImage.data
-                guard let savedImage = UIImage(data: data) else {
-                    print(DAOError.invalidData(description: "Failed to transform data in UIImage"))
-                    return
-                }
-                savedImages.append(savedImage)
-            }
-        } catch {
-            print(DAOError.internalError(description: "Failed to read core data"))
-        }
-        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos", images: savedImages)
+        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos",
+                                        images: CustomCollectionView.loadCoreData())
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
                                            images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
     }
@@ -149,7 +133,15 @@ class MenuViewController: UIViewController {
 
     @objc func actionButton() {
         let canvasViewController = CanvasViewController()
+        canvasViewController.delegate = self
         self.navigationController?.pushViewController(canvasViewController, animated: true)
 
+    }
+}
+
+extension MenuViewController: CanvasViewControllerDelegate {
+    func reload() {
+        self.savedView.canvas.images = CustomCollectionView.loadCoreData()
+        self.savedView.canvas.reloadData()
     }
 }
