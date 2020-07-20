@@ -9,9 +9,9 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-
-    public func setUp(image: UIImage) {
-        let imagemView = UIImageView(image: image)
+    var imagemView = UIImageView()
+    public func setUp(image: UIImageView) {
+        imagemView = image
         imagemView.frame = self.bounds
         imagemView.contentMode = .scaleAspectFill
         imagemView.adjustsImageWhenAncestorFocused = true

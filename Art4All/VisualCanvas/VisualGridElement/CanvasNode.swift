@@ -33,8 +33,8 @@ public class CanvasNode: UIView {
 
         } else {
             self.backgroundColor = visualGridElement?.nodeColor
-            self.layer.borderWidth = 1
-            self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            self.layer.borderWidth = 0.5
+            self.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             self.isSelected = false
         }
     }

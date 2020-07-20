@@ -19,8 +19,7 @@ class MenuView: UIView {
         super.init(frame: frame)
         layout.scrollDirection = .horizontal
     }
-    convenience init(frame: CGRect, title: String, images: [UIImage]) {
-
+    convenience init(frame: CGRect, title: String, images: [UIImageView]) {
         var frame = frame
         self.init(frame: frame)
         frame.size.height = 252
@@ -54,7 +53,7 @@ class MenuView: UIView {
     }
 
     // MARK: Collection
-    private func setCollectionView(images: [UIImage]) {
+    private func setCollectionView(images: [UIImageView]) {
         canvas.images = images
         canvas.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(canvas)

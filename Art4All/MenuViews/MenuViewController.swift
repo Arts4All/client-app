@@ -84,14 +84,12 @@ class MenuViewController: UIViewController {
 
     // MARK: Play Button
     private func setPlayButton() {
-
         setupPlayButtonAction()
         let imageButton = #imageLiteral(resourceName: "buttonPlayDisable")
         let imageButtonSelect = #imageLiteral(resourceName: "buttonPlayEnabled")
         playButton.setImage(imageButton, for: .normal)
         playButton.setImage(imageButtonSelect, for: .highlighted)
         playButton.setImage(imageButtonSelect, for: .focused)
-        playButton.tintColor = .white
     }
 
     private func setupPlayButtonAction() {
@@ -113,9 +111,9 @@ class MenuViewController: UIViewController {
         self.savedView = self.setupView(view: savedView, title: "Canvas Salvos",
                                         images: CustomCollectionView.loadCoreData())
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
-                                           images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
+                                           images: CustomCollectionView.loadFromWeb(scale: 100))
     }
-    private func setupView(view: MenuView?, title: String, images: [UIImage]) -> MenuView? {
+    private func setupView(view: MenuView?, title: String, images: [UIImageView]) -> MenuView? {
         var view = view
         view = MenuView(frame: self.view.frame, title: title, images: images)
         view?.translatesAutoresizingMaskIntoConstraints = false

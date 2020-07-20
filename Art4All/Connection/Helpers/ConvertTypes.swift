@@ -31,7 +31,7 @@ extension UIColor {
             return nil
         }
     }
-    static var baseColor: UIColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    static var baseColor: UIColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
 }
 
 extension String {
