@@ -31,7 +31,7 @@ public class CanvasNode: UIView {
             self.isSelected = true
 
         } else {
-            self.layer.borderWidth = 0.3
+            self.layer.borderWidth = 0.6
             self.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             self.isSelected = false
         }

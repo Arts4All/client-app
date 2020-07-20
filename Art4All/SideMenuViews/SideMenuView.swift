@@ -68,9 +68,9 @@ class SideMenuView: UIView {
     }
 
     private func setUpViews() {
-        self.setupCunstraintsView(view: returnView, constant: -(heightScreen * 0.125))
-        self.setupCunstraintsView(view: saveView, constant: heightScreen * 0.125)
-        self.setupCunstraintsView(view: transformView, constant: heightScreen * 0.375)
+        self.setupCunstraintsView(view: returnView, constant: -(SideMenuViewSizeHelper.height))
+        self.setupCunstraintsView(view: saveView, constant: SideMenuViewSizeHelper.height)
+        self.setupCunstraintsView(view: transformView, constant: SideMenuViewSizeHelper.height)
     }
 
     private func setUpDescription() {
@@ -92,7 +92,7 @@ class SideMenuView: UIView {
         let constraints = [
             view.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: constant),
             view.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            view.widthAnchor.constraint(equalToConstant: 300),
+            view.widthAnchor.constraint(equalToConstant: SideMenuViewSizeHelper.width),
             view.heightAnchor.constraint(equalToConstant: heightScreen/4)
         ]
         NSLayoutConstraint.activate(constraints)
