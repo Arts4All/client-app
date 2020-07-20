@@ -25,10 +25,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.047058823529411764" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="L4C-4D-AY7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="I14-XW-qAf"/>
-                            <constraint firstAttribute="bottom" secondItem="L4C-4D-AY7" secondAttribute="bottom" id="QGL-6k-Pso"/>
-                            <constraint firstItem="L4C-4D-AY7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="orB-eO-s7i"/>
-                            <constraint firstAttribute="trailing" secondItem="L4C-4D-AY7" secondAttribute="trailing" id="ydP-6S-OPP"/>
+                            <constraint firstItem="L4C-4D-AY7" firstAttribute="centerY" secondItem="wu6-TO-1qx" secondAttribute="centerY" id="BJR-Zd-f5f"/>
+                            <constraint firstItem="L4C-4D-AY7" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="KlD-5c-Lld"/>
+                            <constraint firstItem="L4C-4D-AY7" firstAttribute="centerX" secondItem="wu6-TO-1qx" secondAttribute="centerX" id="nJj-hY-nSL"/>
+                            <constraint firstItem="L4C-4D-AY7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="w2e-Ud-8d8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
@@ -40,6 +40,6 @@
     </scenes>
     <color key="tintColor" red="0.16862745100000001" green="0.22896826270000001" blue="0.3529549837" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
-        <image name="launch" width="1816" height="1136"/>
+        <image name="launch" width="1681" height="299"/>
     </resources>
 </document>

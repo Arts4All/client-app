@@ -18,7 +18,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imagemView.clipsToBounds = false
         imagemView.layer.cornerRadius = 20
         imagemView.layer.masksToBounds = true
-        self.backgroundColor = .clear
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        self.layer.cornerRadius = 20
+        self.layer.masksToBounds = true
         addSubview(imagemView)
     }
 

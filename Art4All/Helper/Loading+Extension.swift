@@ -23,6 +23,9 @@ extension UIView {
         }
     }
     func removeLoading() {
-            self.viewWithTag(999)?.removeFromSuperview()
+        for view in self.subviews {
+            print(view.tag)
+        }
+        self.viewWithTag(999)?.removeFromSuperview()
     }
 }

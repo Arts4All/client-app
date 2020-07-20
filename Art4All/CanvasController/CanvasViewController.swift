@@ -34,16 +34,22 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .backgroundColor
         self.view.addSubview(sideMenu)
         self.setupInitalGrid()
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        ConnectionSocket.shared.disconnect()
+    }
+
     // MARK: - GRID
     func setupInitalGrid() {
         self.view.showLoading()
         ConnectionSocket.shared.setupDelegate(delegate: self)
+        ConnectionSocket.shared.connect()
     }
 
     func setupGrid(_ numberOfColumns: Int, _ numberOfLines: Int, _ mapColors: MapColors) {

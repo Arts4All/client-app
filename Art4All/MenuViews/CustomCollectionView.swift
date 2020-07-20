@@ -40,7 +40,6 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
                     imageView.image = savedImage
                     savedImages.append(imageView)
                 }
-                print(DAOError.invalidData(description: "Failed to transform data in UIImage"))
             }
         } catch {
             print(DAOError.internalError(description: "Failed to read core data"))

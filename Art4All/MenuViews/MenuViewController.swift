@@ -74,7 +74,7 @@ class MenuViewController: UIViewController {
         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             buttonLabel.centerYAnchor.constraint(equalTo: playButton.bottomAnchor,
-                                                 constant: 30),
+                                                 constant: 50),
             buttonLabel.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
             buttonLabel.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor),
             buttonLabel.heightAnchor.constraint(equalTo: buttonLabel.heightAnchor)
