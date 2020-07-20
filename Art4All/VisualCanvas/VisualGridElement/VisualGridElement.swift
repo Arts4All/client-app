@@ -38,8 +38,8 @@ public class VisualGridElement: LogicalGridElement {
 
 //        self.node.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-        self.node.layer.borderWidth = 1
-        self.node.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.node.layer.borderWidth = 0.3
+        self.node.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
 
         super.init(xPosition: xPosition, yPosition: yPosition)
 
@@ -51,7 +51,6 @@ public class VisualGridElement: LogicalGridElement {
     }
 
     func changeTileState(state: TileStateEnum, newColor: UIColor) {
-        print("here")
         switch state {
         case .intact:
             self.nodeColor = .baseColor

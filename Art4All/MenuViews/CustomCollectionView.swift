@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
-    public var images: [UIImage] = []
+    public var images: [UIImageView] = []
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         var frame = frame
@@ -26,6 +26,35 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
 
     private func setUp() {
         self.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "CustomCollectionViewCell")
+    }
+
+    static func loadCoreData() -> [UIImageView] {
+        var savedImages: [UIImageView] = []
+        let coreDataController = CanvasImageCoreDataController()
+        do {
+            let canvasImages = try coreDataController.read()
+            for canvasImage in canvasImages {
+                let data = canvasImage.data
+                if let savedImage = UIImage(data: data) {
+                    let imageView = UIImageView()
+                    imageView.image = savedImage
+                    savedImages.append(imageView)
+                }
+            }
+        } catch {
+            print(DAOError.internalError(description: "Failed to read core data"))
+        }
+        return savedImages
+    }
+    static func loadFromWeb(scale: Int) -> [UIImageView] {
+        var webImages = [UIImageView]()
+        let url = Environment.URL + "/canvas/image/\(scale)/"
+        for index in 0..<20 {
+            let imageView = UIImageView()
+            imageView.imageFromWeb(urlNamed: url + String(index))
+            webImages.append(imageView)
+        }
+        return webImages
     }
 }
 
@@ -48,13 +77,9 @@ extension CustomCollectionView: UICollectionViewDelegate {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 40
     }
-    func collectionView(collectionView: UICollectionView, canFocusItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
 }
 
 extension CustomCollectionView: UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }

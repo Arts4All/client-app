@@ -9,28 +9,28 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-
-    public func setUp(image: UIImage) {
-        let imagemView = UIImageView(image: image)
+    var imagemView = UIImageView()
+    public func setUp(image: UIImageView) {
+        imagemView = image
         imagemView.frame = self.bounds
-        imagemView.contentMode = .scaleAspectFit
+        imagemView.contentMode = .scaleAspectFill
         imagemView.adjustsImageWhenAncestorFocused = true
         imagemView.clipsToBounds = false
+        imagemView.layer.cornerRadius = 20
+        imagemView.layer.masksToBounds = true
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         self.layer.cornerRadius = 20
-        self.backgroundColor = .white
+        self.layer.masksToBounds = true
         addSubview(imagemView)
     }
 
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-
         coordinator.addCoordinatedAnimations({
-
             if self.isFocused {
-                self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                self.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
             } else {
               self.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
-
         }, completion: nil)
     }
 }

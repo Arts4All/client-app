@@ -26,15 +26,13 @@ public class CanvasNode: UIView {
         super.didUpdateFocus(in: context, with: coordinator)
 
         if context.nextFocusedView == self {
-            self.backgroundColor = .clear
             self.layer.borderWidth = 4
             self.layer.borderColor = paintColor.cgColor
             self.isSelected = true
 
         } else {
-            self.backgroundColor = visualGridElement?.nodeColor
-            self.layer.borderWidth = 1
-            self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            self.layer.borderWidth = 0.3
+            self.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             self.isSelected = false
         }
     }

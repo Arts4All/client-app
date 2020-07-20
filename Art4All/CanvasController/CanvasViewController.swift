@@ -9,8 +9,13 @@
 import UIKit
 import SocketIO
 
+protocol CanvasViewControllerDelegate: class {
+    func reload()
+}
+
 class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWheelDelegate {
 
+    private let coreDataController = CanvasImageCoreDataController()
     private let canvasView = UIView()
     private var numberOfLines: Int = 0
     private var numberOfColumns: Int = 0
@@ -20,32 +25,31 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
     private var gestureRecognizer: UITapGestureRecognizer! = nil
     private var longPressRecognizer: UILongPressGestureRecognizer! = nil
-    lazy private var colorWheelCenterXAnchor = self.colorWheelView.centerXAnchor.constraint(
+    private lazy var colorWheelCenterXAnchor = self.colorWheelView.centerXAnchor.constraint(
         equalTo: self.view.centerXAnchor)
-    lazy var colorWheelView: ColorWheelView = ColorWheelView(
-                                                             frame: UIScreen.main.bounds,
-                                                             viewControllerDelegate: self)
+    lazy var colorWheelView = ColorWheelView(frame: UIScreen.main.bounds,
+                                             viewControllerDelegate: self)
     lazy private var sideMenu = SideMenuView(frame: self.view.frame, delegate: self)
+    public weak var delegate: CanvasViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .backgroundColor
         self.view.addSubview(sideMenu)
         self.setupInitalGrid()
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
     }
 
-    override func viewDidLayoutSubviews() {
-    }
-
-    func setupSocket() {
-
+    override func viewDidDisappear(_ animated: Bool) {
+        ConnectionSocket.shared.disconnect()
     }
 
     // MARK: - GRID
     func setupInitalGrid() {
         self.view.showLoading()
         ConnectionSocket.shared.setupDelegate(delegate: self)
+        ConnectionSocket.shared.connect()
     }
 
     func setupGrid(_ numberOfColumns: Int, _ numberOfLines: Int, _ mapColors: MapColors) {
@@ -219,8 +223,23 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 }
 
 extension CanvasViewController: SideMenuViewDelegate {
+    private func printImage() -> UIImage? {
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.canvasView.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let savedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return savedImage
+    }
     func save() {
-        print("save")
+        guard let data = self.printImage()?.pngData() else { return }
+        let uniqueIdentifier = UUID().uuidString
+        let canvasImage = CanvasImage(data: data, identifier: uniqueIdentifier)
+        do {
+            try coreDataController.create(newRecord: canvasImage)
+        } catch {
+            print(DAOError.internalError(description: "Failed to create NSObject"))
+        }
     }
 
     func transform() {
@@ -228,6 +247,7 @@ extension CanvasViewController: SideMenuViewDelegate {
     }
 
     func back() {
+        self.delegate?.reload()
         self.navigationController?.popViewController(animated: true)
     }
 }

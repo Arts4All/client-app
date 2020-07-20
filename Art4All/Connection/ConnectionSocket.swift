@@ -28,7 +28,7 @@ final class ConnectionSocket {
     //Manager SocketIO
     let manager = SocketManager(socketURL: URL(string: Environment.URL)!,
                                 config: [.log(false), .compress])
-    lazy var socket = manager.defaultSocket
+    private lazy var socket = manager.defaultSocket
 
     private init() {
         // Do any additional setup after loading the view.
@@ -42,7 +42,6 @@ final class ConnectionSocket {
         }
         self.setupOn()
         self.drawToClient()
-        socket.connect()
     }
 
     private func setupOn() {
@@ -68,6 +67,14 @@ final class ConnectionSocket {
         self.socket.emitWithAck("join", Environment.uuid).timingOut(after: 1) { data in
             print(data)
         }
+    }
+
+    public func connect() {
+        socket.connect()
+    }
+
+    public func disconnect() {
+        self.socket.disconnect()
     }
 
     func drawToServer(color: UIColor, _ position: (xPosition: Int, yPosition: Int)) {

@@ -10,14 +10,14 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    private var savedView: MenuView!
+    var savedView: MenuView!
     private var finishedView: MenuView!
-    private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "aslam"))
+    private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "background_mennun"))
     private let playButton = UIButton(type: .custom)
     private let buttonLabel: UILabel = UILabel()
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-           return [playButton]
-       }
+        return [playButton]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +53,11 @@ class MenuViewController: UIViewController {
     }
     private func setBackgroundImage() {
         backgroundImageView.frame = UIScreen.main.bounds
-        backgroundImageView.contentMode = .scaleAspectFill
-
+        backgroundImageView.contentMode = .scaleAspectFit
+        view.backgroundColor = .backgroundColor
         let coverLayer = CALayer()
         coverLayer.frame = backgroundImageView.bounds
-        coverLayer.backgroundColor = UIColor.black.cgColor
+        coverLayer.backgroundColor = UIColor.backgroundColor.cgColor
         coverLayer.opacity = 0.4
         backgroundImageView.layer.addSublayer(coverLayer)
         self.view.addSubview(backgroundImageView)
@@ -65,33 +65,31 @@ class MenuViewController: UIViewController {
 
     // MARK: Button Label
     private func setButtonLabel() {
-         buttonLabel.text = "Entrar no canvas"
-         buttonLabel.font = UIFont(name: "Apple ][", size: 24)
-         buttonLabel.textColor = .white
-     }
+        buttonLabel.text = "Entrar no canvas"
+        buttonLabel.font = UIFont(name: "Apple ][", size: 24)
+        buttonLabel.textColor = .white
+    }
 
-     private func setLabelPosition() {
-         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
-         let constraints = [
-             buttonLabel.centerYAnchor.constraint(equalTo: playButton.bottomAnchor,
-                                                 constant: 30),
-             buttonLabel.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
-             buttonLabel.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor),
-             buttonLabel.heightAnchor.constraint(equalTo: buttonLabel.heightAnchor)
-         ]
-         NSLayoutConstraint.activate(constraints)
-     }
+    private func setLabelPosition() {
+        buttonLabel.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            buttonLabel.centerYAnchor.constraint(equalTo: playButton.bottomAnchor,
+                                                 constant: 50),
+            buttonLabel.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
+            buttonLabel.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor),
+            buttonLabel.heightAnchor.constraint(equalTo: buttonLabel.heightAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
 
     // MARK: Play Button
     private func setPlayButton() {
-
         setupPlayButtonAction()
         let imageButton = #imageLiteral(resourceName: "buttonPlayDisable")
         let imageButtonSelect = #imageLiteral(resourceName: "buttonPlayEnabled")
         playButton.setImage(imageButton, for: .normal)
         playButton.setImage(imageButtonSelect, for: .highlighted)
         playButton.setImage(imageButtonSelect, for: .focused)
-        playButton.tintColor = .white
     }
 
     private func setupPlayButtonAction() {
@@ -110,11 +108,12 @@ class MenuViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)    }
     // MARK: Canvas
     private func setUpSavedCanvas() {
-        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos", images: [#imageLiteral(resourceName: "aslam")])
+        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos",
+                                        images: CustomCollectionView.loadCoreData())
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
-                                           images: [#imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam"), #imageLiteral(resourceName: "aslam")])
+                                           images: CustomCollectionView.loadFromWeb(scale: 100))
     }
-    private func setupView(view: MenuView?, title: String, images: [UIImage]) -> MenuView? {
+    private func setupView(view: MenuView?, title: String, images: [UIImageView]) -> MenuView? {
         var view = view
         view = MenuView(frame: self.view.frame, title: title, images: images)
         view?.translatesAutoresizingMaskIntoConstraints = false
@@ -132,7 +131,15 @@ class MenuViewController: UIViewController {
 
     @objc func actionButton() {
         let canvasViewController = CanvasViewController()
+        canvasViewController.delegate = self
         self.navigationController?.pushViewController(canvasViewController, animated: true)
 
+    }
+}
+
+extension MenuViewController: CanvasViewControllerDelegate {
+    func reload() {
+        self.savedView.canvas.images = CustomCollectionView.loadCoreData()
+        self.savedView.canvas.reloadData()
     }
 }
