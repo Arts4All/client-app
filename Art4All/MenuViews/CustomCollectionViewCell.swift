@@ -16,10 +16,19 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imagemView.contentMode = .scaleAspectFill
         imagemView.adjustsImageWhenAncestorFocused = true
         imagemView.clipsToBounds = false
-        self.layer.cornerRadius = 20
-        self.backgroundColor = .white
+        imagemView.layer.cornerRadius = 20
+        imagemView.layer.masksToBounds = true
+        self.backgroundColor = .clear
         addSubview(imagemView)
     }
 
-    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) { }
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        coordinator.addCoordinatedAnimations({
+            if self.isFocused {
+                self.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+            } else {
+              self.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }, completion: nil)
+    }
 }

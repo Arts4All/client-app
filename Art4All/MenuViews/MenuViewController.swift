@@ -12,12 +12,12 @@ class MenuViewController: UIViewController {
 
     var savedView: MenuView!
     private var finishedView: MenuView!
-    private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "aslam"))
+    private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "background_mennun"))
     private let playButton = UIButton(type: .custom)
     private let buttonLabel: UILabel = UILabel()
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-           return [playButton]
-       }
+        return [playButton]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +53,11 @@ class MenuViewController: UIViewController {
     }
     private func setBackgroundImage() {
         backgroundImageView.frame = UIScreen.main.bounds
-        backgroundImageView.contentMode = .scaleAspectFill
-
+        backgroundImageView.contentMode = .scaleAspectFit
+        view.backgroundColor = .backgroundColor
         let coverLayer = CALayer()
         coverLayer.frame = backgroundImageView.bounds
-        coverLayer.backgroundColor = UIColor.black.cgColor
+        coverLayer.backgroundColor = UIColor.backgroundColor.cgColor
         coverLayer.opacity = 0.4
         backgroundImageView.layer.addSublayer(coverLayer)
         self.view.addSubview(backgroundImageView)
@@ -65,22 +65,22 @@ class MenuViewController: UIViewController {
 
     // MARK: Button Label
     private func setButtonLabel() {
-         buttonLabel.text = "Entrar no canvas"
-         buttonLabel.font = UIFont(name: "Apple ][", size: 24)
-         buttonLabel.textColor = .white
-     }
+        buttonLabel.text = "Entrar no canvas"
+        buttonLabel.font = UIFont(name: "Apple ][", size: 24)
+        buttonLabel.textColor = .white
+    }
 
-     private func setLabelPosition() {
-         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
-         let constraints = [
-             buttonLabel.centerYAnchor.constraint(equalTo: playButton.bottomAnchor,
+    private func setLabelPosition() {
+        buttonLabel.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            buttonLabel.centerYAnchor.constraint(equalTo: playButton.bottomAnchor,
                                                  constant: 30),
-             buttonLabel.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
-             buttonLabel.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor),
-             buttonLabel.heightAnchor.constraint(equalTo: buttonLabel.heightAnchor)
-         ]
-         NSLayoutConstraint.activate(constraints)
-     }
+            buttonLabel.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
+            buttonLabel.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor),
+            buttonLabel.heightAnchor.constraint(equalTo: buttonLabel.heightAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
 
     // MARK: Play Button
     private func setPlayButton() {

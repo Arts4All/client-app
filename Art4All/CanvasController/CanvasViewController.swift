@@ -31,7 +31,6 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
                                              viewControllerDelegate: self)
     lazy private var sideMenu = SideMenuView(frame: self.view.frame, delegate: self)
     public weak var delegate: CanvasViewControllerDelegate?
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
     }
-    
+
     // MARK: - GRID
     func setupInitalGrid() {
         self.view.showLoading()
