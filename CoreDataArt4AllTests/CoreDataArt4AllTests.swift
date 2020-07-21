@@ -32,9 +32,12 @@ class CoreDataArt4AllTests: XCTestCase {
     }
 
     func testCoreDataObjectCreationAndFetch() throws {
+        
+        let controller = CanvasImageCoreDataController()
+
+        try controller.deleteAll()
 
         let testIdentifier = "SavedItem"
-        let controller = CanvasImageCoreDataController()
         let savedObject = CanvasImage(data: Data(), identifier: testIdentifier)
 
         var savedObjects: [CanvasImage] = []
@@ -49,13 +52,16 @@ class CoreDataArt4AllTests: XCTestCase {
     }
 
     func testCoreDataObjectUpdate() throws {
+        
+        let controller = CanvasImageCoreDataController()
+        
+        try controller.deleteAll()
 
         let testData = "TestData"
         let newData = "NewData"
         let testURl = Data(base64Encoded: testData) ?? Data()
         let newURL = Data(base64Encoded: newData) ?? Data()
 
-        let controller = CanvasImageCoreDataController()
 
         let savedObject = CanvasImage(data: testURl, identifier: testData)
 
@@ -68,7 +74,7 @@ class CoreDataArt4AllTests: XCTestCase {
 
             try fetchedRecords.append(contentsOf: controller.read())
 
-            XCTAssertEqual(fetchedRecords[1], updatedRecord)
+            XCTAssertEqual(fetchedRecords[0], updatedRecord)
         } catch {
             XCTestError(_nsError: NSError())
         }

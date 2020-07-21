@@ -72,8 +72,11 @@ final public class CanvasImageCoreDataController: GenericDAO {
     func search(record: CanvasImage) throws -> CDCanvasImage {
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", record.identifier)
+        
         var returnedCanvasImage: CDCanvasImage?
-
+        
         do {
 
             let result = try managedContext.fetch(fetchRequest)
@@ -113,5 +116,45 @@ final public class CanvasImageCoreDataController: GenericDAO {
     }
     
     func delete(deletedRecord: CanvasImage) throws {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", deletedRecord.identifier)
+        
+        do {
+            
+            let result = try managedContext.fetch(fetchRequest)
+            
+            guard result.isEmpty, let deletedObject = result.first as? CDCanvasImage else {
+                throw DAOError.invalidData(description: "Result array is empty")
+            }
+            
+            managedContext.delete(deletedObject)
+            
+            try managedContext.save()
+        } catch {
+            throw DAOError.internalError(description: error.localizedDescription)
+        }
+    }
+    
+    func deleteAll() throws {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            
+            guard let canvasImageData = result as? [CDCanvasImage] else {
+                throw DAOError.invalidData(
+                    description: "Failed to cast fetch request result to an Array of CDCanvasImage")
+            }
+            
+            for canvasImage in canvasImageData {
+                managedContext.delete(canvasImage)
+            }
+            
+        } catch {
+            throw DAOError.internalError(description: "Problem during core  data fetch request")
+        }
     }
 }
