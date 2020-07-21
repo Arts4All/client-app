@@ -16,6 +16,7 @@ protocol CanvasViewControllerDelegate: class {
 class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWheelDelegate {
 
     private let coreDataController = CanvasImageCoreDataController()
+    private let motherView = UIView()
     private let canvasView = UIView()
     private var numberOfLines: Int = 0
     private var numberOfColumns: Int = 0
@@ -54,7 +55,8 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 
     func setupGrid(_ numberOfColumns: Int, _ numberOfLines: Int, _ mapColors: MapColors) {
         self.view.removeLoading()
-        self.view.addSubview(canvasView)
+        self.view.addSubview(motherView)
+        self.motherView.addSubview(canvasView)
 
         grid = VisualGrid(numberOfColumns: numberOfColumns,
                           numberOfLines: numberOfLines,
@@ -82,18 +84,30 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         setupGestureRecognizer()
 
         // Constraints
+//        motherView.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        setupMotherViewConstraints()
         setupCanvasViewConstraints()
         setupGridConstraints()
         setupColorWheel()
         setupColorWheelContraints()
 
     }
+    
+    func setupMotherViewConstraints() {
+        motherView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            motherView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            motherView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            motherView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            motherView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: SideMenuViewSizeHelper.width)
+        ])
+    }
 
     func setupCanvasViewConstraints() {
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            canvasView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 0),
-            canvasView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            canvasView.centerXAnchor.constraint(equalTo: self.motherView.centerXAnchor, constant: 0),
+            canvasView.centerYAnchor.constraint(equalTo: self.motherView.centerYAnchor, constant: 0),
             canvasView.widthAnchor.constraint(equalToConstant: calculateCanvasWidth()),
             canvasView.heightAnchor.constraint(equalToConstant: calcutateCanvasHeight())
         ])
