@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class MenuViewController: UIViewController {
 
     var savedView: MenuView!
