@@ -85,11 +85,9 @@ class MenuViewController: UIViewController {
     // MARK: Play Button
     private func setPlayButton() {
         setupPlayButtonAction()
-        let imageButton = #imageLiteral(resourceName: "buttonPlayDisable")
-        let imageButtonSelect = #imageLiteral(resourceName: "buttonPlayEnabled")
-        playButton.setImage(imageButton, for: .normal)
-        playButton.setImage(imageButtonSelect, for: .highlighted)
-        playButton.setImage(imageButtonSelect, for: .focused)
+        playButton.setImage(#imageLiteral(resourceName: "normal"), for: .normal)
+        playButton.setImage(#imageLiteral(resourceName: "highlighted"), for: .highlighted)
+        playButton.setImage(#imageLiteral(resourceName: "focused"), for: .focused)
     }
 
     private func setupPlayButtonAction() {

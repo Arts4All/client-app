@@ -13,7 +13,7 @@ class MenuView: UIView {
     public var titleLabel = UILabel()
     private let layout = UICollectionViewFlowLayout()
     lazy var canvas = CustomCollectionView(frame: self.frame,
-                                                   collectionViewLayout: layout)
+                                           collectionViewLayout: layout)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
