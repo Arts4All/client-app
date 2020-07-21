@@ -19,6 +19,7 @@ protocol GenericDAO {
     func create(newRecord: Generic) throws
     func read() throws -> [Generic]
     func update(updatedRecord: Generic) throws
+    func delete(deletedRecord: Generic) throws
 
 }
 
