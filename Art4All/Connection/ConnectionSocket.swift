@@ -78,8 +78,7 @@ final class ConnectionSocket {
     }
 
     func drawToServer(color: UIColor, _ position: (xPosition: Int, yPosition: Int)) {
-        guard let rgb = color.rgb() else { return }
-        let stringColor = "\(rgb.red), \(rgb.green), \(rgb.blue)"
+        guard let stringColor = color.rgb() else { return }
         self.socket.emitWithAck("drawToServer",
                                 position.xPosition,
                                 position.yPosition,
@@ -100,7 +99,6 @@ final class ConnectionSocket {
                 print("Playload incorreto")
                 return
             }
-            print(xPosition, yPosition)
             self.delegate?.changeTileState(color: color,
                                            position: (xPosition: xPosition,
                                                       yPosition: yPosition))
