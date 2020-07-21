@@ -111,5 +111,7 @@ final public class CanvasImageCoreDataController: GenericDAO {
             throw DAOError.internalError(description: "Problem during core  data fetch request")
         }
     }
-
+    
+    func delete(deletedRecord: CanvasImage) throws {
+    }
 }
