@@ -6,11 +6,11 @@
 //  Copyright © 2020 Matheus Gois. All rights reserved.
 //
 
+import Foundation
+
+@objc
 protocol SideMenuViewDelegate: class {
     func back()
-    func save()
-}
-
-extension SideMenuViewDelegate {
-    func delete() {}
+    @objc optional func save()
+    @objc optional func delete()
 }

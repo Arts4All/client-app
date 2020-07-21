@@ -28,29 +28,25 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         self.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "CustomCollectionViewCell")
     }
 
-    static func loadCoreData() -> [UIImageView] {
-        var savedImages: [UIImageView] = []
+    static func loadCoreData() -> CellImagesViews {
+        var savedImages: CellImagesViews = []
         let coreDataController = CanvasImageCoreDataController()
         do {
             let canvasImages = try coreDataController.read()
-            for canvasImage in canvasImages {
-                let data = canvasImage.data
-                if let savedImage = UIImage(data: data) {
-                    let imageView = UIImageView()
-                    imageView.image = savedImage
-                    savedImages.append(imageView)
-                }
+            for canvas in canvasImages {
+                let cell = CellImageView(frame: .zero, canvas: canvas)
+                savedImages.append(cell)
             }
         } catch {
             print(DAOError.internalError(description: "Failed to read core data"))
         }
-        return savedImages
+        return savedImages.reversed()
     }
-    static func loadFromWeb(scale: Int) -> [UIImageView] {
-        var webImages = [UIImageView]()
+    static func loadFromWeb(scale: Int) -> CellImagesViews {
+        var webImages = CellImagesViews()
         let url = Environment.URL + "/canvas/image/\(scale)/"
-        for index in 0..<20 {
-            let imageView = UIImageView()
+        for index in 0..<10 {
+            let imageView = CellImageView(frame: .zero)
             imageView.imageFromWeb(urlNamed: url + String(index))
             webImages.append(imageView)
         }

@@ -9,7 +9,9 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-    var imagemView = UIImageView()
+    private(set) var imagemView = UIImageView()
+    var identifier = ""
+
     public func setUp(image: UIImageView) {
         imagemView = image
         imagemView.frame = self.bounds

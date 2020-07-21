@@ -9,7 +9,7 @@
 import UIKit
 
 class VisualizationController: UIViewController {
-
+    private let motherView = UIImageView()
     private var image: UIImage?
     private weak var delegate: ReloadControllerDelegate?
     private lazy var sideMenu = SideMenuView(frame: self.view.frame,
@@ -33,18 +33,31 @@ class VisualizationController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        motherView.image = #imageLiteral(resourceName: "aslam")
+        self.view.addSubview(motherView)
+    }
+    override func viewDidLayoutSubviews() {
+        self.setupMotherViewConstraints()
+    }
+    private func setupMotherViewConstraints() {
+        motherView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            motherView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            motherView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            motherView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            motherView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor,
+                                                constant: SideMenuViewSizeHelper.width)
+        ])
     }
 }
 
 extension VisualizationController: SideMenuViewDelegate {
     func delete() {
-
+        print("here")
     }
 
     func back() {
         self.delegate?.reload()
         self.navigationController?.popViewController(animated: true)
     }
-
-    func save() { }
 }

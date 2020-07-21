@@ -27,6 +27,7 @@
 		82DA458B24C260F500140220 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458A24C260F500140220 /* SideMenuView.swift */; };
 		82DA458D24C2610000140220 /* SideMenuViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458C24C2610000140220 /* SideMenuViews.swift */; };
 		82DA458F24C2615600140220 /* Loading+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458E24C2615600140220 /* Loading+Extension.swift */; };
+		82FFD1BB24C787FA00A8D8A4 /* CellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FFD1BA24C787FA00A8D8A4 /* CellImageView.swift */; };
 		D9007F9D24C65F960074A426 /* SideMenu + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9007F9C24C65F960074A426 /* SideMenu + Helpers.swift */; };
 		D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6724B2A4B200EB2A58 /* LogicalGrid.swift */; };
 		D9036E6A24B2A4BE00EB2A58 /* LogicalGridElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9036E6924B2A4BE00EB2A58 /* LogicalGridElement.swift */; };
@@ -102,6 +103,7 @@
 		82DA458A24C260F500140220 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		82DA458C24C2610000140220 /* SideMenuViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViews.swift; sourceTree = "<group>"; };
 		82DA458E24C2615600140220 /* Loading+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading+Extension.swift"; sourceTree = "<group>"; };
+		82FFD1BA24C787FA00A8D8A4 /* CellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImageView.swift; sourceTree = "<group>"; };
 		D9007F9C24C65F960074A426 /* SideMenu + Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SideMenu + Helpers.swift"; sourceTree = "<group>"; };
 		D9036E6724B2A4B200EB2A58 /* LogicalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalGrid.swift; sourceTree = "<group>"; };
 		D9036E6924B2A4BE00EB2A58 /* LogicalGridElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalGridElement.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				82AE143824C777920026AB4A /* ReloadControllerDelegate.swift */,
 				82AE143A24C77DEB0026AB4A /* SideMenuViewDelegate.swift */,
 				82AE143C24C782140026AB4A /* Colors.swift */,
+				82FFD1BA24C787FA00A8D8A4 /* CellImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9F48EA224BFA32F0018B6B9 /* ColorWheelCollectionView.swift in Sources */,
+				82FFD1BB24C787FA00A8D8A4 /* CellImageView.swift in Sources */,
 				82AE143D24C782140026AB4A /* Colors.swift in Sources */,
 				82AE143924C777920026AB4A /* ReloadControllerDelegate.swift in Sources */,
 				D9036E7D24B3E07300EB2A58 /* CanvasViewController.swift in Sources */,

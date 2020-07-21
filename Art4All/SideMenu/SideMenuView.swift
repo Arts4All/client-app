@@ -73,9 +73,9 @@ class SideMenuView: UIView {
         } else if typeView.isFocused {
             switch type {
             case .save:
-                delegate?.save()
+                delegate?.save?()
             case .delete:
-                delegate?.delete()
+                delegate?.delete?()
             }
         }
     }
