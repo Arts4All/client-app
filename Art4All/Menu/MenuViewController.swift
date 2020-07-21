@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MenuViewController: UIViewController {
 
     var savedView: MenuView!
@@ -103,7 +104,8 @@ class MenuViewController: UIViewController {
             playButton.widthAnchor.constraint(equalTo: self.view.widthAnchor),
             playButton.heightAnchor.constraint(equalToConstant: 100)
         ]
-        NSLayoutConstraint.activate(constraints)    }
+        NSLayoutConstraint.activate(constraints)
+    }
     // MARK: Canvas
     private func setUpSavedCanvas() {
         self.savedView = self.setupView(view: savedView, title: "Canvas Salvos",
@@ -111,9 +113,12 @@ class MenuViewController: UIViewController {
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
                                            images: CustomCollectionView.loadFromWeb(scale: 100))
     }
-    private func setupView(view: MenuView?, title: String, images: [UIImageView]) -> MenuView? {
+    private func setupView(view: MenuView?, title: String, images: CellImagesViews) -> MenuView? {
         var view = view
-        view = MenuView(frame: self.view.frame, title: title, images: images)
+        view = MenuView(frame: self.view.frame,
+                        title: title,
+                        images: images,
+                        delegateView: self)
         view?.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -139,5 +144,13 @@ extension MenuViewController: ReloadControllerDelegate {
     func reload() {
         self.savedView.canvas.images = CustomCollectionView.loadCoreData()
         self.savedView.canvas.reloadData()
+    }
+}
+
+extension MenuViewController: CustomCollectionViewDelegate {
+    func visualization(image: UIImage, identifier: String) {
+        let visualizationView = VisualizationController()
+        visualizationView.setup(image: image, identifier: identifier, delegate: self)
+        self.navigationController?.pushViewController(visualizationView, animated: true)
     }
 }

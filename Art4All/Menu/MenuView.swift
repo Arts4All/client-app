@@ -13,18 +13,23 @@ class MenuView: UIView {
     public var titleLabel = UILabel()
     private let layout = UICollectionViewFlowLayout()
     lazy var canvas = CustomCollectionView(frame: self.frame,
-                                           collectionViewLayout: layout)
-
+                                           collectionViewLayout: layout,
+                                           delegateView: self)
+    private  var delegateView: CustomCollectionViewDelegate?
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout.scrollDirection = .horizontal
     }
-    convenience init(frame: CGRect, title: String, images: [UIImageView]) {
+    convenience init(frame: CGRect,
+                     title: String,
+                     images: CellImagesViews,
+                     delegateView: CustomCollectionViewDelegate) {
         var frame = frame
         self.init(frame: frame)
         frame.size.height = 252
         setTitle(title: title)
         setCollectionView(images: images)
+        self.delegateView = delegateView
     }
 
     func setupViews() {
@@ -53,7 +58,7 @@ class MenuView: UIView {
     }
 
     // MARK: Collection
-    private func setCollectionView(images: [UIImageView]) {
+    private func setCollectionView(images: CellImagesViews) {
         canvas.images = images
         canvas.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(canvas)
@@ -66,5 +71,11 @@ class MenuView: UIView {
             canvas.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+}
+
+extension MenuView: CustomCollectionViewDelegate {
+    func visualization(image: UIImage, identifier: String) {
+        self.delegateView?.visualization(image: image, identifier: identifier)
     }
 }

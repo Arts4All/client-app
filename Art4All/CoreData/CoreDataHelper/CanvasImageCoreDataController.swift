@@ -125,7 +125,8 @@ final public class CanvasImageCoreDataController: GenericDAO {
 
             let result = try managedContext.fetch(fetchRequest)
 
-            guard result.isEmpty, let deletedObject = result.first as? CDCanvasImage else {
+            guard !result.isEmpty,
+                let deletedObject = result.first as? CDCanvasImage else {
                 throw DAOError.invalidData(description: "Result array is empty")
             }
 

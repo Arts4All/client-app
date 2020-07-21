@@ -12,7 +12,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private(set) var imagemView = UIImageView()
     var identifier = ""
 
-    public func setUp(image: UIImageView) {
+    public func setUp(image: CellImageView) {
         imagemView = image
         imagemView.frame = self.bounds
         imagemView.contentMode = .scaleAspectFill

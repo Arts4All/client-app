@@ -286,7 +286,6 @@
 				82AE143824C777920026AB4A /* ReloadControllerDelegate.swift */,
 				82AE143A24C77DEB0026AB4A /* SideMenuViewDelegate.swift */,
 				82AE143C24C782140026AB4A /* Colors.swift */,
-				82FFD1BA24C787FA00A8D8A4 /* CellImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -409,6 +408,7 @@
 		D9F48E9024BF90190018B6B9 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				82FFD1BA24C787FA00A8D8A4 /* CellImageView.swift */,
 				D9F48E9124BF90190018B6B9 /* CustomCollectionViewCell.swift */,
 				D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */,
 				D9F48E9524BF90190018B6B9 /* MenuView.swift */,

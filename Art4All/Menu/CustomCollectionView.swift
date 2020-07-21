@@ -8,8 +8,12 @@
 
 import UIKit
 
+protocol CustomCollectionViewDelegate: class {
+    func visualization(image: UIImage, identifier: String)
+}
 class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
-    public var images: [UIImageView] = []
+    public var images: CellImagesViews = []
+    private weak var delegateView: CustomCollectionViewDelegate?
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         var frame = frame
@@ -18,6 +22,13 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         self.setUp()
         self.delegate = self
         self.dataSource = self
+    }
+
+    convenience init(frame: CGRect,
+                     collectionViewLayout layout: UICollectionViewLayout,
+                     delegateView: CustomCollectionViewDelegate) {
+        self.init(frame: frame, collectionViewLayout: layout)
+        self.delegateView = delegateView
     }
 
     required init?(coder: NSCoder) {
@@ -72,6 +83,10 @@ extension CustomCollectionView: UICollectionViewDelegate {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 40
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = images[indexPath.row]
+        self.delegateView?.visualization(image: cell.image!, identifier: cell.identifier)
     }
 }
 
