@@ -135,7 +135,7 @@ class MenuViewController: UIViewController {
     }
 }
 
-extension MenuViewController: CanvasViewControllerDelegate {
+extension MenuViewController: ReloadControllerDelegate {
     func reload() {
         self.savedView.canvas.images = CustomCollectionView.loadCoreData()
         self.savedView.canvas.reloadData()

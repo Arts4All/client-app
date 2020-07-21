@@ -11,6 +11,7 @@ class SideMenu: UIView {
     var imageView = UIImageView()
     var image = UIImage()
     var label = UILabel()
+    var type: ButtonType = .save
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,7 +50,7 @@ class SideMenu: UIView {
         label.textColor = .gray
         label.textAlignment = .center
         label.lineBreakMode = .byClipping
-        label.numberOfLines = 2
+        label.numberOfLines = 3
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(label)
     }
@@ -66,7 +67,7 @@ class SideMenu: UIView {
 
     func setConstraintsLabel() {
         let constraints = [
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 45),
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40),
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             label.widthAnchor.constraint(equalTo: self.widthAnchor)
         ]
@@ -80,9 +81,12 @@ class SideMenu: UIView {
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 
         coordinator.addCoordinatedAnimations({
-
             if self.isFocused {
-                self.backgroundColor = .gray
+                if self.type == .delete {
+                    self.backgroundColor = .deleteColor
+                } else {
+                    self.backgroundColor = .gray
+                }
                 self.label.textColor = .white
             } else {
                 self.backgroundColor = .white

@@ -9,10 +9,6 @@
 import UIKit
 import SocketIO
 
-protocol CanvasViewControllerDelegate: class {
-    func reload()
-}
-
 class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWheelDelegate {
 
     private let coreDataController = CanvasImageCoreDataController()
@@ -30,8 +26,10 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         equalTo: self.view.centerXAnchor)
     lazy var colorWheelView = ColorWheelView(frame: UIScreen.main.bounds,
                                              viewControllerDelegate: self)
-    lazy private var sideMenu = SideMenuView(frame: self.view.frame, delegate: self)
-    public weak var delegate: CanvasViewControllerDelegate?
+    lazy private var sideMenu = SideMenuView(frame: self.view.frame,
+                                             delegate: self,
+                                             type: .save)
+    public weak var delegate: ReloadControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -233,6 +231,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 }
 
 extension CanvasViewController: SideMenuViewDelegate {
+
     private func printImage() -> UIImage? {
         let bounds = UIScreen.main.bounds
         UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
@@ -251,8 +250,6 @@ extension CanvasViewController: SideMenuViewDelegate {
             print(DAOError.internalError(description: "Failed to create NSObject"))
         }
     }
-
-    func transform() { }
 
     func back() {
         self.delegate?.reload()
