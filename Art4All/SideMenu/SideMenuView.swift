@@ -40,7 +40,6 @@ class SideMenuView: UIView {
         self.setUp()
         self.addSubview(returnView)
         self.addSubview(saveView)
-        self.addSubview(transformView)
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
         viewWillLayoutSubviews()
@@ -50,7 +49,6 @@ class SideMenuView: UIView {
         self.setUpViews()
         self.returnView.setupViews()
         self.saveView.setupViews()
-        self.transformView.setupViews()
     }
 
     func setUp() {
@@ -70,13 +68,11 @@ class SideMenuView: UIView {
     private func setUpViews() {
         self.setupCunstraintsView(view: returnView, constant: -(SideMenuViewSizeHelper.height))
         self.setupCunstraintsView(view: saveView, constant: SideMenuViewSizeHelper.height)
-        self.setupCunstraintsView(view: transformView, constant: SideMenuViewSizeHelper.height)
     }
 
     private func setUpDescription() {
         self.returnView = self.setupView(view: returnView, image: #imageLiteral(resourceName: "return"), text: "Voltar")
         self.saveView = self.setupView(view: saveView, image: #imageLiteral(resourceName: "save"), text: "Salvar imagem")
-        self.transformView = self.setupView(view: transformView, image: #imageLiteral(resourceName: "transform"), text: "Transformar em Wallpaper")
     }
 
     private func setupView(view: SideMenu?, image: UIImage, text: String) -> SideMenu? {

@@ -80,26 +80,22 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             self.canvasView.addSubview(tile.node)
         }
         setupTilesAction()
-
         setupGestureRecognizer()
-
-        // Constraints
-//        motherView.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
         setupMotherViewConstraints()
         setupCanvasViewConstraints()
         setupGridConstraints()
         setupColorWheel()
         setupColorWheelContraints()
-
     }
-    
+
     func setupMotherViewConstraints() {
         motherView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             motherView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             motherView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             motherView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            motherView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: SideMenuViewSizeHelper.width)
+            motherView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor,
+                                                constant: SideMenuViewSizeHelper.width)
         ])
     }
 
@@ -256,9 +252,7 @@ extension CanvasViewController: SideMenuViewDelegate {
         }
     }
 
-    func transform() {
-        print("transform")
-    }
+    func transform() { }
 
     func back() {
         self.delegate?.reload()

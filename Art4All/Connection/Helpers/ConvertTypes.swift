@@ -15,7 +15,7 @@ struct ConvertTypes {
 }
 
 extension UIColor {
-    func rgb() -> (red: Int, green: Int, blue: Int)? {
+    func rgb() -> String? {
         var fRed: CGFloat = 0
         var fGreen: CGFloat = 0
         var fBlue: CGFloat = 0
@@ -26,7 +26,7 @@ extension UIColor {
             let iGreen = Int(fGreen * 255.0)
             let iBlue = Int(fBlue * 255.0)
 
-            return (red:iRed, green:iGreen, blue:iBlue)
+            return "\(iRed), \(iGreen), \(iBlue)"
         } else {
             return nil
         }

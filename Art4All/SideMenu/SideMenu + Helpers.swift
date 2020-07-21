@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 struct SideMenuViewSizeHelper {
-    
     static let height = UIScreen.main.bounds.size.height * 0.125
-    static let width:CGFloat = 300
-    
-    init() {
-    }
+    static let width: CGFloat = 300
 }
