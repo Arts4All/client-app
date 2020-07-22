@@ -22,6 +22,8 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
     private var gestureRecognizer: UITapGestureRecognizer! = nil
     private var longPressRecognizer: UILongPressGestureRecognizer! = nil
+    private var isInColorWheel: Bool = false
+    
     private lazy var colorWheelCenterXAnchor = self.colorWheelView.centerXAnchor.constraint(
         equalTo: self.view.centerXAnchor)
     lazy var colorWheelView = ColorWheelView(frame: UIScreen.main.bounds,
@@ -30,6 +32,31 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
                                              delegate: self,
                                              type: .save)
     public weak var delegate: ReloadControllerDelegate?
+    
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        let nodePosition = UserDefaultAccess.nodePositin
+        
+        guard
+            !nodePosition.isEmpty,
+            !isInColorWheel,
+            let grid = grid
+            else {
+                return [sideMenu.returnView]
+        }
+        
+        let xPosition = nodePosition[0]
+        let yPosition = nodePosition[1]
+        
+        let logicalGrid = grid.grid
+        guard let index = logicalGrid.findElementIndex(by: xPosition, by: yPosition) else {
+            return [sideMenu.returnView]
+        }
+        
+        let tile = grid.tiles[index]
+        let node = tile.node
+        
+        return [node]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,6 +214,12 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         UIView.animate(withDuration: 1.0, delay: 1.2, options: .curveEaseIn, animations: {
             NSLayoutConstraint.deactivate([self.colorWheelCenterXAnchor])
         })
+        
+        setNeedsFocusUpdate()
+        
+        self.isInColorWheel = false
+        
+        
     }
 
     // MARK: - ColorWheel
@@ -211,18 +244,33 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
                 self.colorWheelCenterXAnchor
             ])
         })
+        
+        guard
+            let grid = grid,
+            let node = grid.getSelected(),
+            let tile = node.visualGridElement
+            else {
+                return
+        }  
+        
+        self.isInColorWheel = true
+        
+        UserDefaultAccess.nodePositin = [tile.xPosition, tile.yPosition]        
     }
 
     @objc func changeTileColor(sender: UITapGestureRecognizer) {
 
         guard
             let grid = grid,
-            let node =  grid.getSelected(),
+            let node = grid.getSelected(),
             let tile = node.visualGridElement,
             tile.hasBeenModified == false
             else {
                 return
         }
+        
+        UserDefaultAccess.nodePositin = [tile.xPosition, tile.yPosition]        
+
         ConnectionSocket.shared.drawToServer(color: paintColor,
                                              (xPosition: tile.xPosition,
                                               yPosition: tile.yPosition))
