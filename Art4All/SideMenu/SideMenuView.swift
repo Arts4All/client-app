@@ -13,7 +13,7 @@ enum ButtonType {
 
 class SideMenuView: UIView {
     private var type: ButtonType = .save
-    private var returnView: SideMenu!
+    var returnView: SideMenu!
     private var typeView: SideMenu!
     private var deleteView: SideMenu!
     private var tapGestureRecognizer: UITapGestureRecognizer!
