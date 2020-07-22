@@ -9,11 +9,11 @@
 import Foundation
 
 struct UserDefaultAccess {
-    
+
     static var nodePositin: [Int] {
         get {
-            let stringArray = UserDefaults.standard.stringArray(forKey: "nodePosition") ?? [] 
-            let integerArray: [Int] = stringArray.transformTo { 
+            let stringArray = UserDefaults.standard.stringArray(forKey: "nodePosition") ?? []
+            let integerArray: [Int] = stringArray.transformTo {
                 (Int($0) ?? 0)
             }
             return integerArray
@@ -21,9 +21,8 @@ struct UserDefaultAccess {
         set {
             let stringArray = newValue.transformTo {
                 String($0)
-            }            
+            }
             UserDefaults.standard.set(stringArray, forKey: "nodePosition")
         }
     }
 }
-
