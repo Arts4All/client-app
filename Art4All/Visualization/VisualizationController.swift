@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VisualizationController: UIViewController {
+class VisualizationController: UIViewController, SideMenuViewDelegate {
     private let coreDataController = CanvasImageCoreDataController()
     private let motherView = UIImageView()
     private var image: UIImage?
@@ -29,6 +29,8 @@ class VisualizationController: UIViewController {
 
         self.view.backgroundColor = .backgroundColor
     }
+    
+    //MARK: - Override methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,30 +39,13 @@ class VisualizationController: UIViewController {
     override func viewDidLayoutSubviews() {
         self.setupMotherViewConstraints()
     }
-    private func setupMotherViewConstraints() {
-        motherView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            motherView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            motherView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            motherView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            motherView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor,
-                                                constant: SideMenuViewSizeHelper.width)
-        ])
-    }
-}
-
-extension VisualizationController: SideMenuViewDelegate {
+    
+    //MARK: - Delegate methods
+    
     func delete() {
-        guard let data = self.image?.pngData() else { return }
-        let canvasImage = CanvasImage(data: data, identifier: identifier)
-        do {
-            try coreDataController.delete(deletedRecord: canvasImage)
-            self.back()
-        } catch {
-            print(DAOError.internalError(description: error.localizedDescription))
-        }
+        self.present(setupDeleteAlert(), animated: true)
     }
-
+    
     func back() {
         self.delegate?.reload()
         self.navigationController?.popViewController(animated: true)
@@ -75,4 +60,44 @@ extension VisualizationController: SideMenuViewDelegate {
             print(DAOError.internalError(description: "Failed to create NSObject"))
         }
     }
+    
+    //MARK: - Contraints
+    
+    private func setupMotherViewConstraints() {
+        motherView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            motherView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            motherView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            motherView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            motherView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor,
+                                                constant: SideMenuViewSizeHelper.width)
+        ])
+    }
+    
+    //MARK: - UIAlert
+    
+    private func setupDeleteAlert() -> UIAlertController{
+        
+        let deleteAlert = UIAlertController(title: "Excluir", message: "Você realmente deseja deletar a imagem?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        let deleteAction = UIAlertAction(title: "Deletar", style: .destructive, handler: { 
+            _ in
+            guard let data = self.image?.pngData() else { return }
+            let canvasImage = CanvasImage(data: data, identifier: self.identifier)
+            do {
+                try self.coreDataController.delete(deletedRecord: canvasImage)
+                self.back()
+            } catch {
+                print(DAOError.internalError(description: error.localizedDescription))
+            }
+        }) 
+        
+        deleteAlert.addAction(cancelAction)
+        deleteAlert.addAction(deleteAction)
+        
+        return deleteAlert
+    }
 }
+
