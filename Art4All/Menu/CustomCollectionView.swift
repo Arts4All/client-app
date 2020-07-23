@@ -103,11 +103,8 @@ extension CustomCollectionView: UICollectionViewDataSource {
         }
         cellCollection.setUp(image: images[indexPath.row])
         if self.webImage {
-            DispatchQueue.main.async {
-                let url = Environment.URL + "/canvas/image/10/\(indexPath.row)"
-                print(url)
-                cellCollection.imagemView.load(url: url)
-            }
+            let url = Environment.URL + "/canvas/image/50/\(indexPath.row)"
+            cellCollection.imagemView.load(url: url)
         }
         return cellCollection
     }
