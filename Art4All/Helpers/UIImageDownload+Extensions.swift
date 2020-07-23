@@ -10,6 +10,24 @@ import Foundation
 import UIKit
 
 extension UIImageView {
+    func load(url: String) {
+        guard let url = URL(string: url) else {
+            NSLog("Error: Url para baixar imagem inválida")
+            return
+        }
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension UIImageView {
     public func imageFromWeb(urlNamed url: String) {
         self.image = nil
         let activityIndicator = self.activityIndicator
@@ -40,7 +58,7 @@ extension UIImageView {
     private var activityIndicator: UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = .black
+        activityIndicator.color = .backgroundColor
         self.addSubview(activityIndicator)
 
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
