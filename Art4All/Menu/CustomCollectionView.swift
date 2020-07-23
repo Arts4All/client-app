@@ -85,7 +85,7 @@ extension CustomCollectionView: UICollectionViewDelegate {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = images[indexPath.row]
-        self.delegateView?.visualization(image: cell.image!, identifier: cell.identifier)
+        self.delegateView?.visualization(image: cell.image ?? UIImage(), identifier: cell.identifier)
     }
 }
 

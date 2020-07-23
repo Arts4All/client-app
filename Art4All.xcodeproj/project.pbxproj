@@ -17,6 +17,7 @@
 		8203581424AE518E0073EED4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203581324AE518E0073EED4 /* Environment.swift */; };
 		8272F11824C8DF61003CBBD2 /* DottedPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8272F11724C8DF61003CBBD2 /* DottedPattern.swift */; };
 		8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A58324B5134A008E2559 /* ConnectionSocket.swift */; };
+		82ACD11B24CA2D36006F8E06 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACD11A24CA2D36006F8E06 /* UIView+Extensions.swift */; };
 		82AE143324C774F20026AB4A /* VisualizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE143224C774F20026AB4A /* VisualizationController.swift */; };
 		82AE143724C775320026AB4A /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82AE143624C775320026AB4A /* Apple ][.ttf */; };
 		82AE143924C777920026AB4A /* ReloadControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE143824C777920026AB4A /* ReloadControllerDelegate.swift */; };
@@ -96,6 +97,7 @@
 		8203581324AE518E0073EED4 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		8272F11724C8DF61003CBBD2 /* DottedPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedPattern.swift; sourceTree = "<group>"; };
 		8276A58324B5134A008E2559 /* ConnectionSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSocket.swift; sourceTree = "<group>"; };
+		82ACD11A24CA2D36006F8E06 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		82AE143224C774F20026AB4A /* VisualizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationController.swift; sourceTree = "<group>"; };
 		82AE143624C775320026AB4A /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple ][.ttf"; sourceTree = "<group>"; };
 		82AE143824C777920026AB4A /* ReloadControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadControllerDelegate.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 		82DA458824C25F4400140220 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				82ACD11A24CA2D36006F8E06 /* UIView+Extensions.swift */,
 				82DA458E24C2615600140220 /* Loading+Extension.swift */,
 				82B4F3A424C62423001F95D1 /* UIImageDownload+Extensions.swift */,
 				82AE143824C777920026AB4A /* ReloadControllerDelegate.swift */,
@@ -648,6 +651,7 @@
 				82AE143D24C782140026AB4A /* Colors.swift in Sources */,
 				82AE143924C777920026AB4A /* ReloadControllerDelegate.swift in Sources */,
 				D9036E7D24B3E07300EB2A58 /* CanvasViewController.swift in Sources */,
+				82ACD11B24CA2D36006F8E06 /* UIView+Extensions.swift in Sources */,
 				D9F48E9B24BF90190018B6B9 /* MenuView.swift in Sources */,
 				D93A685F24B7B31A002EAC4D /* CoreData+Helpers.swift in Sources */,
 				820357E824AE50050073EED4 /* Art4All.xcdatamodeld in Sources */,
