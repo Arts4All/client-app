@@ -15,6 +15,7 @@
 		8203580324AE50090073EED4 /* Art4AllUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203580224AE50090073EED4 /* Art4AllUITests.swift */; };
 		8203581224AE504E0073EED4 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 8203581124AE504E0073EED4 /* SocketIO */; };
 		8203581424AE518E0073EED4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203581324AE518E0073EED4 /* Environment.swift */; };
+		8272F11824C8DF61003CBBD2 /* DottedPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8272F11724C8DF61003CBBD2 /* DottedPattern.swift */; };
 		8276A58424B5134A008E2559 /* ConnectionSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A58324B5134A008E2559 /* ConnectionSocket.swift */; };
 		82AE143324C774F20026AB4A /* VisualizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE143224C774F20026AB4A /* VisualizationController.swift */; };
 		82AE143724C775320026AB4A /* Apple ][.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82AE143624C775320026AB4A /* Apple ][.ttf */; };
@@ -93,6 +94,7 @@
 		8203580224AE50090073EED4 /* Art4AllUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art4AllUITests.swift; sourceTree = "<group>"; };
 		8203580424AE50090073EED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8203581324AE518E0073EED4 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		8272F11724C8DF61003CBBD2 /* DottedPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedPattern.swift; sourceTree = "<group>"; };
 		8276A58324B5134A008E2559 /* ConnectionSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionSocket.swift; sourceTree = "<group>"; };
 		82AE143224C774F20026AB4A /* VisualizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationController.swift; sourceTree = "<group>"; };
 		82AE143624C775320026AB4A /* Apple ][.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple ][.ttf"; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				82AE143C24C782140026AB4A /* Colors.swift */,
 				D96F65CA24C8B43100C17861 /* IntegerExension.swift */,
 				D96F65C824C8B08800C17861 /* UserDefaultAccess.swift */,
+				8272F11724C8DF61003CBBD2 /* DottedPattern.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8272F11824C8DF61003CBBD2 /* DottedPattern.swift in Sources */,
 				D9F48EA224BFA32F0018B6B9 /* ColorWheelCollectionView.swift in Sources */,
 				82FFD1BB24C787FA00A8D8A4 /* CellImageView.swift in Sources */,
 				82AE143D24C782140026AB4A /* Colors.swift in Sources */,

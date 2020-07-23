@@ -11,7 +11,7 @@ import UIKit
 
 public class CanvasNode: UIView {
 
-    var paintColor: UIColor = #colorLiteral(red: 0.2392156863, green: 0.2392156863, blue: 0.4196078431, alpha: 1)
+    var paintColor: UIColor = #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
 
     var isSelected: Bool = false
 
@@ -26,13 +26,15 @@ public class CanvasNode: UIView {
         super.didUpdateFocus(in: context, with: coordinator)
 
         if context.nextFocusedView == self {
-            self.layer.borderWidth = 4
-            self.layer.borderColor = paintColor.cgColor
+            if self.backgroundColor?.rgb() == paintColor.rgb() {
+                self.addDashBorder(color: .white)
+            } else {
+                self.addDashBorder(color: paintColor)
+            }
             self.isSelected = true
 
         } else {
-            self.layer.borderWidth = 0.6
-            self.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            self.removeDashBorder()
             self.isSelected = false
         }
     }

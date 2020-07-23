@@ -107,8 +107,9 @@ class MenuViewController: UIViewController {
     }
     // MARK: Canvas
     private func setUpSavedCanvas() {
-        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos",
+        self.savedView = self.setupView(view: savedView, title: "Galeria",
                                         images: CustomCollectionView.loadCoreData())
+        self.hiddenView()
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
                                            images: CustomCollectionView.loadFromWeb(scale: 100))
     }
@@ -135,13 +136,17 @@ class MenuViewController: UIViewController {
         let canvasViewController = CanvasViewController()
         canvasViewController.delegate = self
         self.navigationController?.pushViewController(canvasViewController, animated: true)
+    }
 
+    private func hiddenView() {
+        self.savedView.isHidden = self.savedView.canvas.images.isEmpty
     }
 }
 
 extension MenuViewController: ReloadControllerDelegate {
     func reload() {
         self.savedView.canvas.images = CustomCollectionView.loadCoreData()
+        self.hiddenView()
         self.savedView.canvas.reloadData()
     }
 }
