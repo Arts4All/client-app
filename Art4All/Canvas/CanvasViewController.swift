@@ -17,6 +17,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private var numberOfLines: Int = 0
     private var numberOfColumns: Int = 0
     private let squareSize: Int = 80
+    private let finishedCanvasAlert = UIAlertController(title: "Canvas Finalizado", message: "Um novo Canvas sera criado, o que deseja fazer?", preferredStyle: .alert)
     private var grid: VisualGrid?
     private var tiles: [VisualGridElement]?
     private var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
@@ -234,6 +235,38 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         ])
 
     }
+    
+    // MARK: - Alert Controller
+    
+    private func setupAlertController() {
+        
+        let openNewCanvasAction = UIAlertAction(title: "Abrir novo Canvas", style: .default) { action in
+            
+        }
+        
+        let saveCanvasImageAction = UIAlertAction(title: "Salvas imagem do Canvas na galeria", style: .default) { action in
+            guard let data = self.printImage()?.pngData() else { return }
+            let uniqueIdentifier = UUID().uuidString
+            let canvasImage = CanvasImage(data: data, identifier: uniqueIdentifier)
+            do {
+                try self.coreDataController.create(newRecord: canvasImage)
+            } catch {
+                print(DAOError.internalError(description: "Failed to create NSObject"))
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        let stayOnCanvasAction = UIAlertAction(title: "Voltar para o Canvas", style: .cancel) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        self.finishedCanvasAlert.addAction(openNewCanvasAction)
+        self.finishedCanvasAlert.addAction(saveCanvasImageAction)
+        self.finishedCanvasAlert.addAction(stayOnCanvasAction)
+    }
+    
+    
+    
 
     // MARK: - Objc funcs
 
