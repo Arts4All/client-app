@@ -198,7 +198,11 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             node.addGestureRecognizer(nodeGesture)
         }
     }
+
     // MARK: - Delegate
+    func end() {
+        print("terminou")
+    }
     func selectedColor(color: UIColor) {
         paintColor = color
         grid?.selectedColor(color: color)
