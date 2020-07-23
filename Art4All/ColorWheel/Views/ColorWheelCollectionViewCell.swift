@@ -30,6 +30,14 @@ class ColorWheelCollectionViewCell: UICollectionViewCell {
                                         with coordinator: UIFocusAnimationCoordinator) {
         super.didUpdateFocus(in: context, with: coordinator)
 
+        coordinator.addCoordinatedAnimations({
+            if self.isFocused {
+                self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            } else {
+              self.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }, completion: nil)
+
         if context.nextFocusedView == self {
             self.layer.borderWidth = 8
             self.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)

@@ -10,10 +10,11 @@ import UIKit
 
 extension UIView {
     func addDashBorder(color: UIColor) {
+        let const: CGFloat = 5
         let shapeLayer: CAShapeLayer = CAShapeLayer()
 
         let frameSize = self.frame.size
-        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width - 8, height: frameSize.height - 8)
+        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width - const, height: frameSize.height - const)
 
         shapeLayer.bounds = shapeRect
         shapeLayer.name = "DashBorder"
@@ -21,9 +22,9 @@ extension UIView {
                                       y: frameSize.height/2)
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = color.cgColor
-        shapeLayer.lineWidth = 8
-        shapeLayer.lineDashPattern = [9, 4.6]
-        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0).cgPath
+        shapeLayer.lineWidth = const
+        shapeLayer.lineDashPattern = [8, 4.8]
+        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 4).cgPath
         self.layer.masksToBounds = false
         self.layer.addSublayer(shapeLayer)
     }

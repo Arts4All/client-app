@@ -112,7 +112,7 @@ class MenuViewController: UIViewController {
                                         web: false)
         self.hiddenView()
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
-                                           images: CustomCollectionView.loadFromWeb(),  web: true)
+                                           images: CustomCollectionView.loadFromWeb(), web: true)
     }
     private func setupView(view: MenuView?, title: String, images: CellImagesViews, web: Bool) -> MenuView? {
         var view = view
