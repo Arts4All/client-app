@@ -34,26 +34,30 @@ class SideMenuView: UIView {
         }
         return (image: image, text: text)
     }
+    
+    weak var delegate: SideMenuViewDelegate?
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .clear
     }
 
     convenience init(frame: CGRect, delegate: SideMenuViewDelegate, type: ButtonType) {
         self.init(frame: frame)
         self.delegate = delegate
         self.type = type
+        self.setup()
+        self.addSubview(returnView)
+        self.addSubview(typeView)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    weak var delegate: SideMenuViewDelegate?
+    
     override func layoutSubviews() {
-        self.setup()
-        self.addSubview(returnView)
-        self.addSubview(typeView)
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
         viewWillLayoutSubviews()
@@ -69,8 +73,10 @@ class SideMenuView: UIView {
 
     @objc func tapped(sender: UITapGestureRecognizer) {
         if returnView.isFocused {
+            self.returnView.emulateButton(withDuration: 0.3)
             delegate?.back()
         } else if typeView.isFocused {
+            self.typeView.emulateButton(withDuration: 0.3)
             switch type {
             case .save:
                 delegate?.save?()

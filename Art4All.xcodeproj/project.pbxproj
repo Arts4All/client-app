@@ -53,6 +53,7 @@
 		D9F48EA424BFA3700018B6B9 /* ColorWheelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48EA324BFA3700018B6B9 /* ColorWheelCollectionViewCell.swift */; };
 		D9F48EA624BFA3D40018B6B9 /* ColorWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48EA524BFA3D40018B6B9 /* ColorWheelViewController.swift */; };
 		D9F48EAA24BFA5DE0018B6B9 /* ColorWheelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48EA924BFA5DE0018B6B9 /* ColorWheelDelegate.swift */; };
+		D9F4B40624CA285200911F84 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F4B40524CA285200911F84 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		D9F48EA324BFA3700018B6B9 /* ColorWheelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelCollectionViewCell.swift; sourceTree = "<group>"; };
 		D9F48EA524BFA3D40018B6B9 /* ColorWheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelViewController.swift; sourceTree = "<group>"; };
 		D9F48EA924BFA5DE0018B6B9 /* ColorWheelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelDelegate.swift; sourceTree = "<group>"; };
+		D9F4B40524CA285200911F84 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 				82AE143C24C782140026AB4A /* Colors.swift */,
 				D96F65CA24C8B43100C17861 /* IntegerExension.swift */,
 				D96F65C824C8B08800C17861 /* UserDefaultAccess.swift */,
+				D9F4B40524CA285200911F84 /* UIView+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				82AE143324C774F20026AB4A /* VisualizationController.swift in Sources */,
 				D9F48E8F24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift in Sources */,
 				82DA458F24C2615600140220 /* Loading+Extension.swift in Sources */,
+				D9F4B40624CA285200911F84 /* UIView+Extensions.swift in Sources */,
 				D911136224BCD0BC00015B79 /* CDCanvasImage+CoreDataClass.swift in Sources */,
 				D96F65C924C8B08800C17861 /* UserDefaultAccess.swift in Sources */,
 				D9F48E9724BF90190018B6B9 /* CustomCollectionViewCell.swift in Sources */,
