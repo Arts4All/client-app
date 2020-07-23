@@ -73,7 +73,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 
     // MARK: - GRID
     func setupInitalGrid() {
-        self.view.showLoading()
+        self.view.showLoading(.large)
         ConnectionSocket.shared.setupDelegate(delegate: self)
         ConnectionSocket.shared.connect()
     }

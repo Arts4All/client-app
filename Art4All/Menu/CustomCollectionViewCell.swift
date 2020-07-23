@@ -29,7 +29,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         coordinator.addCoordinatedAnimations({
             if self.isFocused {
-                self.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+                self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             } else {
               self.transform = CGAffineTransform(scaleX: 1, y: 1)
             }

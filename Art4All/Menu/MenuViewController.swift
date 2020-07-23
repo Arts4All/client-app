@@ -107,17 +107,20 @@ class MenuViewController: UIViewController {
     }
     // MARK: Canvas
     private func setUpSavedCanvas() {
-        self.savedView = self.setupView(view: savedView, title: "Canvas Salvos",
-                                        images: CustomCollectionView.loadCoreData())
+        self.savedView = self.setupView(view: savedView, title: "Galeria",
+                                        images: CustomCollectionView.loadCoreData(),
+                                        web: false)
+        self.hiddenView()
         self.finishedView = self.setupView(view: finishedView, title: "Canvas Finalizados",
-                                           images: CustomCollectionView.loadFromWeb(scale: 100))
+                                           images: CustomCollectionView.loadFromWeb(), web: true)
     }
-    private func setupView(view: MenuView?, title: String, images: CellImagesViews) -> MenuView? {
+    private func setupView(view: MenuView?, title: String, images: CellImagesViews, web: Bool) -> MenuView? {
         var view = view
         view = MenuView(frame: self.view.frame,
                         title: title,
                         images: images,
-                        delegateView: self)
+                        delegateView: self,
+                        web: web)
         view?.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
@@ -135,13 +138,17 @@ class MenuViewController: UIViewController {
         let canvasViewController = CanvasViewController()
         canvasViewController.delegate = self
         self.navigationController?.pushViewController(canvasViewController, animated: true)
+    }
 
+    private func hiddenView() {
+        self.savedView.isHidden = self.savedView.canvas.images.isEmpty
     }
 }
 
 extension MenuViewController: ReloadControllerDelegate {
     func reload() {
         self.savedView.canvas.images = CustomCollectionView.loadCoreData()
+        self.hiddenView()
         self.savedView.canvas.reloadData()
     }
 }

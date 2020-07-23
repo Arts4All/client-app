@@ -9,12 +9,12 @@
 import UIKit
 
 extension UIView {
-    
+
     func emulateButton(withDuration duration: Double) {
-        UIView.animate(withDuration: duration * 0.5, animations: { 
+        UIView.animate(withDuration: duration * 0.5, animations: {
             self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }) { _ in
-            UIView.animate(withDuration: duration * 0.5) { 
+            UIView.animate(withDuration: duration * 0.5) {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
         }

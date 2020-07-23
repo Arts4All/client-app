@@ -34,9 +34,8 @@ class SideMenuView: UIView {
         }
         return (image: image, text: text)
     }
-    
-    weak var delegate: SideMenuViewDelegate?
 
+    weak var delegate: SideMenuViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +55,6 @@ class SideMenuView: UIView {
         super.init(coder: coder)
     }
 
-    
     override func layoutSubviews() {
         setNeedsFocusUpdate()
         updateFocusIfNeeded()

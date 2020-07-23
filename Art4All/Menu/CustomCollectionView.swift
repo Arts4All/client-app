@@ -14,6 +14,7 @@ protocol CustomCollectionViewDelegate: class {
 class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
     public var images: CellImagesViews = []
     private weak var delegateView: CustomCollectionViewDelegate?
+    public var webImage = false
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         var frame = frame
@@ -53,12 +54,10 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         }
         return savedImages.reversed()
     }
-    static func loadFromWeb(scale: Int) -> CellImagesViews {
+    static func loadFromWeb() -> CellImagesViews {
         var webImages = CellImagesViews()
-        let url = Environment.URL + "/canvas/image/\(scale)/"
-        for index in 0..<10 {
+        for _ in 0...9 {
             let imageView = CellImageView(frame: .zero)
-            imageView.imageFromWeb(urlNamed: url + String(index))
             webImages.append(imageView)
         }
         return webImages
@@ -103,6 +102,10 @@ extension CustomCollectionView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cellCollection.setUp(image: images[indexPath.row])
+        if self.webImage {
+            let url = Environment.URL + "/canvas/image/50/\(indexPath.row)"
+            cellCollection.imagemView.load(url: url)
+        }
         return cellCollection
     }
 }
