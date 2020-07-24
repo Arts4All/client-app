@@ -71,10 +71,10 @@ class SideMenuView: UIView {
 
     @objc func tapped(sender: UITapGestureRecognizer) {
         if returnView.isFocused {
-            self.returnView.emulateButton(withDuration: 0.3)
+            self.returnView.emulateButton(withDuration: 0.3, starScale: (x: 0.9, y:0.9), finhishedScale: (x: 1, y: 1))
             delegate?.back()
         } else if typeView.isFocused {
-            self.typeView.emulateButton(withDuration: 0.3)
+            self.typeView.emulateButton(withDuration: 0.3, starScale: (x: 0.9, y: 0.9), finhishedScale: (x: 1, y: 1))
             switch type {
             case .save:
                 delegate?.save?()
