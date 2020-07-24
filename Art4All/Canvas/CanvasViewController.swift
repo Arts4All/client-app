@@ -240,11 +240,11 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     
     private func setupAlertController() {
         
-        let openNewCanvasAction = UIAlertAction(title: "Abrir novo Canvas", style: .default) { action in
+        let openNewCanvasAction = UIAlertAction(title: "Abrir novo Canvas", style: .default, handler: { _ in
             
-        }
+        }) 
         
-        let saveCanvasImageAction = UIAlertAction(title: "Salvas imagem do Canvas na galeria", style: .default) { action in
+        let saveCanvasImageAction = UIAlertAction(title: "Salvas imagem do Canvas na galeria", style: .default, handler: { _ in
             guard let data = self.printImage()?.pngData() else { return }
             let uniqueIdentifier = UUID().uuidString
             let canvasImage = CanvasImage(data: data, identifier: uniqueIdentifier)
@@ -253,12 +253,11 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             } catch {
                 print(DAOError.internalError(description: "Failed to create NSObject"))
             }
-            self.navigationController?.popViewController(animated: true)
-        }
+        }) 
         
-        let stayOnCanvasAction = UIAlertAction(title: "Voltar para o Canvas", style: .cancel) { action in
+        let stayOnCanvasAction = UIAlertAction(title: "Voltar para o Canvas", style: .cancel, handler: { _ in
             self.navigationController?.popViewController(animated: true)
-        }
+        }) 
         
         self.finishedCanvasAlert.addAction(openNewCanvasAction)
         self.finishedCanvasAlert.addAction(saveCanvasImageAction)
