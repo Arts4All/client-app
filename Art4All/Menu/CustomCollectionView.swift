@@ -12,7 +12,7 @@ protocol CustomCollectionViewDelegate: class {
     func visualization(image: UIImage, identifier: String)
 }
 class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
-    public var images: CellImagesViews = []
+    public var imagesView: CellImagesViews = []
     private weak var delegateView: CustomCollectionViewDelegate?
     public var webImage = false
 
@@ -56,8 +56,9 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
     }
     static func loadFromWeb() -> CellImagesViews {
         var webImages = CellImagesViews()
-        for _ in 0...9 {
+        for index in 0...9 {
             let imageView = CellImageView(frame: .zero)
+            imageView.image = nil
             webImages.append(imageView)
         }
         return webImages
@@ -84,14 +85,14 @@ extension CustomCollectionView: UICollectionViewDelegate {
         return 40
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = images[indexPath.row]
+        let cell = imagesView[indexPath.row]
         self.delegateView?.visualization(image: cell.image ?? UIImage(), identifier: cell.identifier)
     }
 }
 
 extension CustomCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return imagesView.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -101,11 +102,7 @@ extension CustomCollectionView: UICollectionViewDataSource {
                                  for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cellCollection.setUp(image: images[indexPath.row])
-        if self.webImage {
-            let url = Environment.URL + "/canvas/image/50/\(indexPath.row)"
-            cellCollection.imagemView.load(url: url)
-        }
+        cellCollection.setUp(imageView: imagesView[indexPath.row], index: indexPath.row)
         return cellCollection
     }
 }
