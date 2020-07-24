@@ -237,41 +237,41 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         ])
 
     }
-    
+
     // MARK: - Alert Controller
-    
-    private func setupAlertController() -> UIAlertController{
-        
-        let finishedCanvasAlert = UIAlertController(title: "Canvas Finalizado", message: "Um novo Canvas sera criado, o que deseja fazer?", preferredStyle: .alert)
-        
+
+    private func setupAlertController() -> UIAlertController {
+
+        let finishedCanvasAlert = UIAlertController(title: "Canvas Finalizado",
+                                                    message: "Um novo Canvas sera criado, o que deseja fazer?",
+                                                    preferredStyle: .alert)
+
         let openNewCanvasAction = UIAlertAction(title: "Abrir novo Canvas", style: .default, handler: { _ in
             ConnectionSocket.shared.connect()
-        }) 
-        
+        })
+
         let saveCanvasImageAction = UIAlertAction(title: "Salvar e abrir novo Canvas", style: .default, handler: { _ in
             self.save()
             ConnectionSocket.shared.connect()
-        }) 
-        
-        let goToMenuAndSaveCanvasAction = UIAlertAction(title: "Salvar e ir para o menu", style: .default, handler: { _ in
+        })
+
+        let goToMenuAndSaveCanvasAction = UIAlertAction(title: "Salvar e ir para o menu",
+                                                        style: .default, handler: { _ in
             self.save()
             self.navigationController?.popViewController(animated: true)
-        }) 
-        
+        })
+
         let goToMenuAction = UIAlertAction(title: "Ir para o menu", style: .default, handler: { _ in
             self.navigationController?.popViewController(animated: true)
         })
-                
+
         finishedCanvasAlert.addAction(openNewCanvasAction)
         finishedCanvasAlert.addAction(saveCanvasImageAction)
         finishedCanvasAlert.addAction(goToMenuAndSaveCanvasAction)
         finishedCanvasAlert.addAction(goToMenuAction)
-        
+
         return finishedCanvasAlert
     }
-    
-    
-    
 
     // MARK: - Objc funcs
 
@@ -307,9 +307,9 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         }
 
         UserDefaultAccess.nodePositin = [tile.xPosition, tile.yPosition]
-        
+
         let paintColor = UserDefaultAccess.paitingColor ?? #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
-        
+
         ConnectionSocket.shared.drawToServer(color: paintColor,
                                              (xPosition: tile.xPosition,
                                               yPosition: tile.yPosition))

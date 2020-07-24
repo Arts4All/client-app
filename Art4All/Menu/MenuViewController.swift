@@ -90,7 +90,6 @@ class MenuViewController: UIViewController {
         playButton.setImage(#imageLiteral(resourceName: "focused"), for: .focused)
     }
 
-
     private func setupPlayButtonAction() {
         playButton.addTarget(self, action: #selector(actionButton), for: .primaryActionTriggered)
     }

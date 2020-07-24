@@ -9,7 +9,9 @@
 import UIKit
 
 extension UIView {
-    func emulateButton(withDuration duration: Double, starScale: (x:CGFloat, y:CGFloat), finhishedScale: (x: CGFloat, y: CGFloat)) {
+    func emulateButton(withDuration duration: Double,
+                       starScale: (x: CGFloat, y: CGFloat),
+                       finhishedScale: (x: CGFloat, y: CGFloat)) {
         UIView.animate(withDuration: duration * 0.5, animations: {
             self.transform = CGAffineTransform(scaleX: starScale.x, y: starScale.y)
         }, completion: { _ in

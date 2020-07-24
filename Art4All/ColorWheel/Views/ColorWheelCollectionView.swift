@@ -29,8 +29,10 @@ extension ColorWheelView: UICollectionViewDelegateFlowLayout {
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 30
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 30
     }
 

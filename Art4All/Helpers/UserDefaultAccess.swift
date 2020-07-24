@@ -26,11 +26,11 @@ struct UserDefaultAccess {
             UserDefaults.standard.set(stringArray, forKey: "nodePosition")
         }
     }
-    
+
     static var paitingColor: UIColor? {
         get {
             let rgbString = UserDefaults.standard.string(forKey: "paitingColor")
-            
+
             return rgbString?.getColor()
         }
         set {
@@ -38,7 +38,7 @@ struct UserDefaultAccess {
                 return
             }
             let rgbString = newColor.rgb()
-            
+
             UserDefaults.standard.set(rgbString, forKey: "paitingColor")
         }
     }

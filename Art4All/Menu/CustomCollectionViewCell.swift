@@ -13,7 +13,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private(set) var imagemView = UIImageView()
     var identifier = ""
 
-
     public func setUp(imageView: CellImageView, index: Int, web: Bool) {
         imagemView = imageView
         imagemView.frame = self.bounds
