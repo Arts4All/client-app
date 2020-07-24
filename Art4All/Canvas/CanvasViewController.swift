@@ -19,7 +19,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private let squareSize: Int = 80
     private var grid: VisualGrid?
     private var tiles: [VisualGridElement]?
-    private var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+    private var paintColor: UIColor = #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
     private var gestureRecognizer: UITapGestureRecognizer! = nil
     private var longPressRecognizer: UILongPressGestureRecognizer! = nil
     private var isInColorWheel: Bool = false
