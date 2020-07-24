@@ -6,7 +6,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "Top Shelf Image Wide-2.png",
+      "filename" : "Top Shelf Image Wide@2x.png",
       "idiom" : "tv",
       "scale" : "2x"
     },
@@ -16,7 +16,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "Top Shelf Image Wide-3.png",
+      "filename" : "Top Shelf Image Wide@2x-1.png",
       "idiom" : "tv-marketing",
       "scale" : "2x"
     }
