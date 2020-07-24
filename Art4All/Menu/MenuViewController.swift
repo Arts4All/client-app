@@ -141,13 +141,13 @@ class MenuViewController: UIViewController {
     }
 
     private func hiddenView() {
-        self.savedView.isHidden = self.savedView.canvas.images.isEmpty
+        self.savedView.isHidden = self.savedView.canvas.imagesView.isEmpty
     }
 }
 
 extension MenuViewController: ReloadControllerDelegate {
     func reload() {
-        self.savedView.canvas.images = CustomCollectionView.loadCoreData()
+        self.savedView.canvas.imagesView = CustomCollectionView.loadCoreData()
         self.hiddenView()
         self.savedView.canvas.reloadData()
     }

@@ -26,6 +26,7 @@
 		82AF746724B521C700A6BBDB /* ConvertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746624B521C700A6BBDB /* ConvertTypes.swift */; };
 		82AF746924B521F200A6BBDB /* JoinComunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AF746824B521F200A6BBDB /* JoinComunication.swift */; };
 		82B4F3A524C62423001F95D1 /* UIImageDownload+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B4F3A424C62423001F95D1 /* UIImageDownload+Extensions.swift */; };
+		82C5D07724CB631300EF3D93 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 82C5D07624CB631300EF3D93 /* SDWebImage */; };
 		82DA458B24C260F500140220 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458A24C260F500140220 /* SideMenuView.swift */; };
 		82DA458D24C2610000140220 /* SideMenuViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458C24C2610000140220 /* SideMenuViews.swift */; };
 		82DA458F24C2615600140220 /* Loading+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA458E24C2615600140220 /* Loading+Extension.swift */; };
@@ -144,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82C5D07724CB631300EF3D93 /* SDWebImage in Frameworks */,
 				8203581224AE504E0073EED4 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +478,7 @@
 			name = Art4All;
 			packageProductDependencies = (
 				8203581124AE504E0073EED4 /* SocketIO */,
+				82C5D07624CB631300EF3D93 /* SDWebImage */,
 			);
 			productName = Art4All;
 			productReference = 820357DC24AE50050073EED4 /* Art4All.app */;
@@ -573,6 +576,7 @@
 			mainGroup = 820357D324AE50050073EED4;
 			packageReferences = (
 				8203581024AE504E0073EED4 /* XCRemoteSwiftPackageReference "socket" */,
+				82C5D07524CB631300EF3D93 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 820357DD24AE50050073EED4 /* Products */;
 			projectDirPath = "";
@@ -1080,6 +1084,14 @@
 				minimumVersion = 15.2.0;
 			};
 		};
+		82C5D07524CB631300EF3D93 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1087,6 +1099,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8203581024AE504E0073EED4 /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
+		};
+		82C5D07624CB631300EF3D93 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82C5D07524CB631300EF3D93 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

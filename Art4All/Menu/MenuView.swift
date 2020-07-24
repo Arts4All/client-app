@@ -61,7 +61,7 @@ class MenuView: UIView {
 
     // MARK: Collection
     private func setCollectionView(images: CellImagesViews) {
-        canvas.images = images
+        canvas.imagesView = images
         canvas.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(canvas)
     }

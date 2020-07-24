@@ -16,13 +16,12 @@ extension UIImageView {
             return
         }
         self.showLoading(.medium)
-        DispatchQueue.main.async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let data = try? Data(contentsOf: url) else { return }
+                DispatchQueue.main.async {
+                    if let image = UIImage(data: data) {
                         self?.image = image
                         self?.removeLoading()
-                    }
                 }
             }
         }

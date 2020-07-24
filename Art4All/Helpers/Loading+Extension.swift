@@ -15,9 +15,9 @@ extension UIView {
         animation.startAnimating()
         animation.center = loadingView.center
         loadingView.tag = 999
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             loadingView.addSubview(animation)
-            self.addSubview(loadingView)
+            self?.addSubview(loadingView)
         }
     }
     func removeLoading() {
