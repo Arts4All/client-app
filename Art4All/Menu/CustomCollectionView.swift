@@ -56,7 +56,7 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
     }
     static func loadFromWeb() -> CellImagesViews {
         var webImages = CellImagesViews()
-        for index in 0...9 {
+        for _ in 0...9 {
             let imageView = CellImageView(frame: .zero)
             imageView.image = nil
             webImages.append(imageView)
@@ -102,7 +102,7 @@ extension CustomCollectionView: UICollectionViewDataSource {
                                  for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cellCollection.setUp(imageView: imagesView[indexPath.row], index: indexPath.row)
+        cellCollection.setUp(imageView: imagesView[indexPath.row], index: indexPath.row, web: self.webImage)
         return cellCollection
     }
 }

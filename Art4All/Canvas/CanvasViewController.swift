@@ -17,7 +17,6 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private var numberOfLines: Int = 0
     private var numberOfColumns: Int = 0
     private let squareSize: Int = 80
-    private let finishedCanvasAlert = UIAlertController(title: "Canvas Finalizado", message: "Um novo Canvas sera criado, o que deseja fazer?", preferredStyle: .alert)
     private var grid: VisualGrid?
     private var tiles: [VisualGridElement]?
     private var paintColor: UIColor = #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
@@ -202,7 +201,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 
     // MARK: - Delegate
     func end() {
-        print("terminou")
+        self.navigationController?.present(setupAlertController(), animated: true, completion: nil)
     }
     func selectedColor(color: UIColor) {
         paintColor = color
@@ -242,30 +241,34 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     
     // MARK: - Alert Controller
     
-    private func setupAlertController() {
+    private func setupAlertController() -> UIAlertController{
+        
+        let finishedCanvasAlert = UIAlertController(title: "Canvas Finalizado", message: "Um novo Canvas sera criado, o que deseja fazer?", preferredStyle: .alert)
         
         let openNewCanvasAction = UIAlertAction(title: "Abrir novo Canvas", style: .default, handler: { _ in
-            
+            ConnectionSocket.shared.connect()
         }) 
         
-        let saveCanvasImageAction = UIAlertAction(title: "Salvas imagem do Canvas na galeria", style: .default, handler: { _ in
-            guard let data = self.printImage()?.pngData() else { return }
-            let uniqueIdentifier = UUID().uuidString
-            let canvasImage = CanvasImage(data: data, identifier: uniqueIdentifier)
-            do {
-                try self.coreDataController.create(newRecord: canvasImage)
-            } catch {
-                print(DAOError.internalError(description: "Failed to create NSObject"))
-            }
+        let saveCanvasImageAction = UIAlertAction(title: "Salvar e abrir novo Canvas", style: .default, handler: { _ in
+            self.save()
+            ConnectionSocket.shared.connect()
         }) 
         
-        let stayOnCanvasAction = UIAlertAction(title: "Voltar para o Canvas", style: .cancel, handler: { _ in
+        let goToMenuAndSaveCanvasAction = UIAlertAction(title: "Salvar e ir para o menu", style: .default, handler: { _ in
+            self.save()
             self.navigationController?.popViewController(animated: true)
         }) 
         
-        self.finishedCanvasAlert.addAction(openNewCanvasAction)
-        self.finishedCanvasAlert.addAction(saveCanvasImageAction)
-        self.finishedCanvasAlert.addAction(stayOnCanvasAction)
+        let goToMenuAction = UIAlertAction(title: "Ir para o menu", style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        })
+                
+        finishedCanvasAlert.addAction(openNewCanvasAction)
+        finishedCanvasAlert.addAction(saveCanvasImageAction)
+        finishedCanvasAlert.addAction(goToMenuAndSaveCanvasAction)
+        finishedCanvasAlert.addAction(goToMenuAction)
+        
+        return finishedCanvasAlert
     }
     
     

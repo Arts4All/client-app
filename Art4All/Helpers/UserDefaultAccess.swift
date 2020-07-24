@@ -25,4 +25,6 @@ struct UserDefaultAccess {
             UserDefaults.standard.set(stringArray, forKey: "nodePosition")
         }
     }
+    
+    
 }
