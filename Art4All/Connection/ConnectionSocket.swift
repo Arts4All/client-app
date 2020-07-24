@@ -67,6 +67,7 @@ final class ConnectionSocket {
     private func setupEnd() {
         self.socket.on("end") { (_, _) in
             self.delegate?.end()
+            self.socket.disconnect()
         }
     }
 

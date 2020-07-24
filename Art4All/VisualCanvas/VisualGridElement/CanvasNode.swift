@@ -11,7 +11,7 @@ import UIKit
 
 public class CanvasNode: UIView {
 
-    var paintColor: UIColor = #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
+    var paintColor: UIColor = UserDefaultAccess.paitingColor ?? #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
 
     var isSelected: Bool = false
 
