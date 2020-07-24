@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct UserDefaultAccess {
 
@@ -26,5 +27,19 @@ struct UserDefaultAccess {
         }
     }
     
-    
+    static var paitingColor: UIColor? {
+        get {
+            let rgbString = UserDefaults.standard.string(forKey: "paitingColor")
+            
+            return rgbString?.getColor()
+        }
+        set {
+            guard let newColor = newValue else {
+                return
+            }
+            let rgbString = newColor.rgb()
+            
+            UserDefaults.standard.set(rgbString, forKey: "paitingColor")
+        }
+    }
 }

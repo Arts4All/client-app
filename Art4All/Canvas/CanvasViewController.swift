@@ -19,7 +19,6 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private let squareSize: Int = 80
     private var grid: VisualGrid?
     private var tiles: [VisualGridElement]?
-    private var paintColor: UIColor = #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
     private var gestureRecognizer: UITapGestureRecognizer! = nil
     private var longPressRecognizer: UILongPressGestureRecognizer! = nil
     private var isInColorWheel: Bool = false
@@ -204,7 +203,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         self.navigationController?.present(setupAlertController(), animated: true, completion: nil)
     }
     func selectedColor(color: UIColor) {
-        paintColor = color
+        UserDefaultAccess.paitingColor = color
         grid?.selectedColor(color: color)
         dismissColorWheel()
     }
@@ -308,7 +307,9 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
         }
 
         UserDefaultAccess.nodePositin = [tile.xPosition, tile.yPosition]
-
+        
+        let paintColor = UserDefaultAccess.paitingColor ?? #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
+        
         ConnectionSocket.shared.drawToServer(color: paintColor,
                                              (xPosition: tile.xPosition,
                                               yPosition: tile.yPosition))
