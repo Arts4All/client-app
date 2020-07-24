@@ -13,7 +13,7 @@ class MenuViewController: UIViewController {
     var savedView: MenuView!
     private var finishedView: MenuView!
     private let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "background_mennun"))
-    private let playButton = UIButton(type: .custom)
+    private let playButton = CustomMenuButton(type: .custom)
     private let buttonLabel: UILabel = UILabel()
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         return [playButton]
@@ -90,6 +90,7 @@ class MenuViewController: UIViewController {
         playButton.setImage(#imageLiteral(resourceName: "focused"), for: .focused)
     }
 
+
     private func setupPlayButtonAction() {
         playButton.addTarget(self, action: #selector(actionButton), for: .primaryActionTriggered)
     }
@@ -135,6 +136,7 @@ class MenuViewController: UIViewController {
     }
 
     @objc func actionButton() {
+        self.playButton.emulateButton(withDuration: 0.5, starScale: (x: 0.9, y: 0.9), finhishedScale: (x: 1.1, y: 1.1))
         let canvasViewController = CanvasViewController()
         canvasViewController.delegate = self
         self.navigationController?.pushViewController(canvasViewController, animated: true)

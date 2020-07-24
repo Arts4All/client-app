@@ -56,6 +56,7 @@
 		D9F48EA424BFA3700018B6B9 /* ColorWheelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48EA324BFA3700018B6B9 /* ColorWheelCollectionViewCell.swift */; };
 		D9F48EA624BFA3D40018B6B9 /* ColorWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48EA524BFA3D40018B6B9 /* ColorWheelViewController.swift */; };
 		D9F48EAA24BFA5DE0018B6B9 /* ColorWheelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F48EA924BFA5DE0018B6B9 /* ColorWheelDelegate.swift */; };
+		D9F4B40824CB85AB00911F84 /* CustomMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F4B40724CB85AB00911F84 /* CustomMenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		D9F48EA324BFA3700018B6B9 /* ColorWheelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelCollectionViewCell.swift; sourceTree = "<group>"; };
 		D9F48EA524BFA3D40018B6B9 /* ColorWheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelViewController.swift; sourceTree = "<group>"; };
 		D9F48EA924BFA5DE0018B6B9 /* ColorWheelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelDelegate.swift; sourceTree = "<group>"; };
+		D9F4B40724CB85AB00911F84 /* CustomMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,6 +429,7 @@
 				D9F48E9424BF90190018B6B9 /* CustomCollectionView.swift */,
 				D9F48E9524BF90190018B6B9 /* MenuView.swift */,
 				D9F48E9624BF90190018B6B9 /* MenuViewController.swift */,
+				D9F4B40724CB85AB00911F84 /* CustomMenuButton.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				D9036E6824B2A4B200EB2A58 /* LogicalGrid.swift in Sources */,
 				D9007F9D24C65F960074A426 /* SideMenu + Helpers.swift in Sources */,
 				82AE143324C774F20026AB4A /* VisualizationController.swift in Sources */,
+				D9F4B40824CB85AB00911F84 /* CustomMenuButton.swift in Sources */,
 				D9F48E8F24BF8FBE0018B6B9 /* CanvasImageCoreDataController.swift in Sources */,
 				82DA458F24C2615600140220 /* Loading+Extension.swift in Sources */,
 				D911136224BCD0BC00015B79 /* CDCanvasImage+CoreDataClass.swift in Sources */,
