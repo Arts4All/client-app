@@ -16,6 +16,7 @@ protocol ConnectionSocketDelegate: class {
                    _ mapColors: MapColors)
     func changeTileState(color: UIColor,
                          position: (xPosition: Int, yPosition: Int))
+    func end()
 }
 
 final class ConnectionSocket {
@@ -41,6 +42,7 @@ final class ConnectionSocket {
             print("socket disconnect")
         }
         self.setupOn()
+        self.setupEnd()
         self.drawToClient()
     }
 
@@ -60,6 +62,11 @@ final class ConnectionSocket {
             self.delegate?.setupGrid(properties.rowSize,
                                      properties.numberOfLines,
                                      mapColors)
+        }
+    }
+    private func setupEnd() {
+        self.socket.on("end") { (_, _) in
+            self.delegate?.end()
         }
     }
 

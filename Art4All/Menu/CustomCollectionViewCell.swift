@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CustomCollectionViewCell: UICollectionViewCell {
     private(set) var imagemView = UIImageView()
     var identifier = ""
 
-    public func setUp(image: CellImageView) {
-        imagemView = image
+    override func prepareForReuse() {
+        self.imagemView.image = nil
+    }
+
+    public func setUp(imageView: CellImageView, index: Int) {
+        imagemView = imageView
         imagemView.frame = self.bounds
         imagemView.contentMode = .scaleAspectFill
         imagemView.adjustsImageWhenAncestorFocused = true
@@ -23,13 +28,23 @@ class CustomCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         self.layer.cornerRadius = 20
         self.layer.masksToBounds = true
+        self.loadImage(index: index)
         addSubview(imagemView)
+    }
+    private func loadImage(index: Int) {
+        if self.imagemView.image == nil {
+            DispatchQueue.main.async {
+                let url = Environment.URL + "/canvas/image/50/\(index)"
+                self.imagemView.sd_imageIndicator = SDWebImageActivityIndicator.medium
+                self.imagemView.sd_setImage(with: URL(string: url))
+            }
+        }
     }
 
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         coordinator.addCoordinatedAnimations({
             if self.isFocused {
-                self.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+                self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             } else {
               self.transform = CGAffineTransform(scaleX: 1, y: 1)
             }

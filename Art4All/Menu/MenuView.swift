@@ -23,11 +23,13 @@ class MenuView: UIView {
     convenience init(frame: CGRect,
                      title: String,
                      images: CellImagesViews,
-                     delegateView: CustomCollectionViewDelegate) {
+                     delegateView: CustomCollectionViewDelegate,
+                     web: Bool) {
         var frame = frame
         self.init(frame: frame)
         frame.size.height = 252
         setTitle(title: title)
+        canvas.webImage = web
         setCollectionView(images: images)
         self.delegateView = delegateView
     }
@@ -59,7 +61,7 @@ class MenuView: UIView {
 
     // MARK: Collection
     private func setCollectionView(images: CellImagesViews) {
-        canvas.images = images
+        canvas.imagesView = images
         canvas.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(canvas)
     }

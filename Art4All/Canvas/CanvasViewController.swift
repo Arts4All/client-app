@@ -20,7 +20,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private let finishedCanvasAlert = UIAlertController(title: "Canvas Finalizado", message: "Um novo Canvas sera criado, o que deseja fazer?", preferredStyle: .alert)
     private var grid: VisualGrid?
     private var tiles: [VisualGridElement]?
-    private var paintColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+    private var paintColor: UIColor = #colorLiteral(red: 0.1647058824, green: 0.4823529412, blue: 0.6078431373, alpha: 1)
     private var gestureRecognizer: UITapGestureRecognizer! = nil
     private var longPressRecognizer: UILongPressGestureRecognizer! = nil
     private var isInColorWheel: Bool = false
@@ -74,7 +74,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
 
     // MARK: - GRID
     func setupInitalGrid() {
-        self.view.showLoading()
+        self.view.showLoading(.large)
         ConnectionSocket.shared.setupDelegate(delegate: self)
         ConnectionSocket.shared.connect()
     }
@@ -199,7 +199,11 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
             node.addGestureRecognizer(nodeGesture)
         }
     }
+
     // MARK: - Delegate
+    func end() {
+        print("terminou")
+    }
     func selectedColor(color: UIColor) {
         paintColor = color
         grid?.selectedColor(color: color)

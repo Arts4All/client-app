@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
+        "state": {
+          "branch": null,
+          "revision": "2f9ef53b99a25bdfba97660c69c42cb54e323b78",
+          "version": "5.8.4"
+        }
+      },
+      {
         "package": "SocketIO",
         "repositoryURL": "https://github.com/socketio/socket.io-client-swift",
         "state": {

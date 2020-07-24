@@ -12,8 +12,9 @@ protocol CustomCollectionViewDelegate: class {
     func visualization(image: UIImage, identifier: String)
 }
 class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout {
-    public var images: CellImagesViews = []
+    public var imagesView: CellImagesViews = []
     private weak var delegateView: CustomCollectionViewDelegate?
+    public var webImage = false
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         var frame = frame
@@ -53,12 +54,11 @@ class CustomCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout
         }
         return savedImages.reversed()
     }
-    static func loadFromWeb(scale: Int) -> CellImagesViews {
+    static func loadFromWeb() -> CellImagesViews {
         var webImages = CellImagesViews()
-        let url = Environment.URL + "/canvas/image/\(scale)/"
-        for index in 0..<10 {
+        for index in 0...9 {
             let imageView = CellImageView(frame: .zero)
-            imageView.imageFromWeb(urlNamed: url + String(index))
+            imageView.image = nil
             webImages.append(imageView)
         }
         return webImages
@@ -85,14 +85,14 @@ extension CustomCollectionView: UICollectionViewDelegate {
         return 40
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = images[indexPath.row]
-        self.delegateView?.visualization(image: cell.image!, identifier: cell.identifier)
+        let cell = imagesView[indexPath.row]
+        self.delegateView?.visualization(image: cell.image ?? UIImage(), identifier: cell.identifier)
     }
 }
 
 extension CustomCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return imagesView.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -102,7 +102,7 @@ extension CustomCollectionView: UICollectionViewDataSource {
                                  for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cellCollection.setUp(image: images[indexPath.row])
+        cellCollection.setUp(imageView: imagesView[indexPath.row], index: indexPath.row)
         return cellCollection
     }
 }

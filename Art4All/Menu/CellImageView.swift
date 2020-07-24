@@ -25,6 +25,14 @@ class CellImageView: UIImageView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+//    
+//    func loadImage(index: Int) {
+//        guard image else { return }
+//        DispatchQueue.main.async {
+//            let url = Environment.URL + "/canvas/image/50/\(index)"
+//            image.load(url: url)
+//        }
+//    }
 }
 
 typealias CellImagesViews = [CellImageView]

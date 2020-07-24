@@ -10,56 +10,20 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    public func imageFromWeb(urlNamed url: String) {
-        self.image = nil
-        let activityIndicator = self.activityIndicator
-        DispatchQueue.main.async { activityIndicator.startAnimating() }
+    func load(url: String) {
         guard let url = URL(string: url) else {
             NSLog("Error: Url para baixar imagem inválida")
             return
         }
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) -> Void in
-            if error != nil {
-                NSLog("Error: \(error as Any)")
-                return
-            }
-
-            DispatchQueue.main.async(execute: {
-                activityIndicator.stopAnimating()
-                activityIndicator.removeFromSuperview()
-
-                let image = UIImage(data: data!)
-                if self.animationImages != nil {
-                    self.animationImages?.removeAll()
+        self.showLoading(.medium)
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let data = try? Data(contentsOf: url) else { return }
+                DispatchQueue.main.async {
+                    if let image = UIImage(data: data) {
+                        self?.image = image
+                        self?.removeLoading()
                 }
-                self.image = image
-            })
-
-        }).resume()
-    }
-    private var activityIndicator: UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = .black
-        self.addSubview(activityIndicator)
-
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-
-        let centerX = NSLayoutConstraint(item: self,
-                                         attribute: .centerX,
-                                         relatedBy: .equal,
-                                         toItem: activityIndicator,
-                                         attribute: .centerX,
-                                         multiplier: 1,
-                                         constant: 0)
-        let centerY = NSLayoutConstraint(item: self,
-                                         attribute: .centerY,
-                                         relatedBy: .equal,
-                                         toItem: activityIndicator,
-                                         attribute: .centerY,
-                                         multiplier: 1,
-                                         constant: 0)
-        self.addConstraints([centerX, centerY])
-        return activityIndicator
+            }
+        }
     }
 }
