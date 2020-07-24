@@ -16,7 +16,7 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
     private let canvasView = UIView()
     private var numberOfLines: Int = 0
     private var numberOfColumns: Int = 0
-    private let squareSize: Int = 80
+    private let squareSize: Int = 35
     private var grid: VisualGrid?
     private var tiles: [VisualGridElement]?
     private var gestureRecognizer: UITapGestureRecognizer! = nil
