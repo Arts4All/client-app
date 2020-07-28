@@ -102,7 +102,8 @@ extension CustomCollectionView: UICollectionViewDataSource {
                                  for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cellCollection.setUp(imageView: imagesView[indexPath.row], index: indexPath.row, web: self.webImage)
+        cellCollection.setUp(imageView: imagesView[indexPath.row],
+                             index: indexPath.row, web: self.webImage)
         return cellCollection
     }
 }

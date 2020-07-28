@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SDWebImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk()
         self.window = UIWindow()
         self.window?.makeKeyAndVisible()
 

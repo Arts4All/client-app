@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MenuViewController: UIViewController {
 
@@ -147,6 +148,13 @@ class MenuViewController: UIViewController {
 }
 
 extension MenuViewController: ReloadControllerDelegate {
+    func reloadWeb() {
+        self.reload()
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk()
+        self.finishedView.canvas.reloadData()
+    }
+
     func reload() {
         self.savedView.canvas.imagesView = CustomCollectionView.loadCoreData()
         self.hiddenView()

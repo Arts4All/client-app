@@ -10,4 +10,5 @@ import Foundation
 
 protocol ReloadControllerDelegate: class {
     func reload()
+    func reloadWeb()
 }

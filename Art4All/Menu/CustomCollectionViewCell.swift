@@ -28,7 +28,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         addSubview(imagemView)
     }
     private func loadImage(index: Int, web: Bool) {
-        if self.imagemView.image == nil && web {
+        if web {
             DispatchQueue.main.async {
                 let url = Environment.URL + "/canvas/image/50/\(index)"
                 self.imagemView.sd_imageIndicator = SDWebImageActivityIndicator.medium
