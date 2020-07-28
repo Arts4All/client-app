@@ -247,21 +247,26 @@ class CanvasViewController: UIViewController, ConnectionSocketDelegate, ColorWhe
                                                     preferredStyle: .alert)
 
         let openNewCanvasAction = UIAlertAction(title: "Abrir novo Canvas", style: .default, handler: { _ in
+            self.delegate?.reload()
             ConnectionSocket.shared.connect()
         })
 
         let saveCanvasImageAction = UIAlertAction(title: "Salvar e abrir novo Canvas", style: .default, handler: { _ in
             self.save()
+            self.delegate?.reload()
             ConnectionSocket.shared.connect()
         })
 
         let goToMenuAndSaveCanvasAction = UIAlertAction(title: "Salvar e ir para o menu",
                                                         style: .default, handler: { _ in
             self.save()
+            self.delegate?.reload()
             self.navigationController?.popViewController(animated: true)
+
         })
 
         let goToMenuAction = UIAlertAction(title: "Ir para o menu", style: .default, handler: { _ in
+            self.delegate?.reload()
             self.navigationController?.popViewController(animated: true)
         })
 
