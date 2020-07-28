@@ -9,7 +9,7 @@
 import Foundation
 
 struct Environment {
-    private static let PRODUCTION = false
+    private static let PRODUCTION = true
 
     static var URL: String {
         return PRODUCTION ? "https://art4all.herokuapp.com" : "http://localhost:3000"
